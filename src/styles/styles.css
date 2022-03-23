@@ -1,0 +1,17 @@
+.search{
+    border-radius: 17px ;
+    border: none;
+    padding: 5px;
+    text-align: center;
+    width: 150px;
+}
+a{
+    text-decoration: none;
+
+}
+
+@media screen and (min-width: 990px) {
+    .navbar-nav {
+      margin-left: auto;
+    }
+  }
