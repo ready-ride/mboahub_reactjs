@@ -2,8 +2,8 @@ import React from 'react'
 
 export const NavItem = ({title}) => {
   return (
-    <li class="nav-item">
-       <a class="nav-link rounded">{title}</a>
+    <li className="nav-item">
+       <a className="nav-link rounded">{title}</a>
     </li>
   )
 }

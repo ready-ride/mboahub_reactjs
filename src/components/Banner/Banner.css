@@ -1,0 +1,5 @@
+.banner-section{
+    height: 70vh;
+    background-color:#F5F7FB;
+    background-image: url("/public/photos/banner-photo.jpg");
+}
