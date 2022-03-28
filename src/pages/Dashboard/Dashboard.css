@@ -1,0 +1,32 @@
+.dashboard {
+    margin-top: 60px;
+}
+
+.left-menu > * {
+    width: 20vw;
+    height: 70px;
+    padding-left: 40px;
+    padding-top: 10px;
+    border-bottom: 1px solid lightgray;
+    cursor: pointer;
+}
+.left-menu > *:hover{
+   background:lightgray;
+}
+.dashboard-content{
+    width: 80vw;
+    margin-left: 21vw;
+}
+.left-menu {
+    position: fixed;
+}
+
+@media screen and (max-width: 815px) {
+    .left-menu {
+      display: none;
+    }
+    .dashboard-content{
+        width: 100vw;
+        margin: 0 auto;
+    }
+  }

@@ -10,8 +10,8 @@ function SignInSignUp() {
     const [form, setForm] = useState('signin');
 
   return (
-    <div className='row'>
-        <div className='col-md-6 mx-auto mt-4 shadow rounded'>
+    <div className='row signin-signup'>
+        <div className='col-md-6 mx-auto shadow rounded'>
             <div className='row'>
                 <div className='col-md-5 left-form'>
 

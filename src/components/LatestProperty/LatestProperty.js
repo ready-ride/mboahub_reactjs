@@ -6,8 +6,8 @@ import './LatestProperty.css';
 function LatestProperty() {
   return (
     <div className='row latest-property'>
-        <div className='col-md-2'></div>
-            <div className='col-md-8 px-4'>
+        <div className='col-md-1'></div>
+            <div className='col-md-10 px-2'>
                 <div className='latest-property-header'>
                     <div className='lestest-property-header-left'>
                         <span className='text-primary font-weight-bold'>BROWSE HOT OFFERS</span><br />
@@ -19,11 +19,16 @@ function LatestProperty() {
                         <span>For rent</span>
                     </div>
                 </div>
-                <div className='latest-property-items'>
+                <div className='latest-property-items d-flex flex-wrap justify-content-between'>
+                    <PropertyItem />
+                    <PropertyItem />
+                    <PropertyItem />
+                    <PropertyItem />
+                    <PropertyItem />
                     <PropertyItem />
                 </div>
             </div>
-        <div className='col-md-2'></div>
+        <div className='col-md-1'></div>
     </div>
   )
 }
