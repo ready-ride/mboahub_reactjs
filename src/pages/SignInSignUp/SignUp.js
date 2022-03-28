@@ -17,8 +17,8 @@ const SignUp = () => {
     const [loading, setLoading] = useState(false);
 
     const handleClick = e => {
-        setLoading(true);
         e.preventDefault();
+        setLoading(true);
 
         (async() => {
             let res = await userSignup(data);
