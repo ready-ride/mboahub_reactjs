@@ -18,24 +18,12 @@
     padding: 25px 20px;
     display: flex;
     justify-content: space-between;
-    background-image: url("/public/photos/banner-photo.jpg");
+    background-image: url("/photos/banner-photo.jpg");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
 }
 
-.up-left-top{
-    font-size: 12px;
-    font-weight: bold;
-    color: white;
-}
-
-.up-left-top >* {
-    background-color: #3270FC;
-    margin: 0 4px;
-    padding: 10px 15px;
-    border-radius: 2px;
-}
 .up-left-bottom {
     font-size: 14px;
     font-weight: bold;
@@ -47,14 +35,6 @@
 .up-right-top{
     display: flex;
     flex-direction: column;
-}
-
-.up-right-top > * {
-    background-color: white;
-    color: #3270FC;
-    padding: 5px;
-    margin-bottom: 10px;
-    border-radius: 3px;
 }
 
 .property-item-down{

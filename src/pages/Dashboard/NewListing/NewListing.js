@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import GooglePlaces from '../../../components/apis/GooglePlaces/GooglePlaces';
 import FormInput from '../../../components/forms/FormInput';
 import SelectInput from '../../../components/forms/SelectInput';
 import TextAreaInput from '../../../components/forms/TextAreaInput';
@@ -100,13 +101,12 @@ function NewListing() {
 
   return (
     <div className='new-listing'>
-
         <h5 className='my-2 pb-4 border-bottom'>ADD LISTING</h5>
         <form>
             <div className='listing-info shadow'>
                 <h6>Basic Informations</h6>
                 <div className='row'>
-                    <div className='col-md-4'>
+                    <div className='col-md-4 mt-2'>
                          <FormInput
                             type="text"
                             name="listing_name"
@@ -124,7 +124,7 @@ function NewListing() {
                             handleSelect={handleSelect}
                              />
                     </div>
-                    <div className='col-md-4'>
+                    <div className='col-md-4 mt-2'>
                         <FormInput
                             type="text"
                             name="cost"
@@ -158,6 +158,9 @@ function NewListing() {
                             data={data.street}
                             handleChange={handleChange}
                          />
+                    </div>
+                    <div className='col-md-12'>
+                      <GooglePlaces />
                     </div>
                 </div>
             </div>

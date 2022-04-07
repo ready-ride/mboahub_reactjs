@@ -1,0 +1,23 @@
+
+.upper-footer{
+    min-height: 450px;
+    padding-top: 150px;
+}
+
+.lower-footer{
+    min-height: 70px;
+}
+
+.helpful-links{
+    position: relative;
+    list-style: none;
+  }
+
+  .helpful-links li::before {
+    content: '▶';
+    position: absolute;
+    left: 0;
+    color: #3270FC;
+    font-size: 8px;
+    margin-top: 7px;
+  }

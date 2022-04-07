@@ -1,0 +1,9 @@
+.property-type {
+    background-color: #3270FC;
+    margin: 0 4px;
+    padding: 10px 15px;
+    border-radius: 2px;
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+}

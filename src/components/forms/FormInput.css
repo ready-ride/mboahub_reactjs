@@ -1,0 +1,26 @@
+label{
+    font-weight: bold;
+    color: #878C9E;
+}
+
+.input-container{
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    background: #F4F7FB;
+    border: 1px solid #E4E7F2;
+}
+.form-control{
+    border: none;
+}
+input {
+    width: 100%;
+    padding: 5px;
+    background: #F4F7FB;
+    border: none;
+    outline: 0;
+}
+.input-icon{
+    padding: 5px 10px;
+    border-right: 1px solid #E4E7F2;
+}

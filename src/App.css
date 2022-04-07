@@ -1,3 +1,46 @@
 .App{
   font-family: 'open sans';
 }
+.bg-blue{
+  background-color: #3270FC;
+}
+
+.bg-gray{
+  background-color: #F5F7FB;
+}
+
+.bg-light-gray{
+  background-color: #F9F9F9;
+}
+
+.text-blue{
+  color: #3270FC;
+}
+.text-light-gray{
+  color: #7D93B2;
+}
+.text-gray{
+  color: #566985;
+}
+.text-dark-blue{
+  color: #335B86;
+}
+.text-bold{
+  font-weight: bold;
+}
+.text-small{
+  font-size: 14px;
+}
+
+.d-flex-between-center{
+  display: flex;
+  justify-content: space-between;
+  align-items:center;
+  flex-wrap: wrap;
+}
+.d-flex-start-end{
+  display: flex;
+  justify-content: flex-start;
+  align-items:flex-end;
+  flex-wrap: wrap;
+}

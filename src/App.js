@@ -8,6 +8,8 @@ import { Home } from './pages/home/home';
 import './styles/styles.css';
 import SignInSignUp from './pages/SignInSignUp/SignInSignUp';
 import Dashboard from './pages/Dashboard/Dashboard';
+import PropertyDetail from './components/PropertyDetail/PropertyDetail';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
@@ -17,7 +19,9 @@ function App() {
           <Route path="/" element={ <Home /> } />
           <Route path="signin" element={ <SignInSignUp /> } />
           <Route path="dashboard" element={ <Dashboard />} />
+          <Route path="property_detail" element={ <PropertyDetail />} />
       </Routes>
+      <Footer />
     </div>
   );
 }
