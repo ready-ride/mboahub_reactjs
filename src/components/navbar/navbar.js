@@ -3,12 +3,13 @@ import { Link } from 'react-router-dom';
 import './navbar.css';
 
 import { FaUserCircle } from 'react-icons/fa';
+import Logo from '../../ui-components/Logo/Logo';
 
 export default function Navbar() {
   return (
   <nav className="navbar navbar-expand-lg bg-white fixed-top shadow">
     <div className="container">
-      <Link to="/" className="navbar-brand">MYPLACE</Link>
+      <Logo />
       <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon"></span>
       </button>
@@ -18,7 +19,7 @@ export default function Navbar() {
               <Link to="/" className="nav-link active" aria-current="page">Home</Link>
             </li>
             <li className="nav-item">
-              <Link to="/" className="nav-link">Properties</Link>
+              <Link to="/dashboard" className="nav-link">+ &nbsp;Add Listing</Link>
             </li>
             <li className="nav-item dropdown mt-2">
                 <Link to="/signin">

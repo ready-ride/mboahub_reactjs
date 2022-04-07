@@ -1,10 +1,10 @@
 .dashboard {
-    margin-top: 60px;
+    margin-top: 80px;
 }
 
 .left-menu > * {
     width: 20vw;
-    height: 70px;
+    height: 50px;
     padding-left: 40px;
     padding-top: 10px;
     border-bottom: 1px solid lightgray;
@@ -12,13 +12,16 @@
 }
 .left-menu > *:hover{
    background:lightgray;
+   font-size: 14px;
 }
 .dashboard-content{
     width: 80vw;
     margin-left: 21vw;
+    background-color: #F6F7FB;
 }
 .left-menu {
     position: fixed;
+    background-color: #fff;
 }
 
 @media screen and (max-width: 815px) {

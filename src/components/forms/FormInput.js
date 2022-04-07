@@ -1,12 +1,21 @@
-import React from 'react'
+import React from 'react';
+import './FormInput.css';
 
-function FormInput({name, type, placeholder, label, data, handleChange}) {
+function FormInput({name, type, placeholder, label, data, handleChange, icon}) {
   return (
-    <div className="form-group">
+    <div className="form-group my-3">
         <label htmlFor={name}>{label} &nbsp;</label>
-        <input type={type} value={data} onChange={ handleChange } className="form-control mt-2 mb-4" id={name} name={name} placeholder={placeholder} />
+        <div className='input-container'>
+           {
+             icon &&
+             <div className='input-icon text-blue'>
+              {icon}
+             </div>
+           }
+           <input type={type} value={data||''} onChange={ handleChange } id={name} name={name} placeholder={placeholder} />
+        </div>
     </div>
   )
 }
 
-export default FormInput
+export default FormInput;

@@ -1,0 +1,70 @@
+.property-detail-header{
+    height: 40vh;
+    margin-top: 75px;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    font-weight: bold;
+
+    background:linear-gradient(0deg, rgba(22, 21, 22, 0.658), rgba(20, 20, 20, 0.3)), url("https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.bold h5{
+    font-weight: bold;
+}
+
+.price-color{
+    color:#3270FC;
+}
+
+.property-content {
+    padding-top: 60px;
+    margin-top: 13px;
+}
+
+.property-detail-right{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    color: white;
+    font-weight: bold;
+}
+
+.summary p{
+    text-align: justify;
+    margin: 20px 0;
+}
+
+.summary{
+    color: #566985;
+}
+.summary h5 {
+    font-weight: bold;
+    margin: 10px 0;
+}
+.amenities >*{
+    text-align: center;
+    border: 1px solid lightgray;
+    height: 150px;
+    padding: 50px 0;
+}
+
+.amenities{
+    margin: 0 8px;
+}
+
+.agent-top{
+    height: 200px;
+    position: relative;
+}
+
+.agent-photo{
+    position: absolute;
+    height: 100px;
+    bottom: -20px;
+    left: 30px;
+    right: 30px;
+}
