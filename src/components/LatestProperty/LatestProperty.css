@@ -3,13 +3,32 @@
     padding-bottom: 100px;
 }
 .latest-property-header{
+    margin: 50px 0;
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
-    margin: 70px 0;
 }
 
-.lestest-property-header-right > *{
+.latest-property-header-right > *{
     border: 0.5px solid lightgray;
     padding: 10px 20px;
+}
+
+.latest-property-items {
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 875px) {
+    .latest-property-items {
+        justify-content: center;
+    }
+    .latest-property-header{
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .latest-property {
+        padding: 0 10vw;
+    }
 }

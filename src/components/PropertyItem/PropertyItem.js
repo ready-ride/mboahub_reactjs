@@ -10,7 +10,7 @@ import './PropertyItem.css';
 
 const PropertyItem = () => {
   return (
-    <div className='property-item rounded shadow my-4'>
+    <div className='property-item rounded shadow my-4 mx-2'>
         <div className='property-item-up'>
             <div className='property-item-up-left'>
                 <div className='up-left-top'>
