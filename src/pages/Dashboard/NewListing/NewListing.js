@@ -36,8 +36,10 @@ function NewListing() {
                     setImageLoading(false);
                 })
                 .catch(err => console.log(err))
-        })
+            })
         setFiles("");
+
+        return 0;
     }
 
     const  handleFileChange = e => {
@@ -237,7 +239,7 @@ function NewListing() {
             </div>
             <div className='listing-info mt-4 shadow'>
                 <div className='d-flex flex-wrap'>
-                    { urls && urls.map((url, i) => <img key={i} width="50px" className='img img-thumbnail m-1' src={url}/> )}
+                    { urls && urls.map((url, i) => <img alt='house-thumbnail' key={i} width="50px" className='img img-thumbnail m-1' src={url}/> )}
                 </div>
                 <h6>Image Upload</h6>
                 <div className='row'>
@@ -253,10 +255,11 @@ function NewListing() {
                         </div>
                     </div>
                     <div className='col-md-4'>
-                      <button disabled={(files.length === 0)} type="button" className="btn btn-primary btn-block" onClick={ uploadImage } > Upload</button>
+                      <button disabled={(files.length === 0)} type="button" className="btn btn-primary btn-block" onClick={ uploadImage } > { imageLoading && '...'} Upload</button>
                     </div>
                 </div>
-                <button className='btn btn-primary mt-4' onClick={handleCreateHouse}>Save changes</button>
+                <span className="text-danger">{ error && error }</span>
+                <button className='btn btn-primary mt-4' onClick={handleCreateHouse}>{ houseloading && '...' }Save changes</button>
             </div>
         </form>
     </div>
