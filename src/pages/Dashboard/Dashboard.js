@@ -22,8 +22,8 @@ function Dashboard() {
                 <div>&copy;MYPLACE 2022</div>
             </div>
         </div>
-        <div className='dashboard-content bg-light'>
-            <div className='row mt-4'>
+        <div className='dashboard-content'>
+            <div className='row mt-1'>
                 <div className='col-md-1'></div>
                 <div className='col-md-10'>
                   <NewListing />

@@ -1,10 +1,10 @@
 import React from 'react'
 
-function SelectInput({name, label}) {
+function SelectInput({name, data, label, handleSelect}) {
   return (
     <div className="form-group">
-        <label for={name}>{label}</label>
-        <select className="form-control mt-2" id={name}>
+        <label htmlFor={name}>{label}</label>
+        <select value={data||''}  className="form-control mt-2" id={name} name={name} onSelect={handleSelect}>
             <option>Single Room</option>
             <option>Studio</option>
             <option>Apartment</option>
