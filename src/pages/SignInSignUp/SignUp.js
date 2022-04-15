@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { userSignup } from '../../components/services/UserServices';
+import { userSignup } from '../../services/UserServices';
 import FormInput from '../../components/forms/FormInput';
 import './SignInSignUp.css';
 

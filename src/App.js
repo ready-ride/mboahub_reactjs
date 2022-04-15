@@ -1,11 +1,12 @@
-import './App.css';
+import './App.scss';
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+import ScrollToTop from "react-scroll-to-top";
+import { MdArrowDropUp } from 'react-icons/md';
 
 import Navbar from './components/navbar/navbar';
 import { Home } from './pages/home/home';
 
-import './styles/styles.css';
 import SignInSignUp from './pages/SignInSignUp/SignInSignUp';
 import Dashboard from './pages/Dashboard/Dashboard';
 import PropertyDetail from './components/PropertyDetail/PropertyDetail';
@@ -22,6 +23,7 @@ function App() {
           <Route path="property_detail" element={ <PropertyDetail />} />
       </Routes>
       <Footer />
+      <ScrollToTop smooth component={<MdArrowDropUp color="#fff" />} style={{"padding": "5px", "background": "#3270FC", "borderRadius": "2px", "boxShadow": "0 4px 2px -2px gray"}}/>
     </div>
   );
 }

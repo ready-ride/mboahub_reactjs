@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import FormInput from '../../components/forms/FormInput';
-import { userLogin } from '../../components/services/UserServices';
+import { userLogin } from '../../services/UserServices';
 
 import './SignInSignUp.css';
 

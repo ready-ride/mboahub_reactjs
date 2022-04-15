@@ -1,0 +1,39 @@
+.testimonial-item{
+    width: 450px;
+    padding: 25px;
+    border: 1px solid lightgray;
+    border-radius: 7px;
+    margin: 20px 10px;
+    background: white;
+}
+.testimonial-item-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.testimonial-item-header img{
+    margin-right: 10px;
+}
+.testimonial-section{
+    padding: 100px 0 200px 0;
+    position: relative;
+}
+
+.news-letter-section{
+    border-radius: 10px;
+    min-height: 200px;
+    padding: 70px 50px;
+    width: 90vw;
+
+    position: absolute;
+    bottom: -100px;
+
+    background-image: url('https://img.freepik.com/free-vector/gradient-dynamic-blue-lines-background_23-2148995756.jpg');
+    background-position: top left;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.news-letter-email{
+    background: white;
+    border: 0;
+}

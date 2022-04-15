@@ -1,6 +1,7 @@
 button {
-    border: none;
+    border: 1px solid lightgray;
     padding: 5px 20px;
+    background-color: white;
 }
 
 button span{

@@ -1,0 +1,24 @@
+.text-blue{
+    color: $primary-blue;
+  }
+  .text-light-gray{
+    color: $tertiary-gray;
+  }
+  .text-gray{
+    color: $fourth-gray;
+  }
+  .text-dark-blue{
+    color: $secondary-blue;
+  }
+  .text-bold{
+    font-weight: bold;
+  }
+  .text-small{
+    font-size: $small-font;
+  }
+  .text-medium{
+      font-size: $medium-font;
+  }
+  .text-big{
+      font-size: $big-font;
+  }

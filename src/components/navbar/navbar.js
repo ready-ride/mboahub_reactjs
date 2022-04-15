@@ -2,8 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './navbar.css';
 
-import { FaUserCircle } from 'react-icons/fa';
+import { MdOutlineAddCircle } from 'react-icons/md';
+
+import { FaUserCircle, FaBars } from 'react-icons/fa';
 import Logo from '../../ui-components/Logo/Logo';
+import SmallTextButton from '../../ui-components/Buttons/SmallTextButton/SmallTextButton';
 
 export default function Navbar() {
   return (
@@ -11,7 +14,9 @@ export default function Navbar() {
     <div className="container">
       <Logo />
       <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span className="navbar-toggler-icon"></span>
+        <span className="navbar-toggler-icon text-blue">
+            <FaBars />
+        </span>
       </button>
       <div className="collapse navbar-collapse" id="navbarNavDropdown">
           <ul className="navbar-nav">
@@ -19,7 +24,9 @@ export default function Navbar() {
               <Link to="/" className="nav-link active" aria-current="page">Home</Link>
             </li>
             <li className="nav-item">
-              <Link to="/dashboard" className="nav-link">+ &nbsp;Add Listing</Link>
+              <Link to="/dashboard" className="nav-link">
+                 <SmallTextButton text="Add Listing" icon={<MdOutlineAddCircle />} />
+              </Link>
             </li>
             <li className="nav-item dropdown mt-2">
                 <Link to="/signin">
