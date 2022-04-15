@@ -1,5 +1,6 @@
 .property-item{
-    width: 350px;
+    width: 20vw;
+    min-width: 350px;
     min-height: 400px;
 }
 

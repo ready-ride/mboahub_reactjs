@@ -14,7 +14,7 @@ import { AiOutlineMail,
 import { MdOutlineLocationOn } from 'react-icons/md';
 import { FaGooglePlay } from 'react-icons/fa';
 
-import './Footer.css';
+import './Footer.scss';
 import IconBox from '../../ui-components/IconBox/IconBox';
 import TextButton from '../../ui-components/TextButton/TextButton';
 
@@ -49,11 +49,11 @@ function Footer() {
                     <ContactItem icon={<AiOutlineMail size="20" />} title="Mail" text="yourmail@domain.com" />
                     <ContactItem icon={<MdOutlineLocationOn size="20" />} title="Adress" text="USA 27TH Brooklyn NY" />
                     <ContactItem icon={<AiOutlinePhone size="20" />} title="Phone" text="+7(111)123456789" />
-                    <div className='d-flex'>
-                       <IconBox icon={<AiFillFacebook size={30} />} bg_color="#2270FC" text_color="#FFFFFF" />
-                       <IconBox icon={<AiOutlineTwitter size={30} />} bg_color="#2270FC" text_color="#FFFFFF" />
-                       <IconBox icon={<AiFillInstagram size={30} />} bg_color="#2270FC" text_color="#FFFFFF" />
-                       <IconBox icon={<AiFillLinkedin size={30} />} bg_color="#2270FC" text_color="#FFFFFF" />
+                    <div className='d-flex justify-content-between'>
+                       <IconBox icon={<AiFillFacebook size={30} />} bg_color="#2270FC" text_color="#FFFFFF" icon_size="m-1 p-1" />
+                       <IconBox icon={<AiOutlineTwitter size={30} />} bg_color="#2270FC" text_color="#FFFFFF" icon_size="m-1 p-1" />
+                       <IconBox icon={<AiFillInstagram size={30} />} bg_color="#2270FC" text_color="#FFFFFF" icon_size="m-1 p-1" />
+                       <IconBox icon={<AiFillLinkedin size={30} />} bg_color="#2270FC" text_color="#FFFFFF" icon_size="m-1 p-1" />
                     </div>
                 </div>
                 <div className='col-md-3 text-dark-blue'>
@@ -67,7 +67,7 @@ function Footer() {
             </div>
         </div>
         <div className='lower-footer bg-gray'>
-            <div className='container py-4 d-flex-between-center text-bold text-small'>
+            <div className='container pt-4 d-flex-between-center text-bold text-small'>
                 <span className='text-dark-blue'>&copy;&nbsp;MyPlace 2022&nbsp;.All rights reserved.</span>
                 <div className='text-blue'>
                     <span>Terms of use</span>&nbsp;&nbsp;

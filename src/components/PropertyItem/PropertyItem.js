@@ -28,8 +28,8 @@ const PropertyItem = () => {
                     </div>
                     <div className='property-item-up-right'>
                         <div className='up-right-top'>
-                            <IconBox icon={<BsHeart size={20} />} bg_color="#FFFFFF" text_color="#2270FC" />
-                            <IconBox icon={<BiGitCompare size={20} />} bg_color="#FFFFFF" text_color="#2270FC" />
+                            <IconBox icon={<BsHeart size={20} />} bg_color="#FFFFFF" text_color="#2270FC" icon_size="p-2 m-2" />
+                            <IconBox icon={<BiGitCompare size={20} />} bg_color="#FFFFFF" text_color="#2270FC" icon_size="p-2 m-2" />
                         </div>
                         <div className='up-right-bottom'>
                             <BiCamera size={20} />

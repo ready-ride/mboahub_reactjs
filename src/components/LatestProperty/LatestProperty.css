@@ -3,14 +3,24 @@
     padding-bottom: 100px;
 }
 .latest-property-header{
-    margin: 50px 0;
+    margin-top: 15px;
     display: flex;
     justify-content: space-between;
+    padding-top: 50px;
 }
 
-.latest-property-header-right > *{
+.latest-property-header-item{
     border: 0.5px solid lightgray;
     padding: 10px 20px;
+    color: #144272;
+    cursor: pointer;
+}
+.latest-property-header-item-active{
+    border: 0.5px solid lightgray;
+    padding: 10px 20px;
+    background-color: #3170FC;
+    color: white;
+    cursor: pointer;
 }
 
 .latest-property-items {

@@ -4,7 +4,7 @@ import FormInput from '../../../components/forms/FormInput';
 import SelectInput from '../../../components/forms/SelectInput';
 import TextAreaInput from '../../../components/forms/TextAreaInput';
 
-import { createHouses } from '../../../components/services/HouseServices';
+import { createHouses } from '../../../services/HouseServices';
 
 import './NewListing.css';
 

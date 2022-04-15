@@ -1,0 +1,31 @@
+@import '../../../styles/colors.scss';
+
+.best-cities{
+    display: flex;
+    justify-content: space-between;
+}
+.best-city-menu{
+    height: 600px;
+    padding: 18% 3%;
+    background-color: $primary-blue;
+    width: 40vw;
+
+    background-image: url('https://img.freepik.com/free-vector/gradient-dynamic-blue-lines-background_23-2148995756.jpg');
+    background-position: top left;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.best-city-content{
+    background-image: url('https://img.freepik.com/free-photo/eiffel-tower-paris-with-gorgeous-colors_268835-832.jpg');
+    background-position: top left;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    height: 600px;
+    padding: 0 3%;
+    padding-top: 25%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}

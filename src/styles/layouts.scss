@@ -1,0 +1,24 @@
+.d-flex-between-center{
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    flex-wrap: wrap;
+  }
+  .d-flex-start-end{
+    display: flex;
+    justify-content: flex-start;
+    align-items:flex-end;
+    flex-wrap: wrap;
+  }
+  .d-flex-between-end{
+    display: flex;
+    justify-content: space-between;
+    align-items:flex-end;
+    flex-wrap: wrap;
+  }
+  .main-margin{
+      margin: 100px auto;
+  }
+  .main-padding{
+      padding: 100px 0;
+  }
