@@ -11,12 +11,13 @@ import PropertyType from '../../ui-components/PropertyType/PropertyType';
 import Rating from '../../ui-components/Rating/Rating';
 import { Link } from 'react-router-dom';
 import IconBox from '../../ui-components/IconBox/IconBox';
+import { costInThousands } from '../../services/utilities';
 
 const PropertyItem = ({house}) => {
     const backgroundImage = house.images[0];
 
   return (
-        <div className='property-item rounded shadow my-4 mx-2'>
+        <div className='property-item bg-white rounded shadow my-4'>
             <Link to={`/houses/${house.id}`}>
                 <div className='property-item-up' style={{backgroundImage: `url(${backgroundImage})`}}>
                     <div className='property-item-up-left'>
@@ -41,21 +42,22 @@ const PropertyItem = ({house}) => {
                 </div>
             </Link>
         <div className='property-item-down bg-white'>
-            <h4>{house.listing_name}</h4>
-            <h5>$&nbsp;600,000</h5>
-            <p>{`${house.summary.slice(0, 60)}...`}</p>
-            <div className='property-features'>
-                <span><FaBed size={20} />&nbsp;<span className='property-count'>{house.properties.num_bed_rooms}</span></span>
-                <span><FaBath size={20} />&nbsp;<span className='property-count'>{house.properties.num_toilets}</span></span>
-                <span><BiCube size={20} />&nbsp;<span className='property-count'>450&nbsp;ft2</span></span>
-            </div>
+           <div className='property__item__down-top'>
+                <h4>{house.listing_name}</h4>
+                <h5>FCFA&nbsp;{costInThousands(house.cost)}</h5>
+                <p>{`${house.summary.slice(0, 60)}...`}</p>
+                <div className='property-features'>
+                    <span><FaBed size={20} />&nbsp;<span className='property-count'>{house.properties.num_bed_rooms}</span></span>
+                    <span><FaBath size={20} />&nbsp;<span className='property-count'>{house.properties.num_toilets}</span></span>
+                    <span><BiCube size={20} />&nbsp;<span className='property-count'>450&nbsp;ft2</span></span>
+                </div>
+           </div>
             <div className='property-more'>
                 <div className='property-poster'>
                     <h5>By&nbsp;{house.published_by}</h5>
                 </div>
                 <Rating />
             </div>
-
         </div>
     </div>
   )

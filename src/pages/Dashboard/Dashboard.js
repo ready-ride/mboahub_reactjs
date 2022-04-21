@@ -1,24 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { Link, Outlet, useNavigate } from 'react-router-dom';
+import React from 'react';
+import { Outlet } from 'react-router-dom';
 import './Dashboard.css';
 
-import { BsGraphUp } from 'react-icons/bs';
-import { FaUserEdit } from 'react-icons/fa';
+import { BsListCheck } from 'react-icons/bs';
+import { FaUserEdit, FaRegCalendarCheck, FaRegComments } from 'react-icons/fa';
+import { MdEmail, MdPeopleAlt } from 'react-icons/md';
+import { AiOutlineAreaChart, AiOutlineFileAdd } from 'react-icons/ai';
 import DashboardMenu from './DashboardMenu';
-import Navbar from '../../components/navbar/Navbar';
+import Navbar from '../../components/navbar/navbar';
 
 function Dashboard() {
-  const navigate = useNavigate();
-  const [auth, setAuth] = useState('');
-
-  useEffect(() => {
-    const token = JSON.parse(localStorage.getItem('login'));
-    setAuth(token);
-  }, [])
-
-  if(!auth){
-      navigate("/");
-  }
   return (
    <>
       <Navbar />
@@ -26,20 +17,16 @@ function Dashboard() {
         <div className='dashboard-menu'>
             <div className='left-menu shadow'>
                 <div>MAIN</div>
-                <DashboardMenu name="Dashboard" icon={<BsGraphUp />} />
-                <DashboardMenu name="Edit Profile" icon={<FaUserEdit />} />
-                <DashboardMenu name="Messages" icon={<FaUserEdit />} />
-                <DashboardMenu name="Agent List" icon={<FaUserEdit />} />
+                <DashboardMenu name="Dashboard" link="" icon={<AiOutlineAreaChart />} />
+                <DashboardMenu name="Edit Profile" link="edit_profile" icon={<FaUserEdit />} />
+                <DashboardMenu name="Messages" link="" icon={<MdEmail />} />
+                <DashboardMenu name="Agent List" link="" icon={<MdPeopleAlt />} />
                 <div></div>
                 <div>LISTINGS</div>
-                <div>
-                   <Link to="my_listings"><span className='text-blue'><FaUserEdit /></span>&nbsp;&nbsp;My Listings</Link>
-                </div>
-                <div>
-                   <Link to="new_listing"><span className='text-blue'><FaUserEdit /></span>&nbsp;&nbsp;New Listing</Link>
-                </div>
-                <DashboardMenu name="Bookings" icon={<FaUserEdit />} />
-                <DashboardMenu name="Reviews" icon={<FaUserEdit />} />
+                <DashboardMenu name='My Listings' link="my_listings" icon={<BsListCheck />} />
+                <DashboardMenu name='New Listing' link="" icon={<AiOutlineFileAdd />} />
+                <DashboardMenu name="Bookings" link="" icon={<FaRegCalendarCheck />} />
+                <DashboardMenu name="Reviews" link="" icon={<FaRegComments />} />
                 <div></div>
                 <div></div>
                 <div className='text-small text-dark-blue'>&copy;MYPLACE 2022.</div>

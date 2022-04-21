@@ -9,7 +9,7 @@ import SmallTextButton from '../../ui-components/Buttons/SmallTextButton/SmallTe
 
 import { userLogout } from '../../services/UserServices';
 
-import './Navbar.css';
+import './navbar.css';
 
 export default function Navbar() {
 

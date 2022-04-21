@@ -12,7 +12,7 @@ import CountSection from './CountSection/CountSection';
 import TestimonialSection from './TestimonialSection/TestimonialSection';
 import NewsLetterSection from './NewsLetterSection/NewsLetterSection';
 import Footer from '../../components/Footer/Footer';
-import Navbar from '../../components/navbar/Navbar';
+import Navbar from '../../components/navbar/navbar';
 
 
 export const Home = () => {

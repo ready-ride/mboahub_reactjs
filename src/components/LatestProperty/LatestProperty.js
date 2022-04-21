@@ -21,6 +21,7 @@ function LatestProperty() {
             setHouseLoading(false);
             if (res && Object.keys(res).includes('errors')) {
                 setError(res.error);
+                error && console.log(error);
             }else{
                 setHouses(res);
             }
@@ -30,12 +31,12 @@ function LatestProperty() {
     const all_style = item === 'all' ? 'latest-property-header-item-active' : 'latest-property-header-item';
     const for_sale_style = item === 'for_sale' ? 'latest-property-header-item-active' : 'latest-property-header-item';
     const for_rent = item === 'for_rent' ? 'latest-property-header-item-active' : 'latest-property-header-item';
-console.log(houses)
+
   return (
     <div className='latest-property'>
         <div className='container'>
             <div className='latest-property-header'>
-                <div className='lestest-property-header-left my-2'>
+                <div className='latest-property-header-left my-2'>
                     <span className='primary-heading'>BROWSE HOT OFFERS</span><br />
                     <span className='secondary-heading'>Latest Properties</span>
                 </div>
@@ -45,7 +46,7 @@ console.log(houses)
                     <span onClick={() => setItem('for_rent')} className={for_rent}>For rent</span>
                 </div>
             </div>
-            <div className='latest-property-items d-flex flex-wrap'>
+            <div className='latest-property-items row'>
                 {
                  houseloading ?
                    <div className='mx-auto'>
@@ -53,12 +54,13 @@ console.log(houses)
                    </div>
                  :
                  houses && houses.map((house) => {
-                    return <PropertyItem house={house} />
+                    return <div className='col-sm'><PropertyItem house={house} key={house.id} /></div>
                  })
                 }
             </div>
-
-            <TextButton text="View all properties" />
+            <div>
+                <TextButton text="View all properties" />
+            </div>
         </div>
     </div>
   )

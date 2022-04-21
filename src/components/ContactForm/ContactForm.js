@@ -21,7 +21,7 @@ function ContactForm() {
                    <FormInput handleChange={''} data={''} name="data" type="date" label="Date" icon={<FaCalendarCheck size={15} />} />
                 </div>
                 <div className='col-md-6 mt-2'>
-                  <SelectInput data={''} handleSelect={''} name="time" label="Time" />
+                  <SelectInput options={[]} data={''} handleSelect={''} name="time" label="Time" />
                 </div>
             </div>
             <TextButton text="Send" btnclass="w-100 my-4" />

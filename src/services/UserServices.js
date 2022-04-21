@@ -4,8 +4,8 @@ export async function userSignup(data) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
     };
-
-    let res = fetch('https://myplace-api.herokuapp.com/signup', requestOptions)
+console.log(process.env.REACT_APP_API_BASE_URL)
+    let res = fetch(`${process.env.REACT_APP_API_BASE_URL}/signup`, requestOptions)
         .then(response => response.json())
         .then(data => data)
         .catch(err => console.log(err));
@@ -20,7 +20,7 @@ export async function userSignup(data) {
         body: JSON.stringify(data)
     };
 
-   let res = fetch('https://myplace-api.herokuapp.com/v1/login', requestOptions)
+   let res = fetch(`${process.env.REACT_APP_API_BASE_URL}/login`, requestOptions)
         .then(response => response.json())
         .then(data => data)
         .catch(err => console.log(err));

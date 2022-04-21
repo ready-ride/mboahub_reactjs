@@ -16,7 +16,12 @@
     align-items:flex-end;
     flex-wrap: wrap;
   }
-
+.d-flex-between-start{
+    display: flex;
+    justify-content: space-between;
+    align-items:flex-start;
+    flex-wrap: wrap;
+}
   .main-margin{
       margin: 100px auto;
   }

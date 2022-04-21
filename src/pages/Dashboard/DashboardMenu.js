@@ -1,11 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-function DashboardMenu({name, setMenu, icon}) {
+function DashboardMenu({name, link, icon}) {
   return (
-    <div onClick={setMenu} className='text-small text-bold text-dark-blue'>
-        <span className='text-blue'>{icon}</span>&nbsp;&nbsp;
-        {name}
-    </div>
+      <>
+        <Link to={`${link}`}>
+        <span className='text-blue'>{icon}</span>
+        &nbsp;&nbsp;
+        <span className='text-dark-blue text-bold'>{name}</span>
+        </Link>
+      </>
   )
 }
 

@@ -10,7 +10,7 @@ function TestimonialSection() {
             <span className='primary-heading'>TESTIMONILAS</span>
             <p className='secondary-heading'>What Our Clients Say</p>
         </div>
-        <div className='testimonial-listing d-flex justify-content-around flex-wrap'>
+        <div className='testimonial-listing mx-4 row'>
            <TestimonialItem />
            <TestimonialItem />
            <TestimonialItem />

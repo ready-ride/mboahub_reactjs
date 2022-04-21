@@ -13,22 +13,26 @@ const SignUp = () => {
         password_confirmation: '',
     });
     const [response, setResponse] = useState();
-    const [error, setError] = useState();
+    const [errors, setErrors] = useState();
     const [loading, setLoading] = useState(false);
 
-    const handleClick = e => {
+    const handleSignup = e => {
         e.preventDefault();
         setLoading(true);
 
-        (async() => {
-            let res = await userSignup(data);
+          userSignup(data).then((res) => {
+             setLoading(false);
+
+             if(res.status === 'ok'){
+                setLoading(false);
+                setResponse(res);
+             }else if(Object.keys(res).includes('errors')){
+                setLoading(false);
+                setErrors(res['errors']);
+            }}).catch((error) => {
             setLoading(false);
-            if (Object.keys(res).includes('error')) {
-                setError(res['error']);
-            }else {
-                response && setResponse(res);
-            }
-          })();
+            console.log(error);
+        });
     };
 
     const handleChange = e => {
@@ -42,7 +46,7 @@ const SignUp = () => {
   return (
     <div className='col-md-12'>
         <ul >
-            {error && error.map((e, i) => <li className='text-danger' key={i}>{e}</li>) }
+            {errors && errors.map((e, i) => <li className='text-danger' key={i}>{e}</li>) }
         </ul>
         <FormInput type="email" name="email" placeholder="Enter Email" label="Email" data={data.email} handleChange={handleChange} />
         <FormInput type="password" name="password" placeholder="Enter Password" label="Password" data={data.password} handleChange={handleChange} />
@@ -62,8 +66,9 @@ const SignUp = () => {
             </>
             <Link to="/password_reset">Forgot password ?</Link>
         </div>
-        {error && <p className='text-danger'>Please check registration errors above and try again</p> }
-        <button type="submit" onClick={ handleClick } className="btn btn-primary mt-3 btn btn-block" disabled={loading}>{ loading ? 'please wait..' : 'Register' }</button>
+        {errors && <p className='text-danger'>Please check registration errors above and try again</p> }
+        <button type="submit" onClick={ handleSignup } className="btn btn-primary mt-3 btn btn-block" disabled={loading}>{ loading ? 'please wait..' : 'Register' }</button>
+        { response && <p className='text-success'>{response.email} created successfully. You may now login</p>}
    </div>
   )
 }

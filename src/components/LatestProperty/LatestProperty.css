@@ -8,7 +8,13 @@
     justify-content: space-between;
     padding-top: 50px;
 }
+.latest-property-header-right{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
 
+}
 .latest-property-header-item{
     border: 0.5px solid lightgray;
     padding: 10px 20px;
@@ -21,10 +27,6 @@
     background-color: #3170FC;
     color: white;
     cursor: pointer;
-}
-
-.latest-property-items {
-    justify-content: space-between;
 }
 
 @media screen and (max-width: 875px) {
@@ -40,5 +42,14 @@
 @media screen and (max-width: 768px) {
     .latest-property {
         padding: 0 10vw;
+    }
+}
+
+@media screen and (max-width: 435px) {
+    .latest-property-header-right{
+        flex-direction: column;
+    }
+    .latest-property-header-right > *{
+        width: 300px;
     }
 }

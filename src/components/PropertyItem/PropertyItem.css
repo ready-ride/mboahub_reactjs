@@ -1,7 +1,6 @@
 .property-item{
-    width: 20vw;
-    min-width: 350px;
-    min-height: 400px;
+    min-width: 250px;
+    height: 500px;
 }
 
 .property-item-up-left{
@@ -55,6 +54,7 @@
 }
 .property-item-down p {
     font-size: 12px;
+    height: 30px;
 }
 .property-item-down h4 {
     font-size: 16px;

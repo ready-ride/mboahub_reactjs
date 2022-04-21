@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import GooglePlaces from '../../../components/apis/GooglePlaces/GooglePlaces';
+// import GooglePlaces from '../../../components/apis/GooglePlaces/GooglePlaces';
 import FormInput from '../../../components/forms/FormInput';
 import SelectInput from '../../../components/forms/SelectInput';
 import TextAreaInput from '../../../components/forms/TextAreaInput';
@@ -11,12 +11,16 @@ import { GoLocation } from 'react-icons/go';
 
 import './NewListing.css';
 import { userStatus } from '../../../services/UserServices';
+import { Navigate } from 'react-router-dom';
 
 function NewListing() {
 
     let token = userStatus();
     token = token && token.token;
 
+    if(!token){
+       return <Navigate to="/signin" />
+    }
     const [files, setFiles] = useState("");
     const [urls, setUrls] = useState([]);
     const [imageLoading, setImageLoading] = useState(false);
@@ -32,17 +36,20 @@ function NewListing() {
         Object.entries(files).map(image => {
             const data = new FormData()
             data.append("file", image[1])
-            data.append("upload_preset", "auwqxhmm")
-            data.append("cloud_name","myplaceimages")
+            data.append("upload_preset", process.env.REACT_APP_HOUSE_PRESET)
+            data.append("cloud_name",process.env.REACT_APP_CLOUDINARY_NAME)
 
-            fetch("https://api.cloudinary.com/v1_1/myplaceimages/image/upload", {method:"post", body: data})
+            fetch(process.env.REACT_APP_CLOUDINARY_URL, {method:"post", body: data})
                 .then(resp => resp.json())
                 .then(data => {
                     setUrls(prevState => ([...prevState, data.url]));
-                    setImageLoading(false);
                 })
                 .catch(err => console.log(err))
+
+                return 0;
             })
+
+        setImageLoading(false);
         setFiles("");
 
         return 0;
@@ -54,6 +61,7 @@ function NewListing() {
 
     const handleCreateHouse = e => {
         e.preventDefault();
+
         setHouseLoading(true);
 
     const houseData = {
@@ -101,8 +109,16 @@ function NewListing() {
             ...prevState,
             [name]: value
         }));
-    }
-    ;
+    };
+
+    const houseOptions = [
+        {label: 'Select house type', value: ''},
+        {label: 'Single Room', value: 'single_room'},
+        {label: 'Studio', value: 'studio'},
+        {label: 'Apartment', value: 'apartment'},
+        {label: 'Villa', value: 'villa'},
+        {label: 'Hotel', value: 'hotel'},
+      ]
 
   return (
     <div className='new-listing'>
@@ -124,6 +140,7 @@ function NewListing() {
                     <div className='col-md-4 mt-4'>
                         <SelectInput
                             label="Home Type"
+                            options={houseOptions}
                             name="home_type"
                             data={data.home_type}
                             handleSelect={handleSelect}
@@ -165,7 +182,7 @@ function NewListing() {
                          />
                     </div>
                     <div className='col-md-12'>
-                      <GooglePlaces />
+                      {/* <GooglePlaces /> */}
                     </div>
                 </div>
             </div>
@@ -197,35 +214,32 @@ function NewListing() {
                       </div>
                       <div className='row'>
                           <div className='col-md-6'>
-                            <FormInput
-                                type="text"
+                            <SelectInput
                                 name="parking"
-                                placeholder="Parking available?"
                                 label="Garage"
                                 data={data.parking}
-                                handleChange={handleChange}
+                                options={[{label: 'Has Parking', value: true}, {label: 'No Parking', value: false}]}
+                                handleSelect={handleSelect}
                             />
                           </div>
                           <div className='col-md-6'>
-                            <FormInput
-                                type="text"
+                            <SelectInput
                                 name="kitchen"
-                                placeholder="Kitchen available?"
                                 label="Kitchen ?"
                                 data={data.kitchen}
-                                handleChange={handleChange}
+                                options={[{label: 'Has Kitchen', value: true}, {label: 'No Kitchen', value: false}]}
+                                handleSelect={handleSelect}
                             />
                           </div>
                       </div>
                       <div className='row'>
-                          <div className='col-md-6'>
-                            <FormInput
-                                type="text"
+                          <div className='col-md-6 mt-3'>
+                            <SelectInput
                                 name="fence"
-                                placeholder="Fence available?"
                                 label="Fenced ?"
                                 data={data.fence}
-                                handleChange={handleChange}
+                                options={[{label: 'Is Fenced', value: true}, {label: 'Not Fenced', value: false}]}
+                                handleSelect={handleSelect}
                             />
                           </div>
                           <div className='col-md-6'>
@@ -263,11 +277,11 @@ function NewListing() {
                         </div>
                     </div>
                     <div className='col-md-4'>
-                      <button disabled={(files.length === 0)} type="button" className="btn btn-primary btn-block" onClick={ uploadImage } > { imageLoading && '...'} Upload</button>
+                      <button disabled={(files.length === 0)} type="button" className="btn btn-primary btn-block" onClick={ uploadImage } > Upload{ imageLoading && '...'}</button>
                     </div>
                 </div>
                 <span className="text-danger">{ error && error }</span><br />
-                <button className='btn btn-primary mt-4' onClick={handleCreateHouse}>{ houseloading && '...' }Save changes</button>
+                <button disabled={ imageLoading } className='btn btn-primary mt-4' onClick={handleCreateHouse}>{ houseloading && '...' }Add House</button>
                 { response  && <div className="text-blue">House created successfully !!</div> }
             </div>
         </form>

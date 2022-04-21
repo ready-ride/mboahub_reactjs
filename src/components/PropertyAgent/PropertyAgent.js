@@ -15,8 +15,8 @@ import SmallTextButton from '../../ui-components/Buttons/SmallTextButton/SmallTe
 
 const PropertyAgent = () => {
   return (
-        <div className='property-agent border rounded my-4 mx-2'>
-            <Link to="/property_detail">
+        <div className='property-agent border col-sm rounded my-4 mx-2'>
+            <Link to="/">
                 <div className='property-agent-up'>
                     <div className='property-agent-up-left'>
                         <div className='up-left-top'>

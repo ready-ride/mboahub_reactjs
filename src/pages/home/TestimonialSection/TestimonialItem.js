@@ -6,7 +6,7 @@ import Rating from '../../../ui-components/Rating/Rating';
 
 function TestimonialItem() {
   return (
-    <div className='testimonial-item'>
+    <div className='testimonial-item col-sm'>
         <div className='testimonial-item-header'>
             <div className='d-flex align-items-center'>
                 <img src="https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg" alt="testimonial" className="rounded-circle" width="75px" height="75px" />

@@ -11,7 +11,7 @@ function PropertyAgentSection() {
             <span className='primary-heading'>THE BEST AGENTS</span>
             <p className='secondary-heading'>Meet Our Agents</p>
         </div>
-        <div className='agent-listing'>
+        <div className='agent-listing row mx-4'>
             <PropertyAgent />
             <PropertyAgent />
             <PropertyAgent />

@@ -5,11 +5,10 @@ import SignUp from './SignUp';
 
 
 import { FiLogOut, FiUserPlus } from 'react-icons/fi';
-import { useNavigate } from 'react-router-dom';
-import Navbar from '../../components/navbar/Navbar';
+import { Navigate } from 'react-router-dom';
+import Navbar from '../../components/navbar/navbar';
 
 function SignInSignUp() {
-    const navigate = useNavigate();
     const [form, setForm] = useState('signin');
 
     const [auth, setAuth] = useState('');
@@ -20,11 +19,11 @@ function SignInSignUp() {
     }, [])
 
     if(auth){
-        navigate("/dashboard");
+        return <Navigate to="/dashboard" />;
     }
   return (
    <>
-    <Navbar />
+   <Navbar />
     <div className='signin-signup shadow rounded'>
         <div className='left-form'></div>
         <div className='right-form'>

@@ -24,7 +24,7 @@ function Footer() {
     <div className='footer-container'>
         <div className='container'>
             <div className='upper-footer row'>
-                <div className='col-md-3'>
+                <div className='col-sm'>
                     <Logo text="MyPlace Inc"/>
                     <p className='text-gray mt-4'>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar.
@@ -34,7 +34,7 @@ function Footer() {
                         <strong className='text-blue text-dark-blue'>Saturday - Sunday: <span className='text-blue'>9am - 3pm</span></strong>
                     </div>
                 </div>
-                <div className='col-md-3 text-dark-blue'>
+                <div className='col-sm text-dark-blue'>
                     <h5 className='my-4 text-bold'>Helpful links</h5>
                     <ul className='helpful-links'>
                         <li>About Our Company</li>
@@ -44,7 +44,7 @@ function Footer() {
                         <li>Help Center</li>
                     </ul>
                 </div>
-                <div className='col-md-3 text-dark-blue'>
+                <div className='col-sm text-dark-blue'>
                     <h5 className='my-4 text-bold'>Contact Info</h5>
                     <ContactItem icon={<AiOutlineMail size="20" />} title="Mail" text="yourmail@domain.com" />
                     <ContactItem icon={<MdOutlineLocationOn size="20" />} title="Adress" text="USA 27TH Brooklyn NY" />
@@ -56,7 +56,7 @@ function Footer() {
                        <IconBox icon={<AiFillLinkedin size={30} />} bg_color="#2270FC" text_color="#FFFFFF" icon_size="m-1 p-1" />
                     </div>
                 </div>
-                <div className='col-md-3 text-dark-blue'>
+                <div className='col-sm text-dark-blue'>
                   <h5 className='my-4 text-bold'>Download our API</h5>
                   <p className='text-gray mt-4'>
                      Start working with Homeradar that can provide everything you need
