@@ -47,11 +47,19 @@ const SignUp = () => {
         <FormInput type="email" name="email" placeholder="Enter Email" label="Email" data={data.email} handleChange={handleChange} />
         <FormInput type="password" name="password" placeholder="Enter Password" label="Password" data={data.password} handleChange={handleChange} />
         <FormInput type="password" name="password_confirmation" placeholder="Enter Password Confirmation" label="Password Confirmation" data={data.password_confirmation} handleChange={handleChange} />
-        <div className='d-flex justify-content-between mt-3'>
-            <div>
-                <input type="checkbox" className="remember-check-box" id="exampleCheck1" />&nbsp;
-                <label className="remember-check-box" htmlFor="exampleCheck1">Remember me</label>
-            </div>
+        <div className='d-flex align-items-center justify-content-between flex-wrap mt-3'>
+            <>
+                <div className='form-row align-items-center'>
+                    <div className="col-auto">
+                        <div className="form-check">
+                            <input className="form-check-input" type="checkbox" id="autoSizingCheck" />&nbsp;
+                            <label className="form-check-label" htmlFor="autoSizingCheck">
+                            Remember me
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </>
             <Link to="/password_reset">Forgot password ?</Link>
         </div>
         {error && <p className='text-danger'>Please check registration errors above and try again</p> }

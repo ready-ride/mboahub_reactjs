@@ -30,7 +30,7 @@ export default function GooglePlaces() {
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
           <div className="row">
              <div className="col-md-6">
-             <label htmlFor="address">Address</label>
+             <label htmlFor="address" className="text-small text-dark-blue mb-2">Address</label>
                 <input id="address" className="border bg-gray rounded form-control" {...getInputProps({ placeholder: "Enter address" })} />
                 <div>
                     {loading ? <div>...loading</div> : null}

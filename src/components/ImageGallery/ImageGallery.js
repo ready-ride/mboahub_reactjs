@@ -1,13 +1,17 @@
 import React from 'react';
 import './ImageGallery.css';
 
-function ImageGallery() {
+function ImageGallery({images}) {
   return (
     <div className='image-gallery'>
-        <img className='shadow' src="https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg" width="250px" alt="room-deatil" />
-        <img className='shadow' src="https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg" width="250px" alt="room-deatil" />
-        <img className='shadow' src="https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg" width="250px" alt="room-deatil" />
-        <img className='shadow' src="https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg" width="250px" alt="room-deatil" />
+       {
+         images ?
+         images.map((image) =>
+         <img className='shadow' src={image} width="250px" alt="room-deatil" />
+         )
+         :
+         <h5>loading ...</h5>
+       }
     </div>
   )
 }
