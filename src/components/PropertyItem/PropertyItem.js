@@ -12,18 +12,20 @@ import Rating from '../../ui-components/Rating/Rating';
 import { Link } from 'react-router-dom';
 import IconBox from '../../ui-components/IconBox/IconBox';
 
-const PropertyItem = () => {
+const PropertyItem = ({house}) => {
+    const backgroundImage = house.images[0];
+
   return (
         <div className='property-item rounded shadow my-4 mx-2'>
-            <Link to="/property_detail">
-                <div className='property-item-up'>
+            <Link to={`/houses/${house.id}`}>
+                <div className='property-item-up' style={{backgroundImage: `url(${backgroundImage})`}}>
                     <div className='property-item-up-left'>
                         <div className='up-left-top'>
                             <PropertyType type="Sale" />
                             <PropertyType type="Apartment" />
                         </div>
                         <div className='up-left-bottom'>
-                            <span><MdLocationOn />&nbsp;70 Bright St. New York, USA</span>
+                            <span><MdLocationOn />&nbsp;{house.location}</span>
                         </div>
                     </div>
                     <div className='property-item-up-right'>
@@ -32,23 +34,24 @@ const PropertyItem = () => {
                             <IconBox icon={<BiGitCompare size={20} />} bg_color="#FFFFFF" text_color="#2270FC" icon_size="p-2 m-2" />
                         </div>
                         <div className='up-right-bottom'>
-                            <BiCamera size={20} />
+                            <BiCamera size={20} />&nbsp;
+                            <span className='bg-blue p-1 text-small rounded'>{house.images.length}</span>
                         </div>
                     </div>
                 </div>
             </Link>
         <div className='property-item-down bg-white'>
-            <h4>Gorgeous House For Sale</h4>
+            <h4>{house.listing_name}</h4>
             <h5>$&nbsp;600,000</h5>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla...</p>
+            <p>{`${house.summary.slice(0, 60)}...`}</p>
             <div className='property-features'>
-                <span><FaBed size={20} />&nbsp;<span className='property-count'>3</span></span>
-                <span><FaBath size={20} />&nbsp;<span className='property-count'>2</span></span>
+                <span><FaBed size={20} />&nbsp;<span className='property-count'>{house.properties.num_bed_rooms}</span></span>
+                <span><FaBath size={20} />&nbsp;<span className='property-count'>{house.properties.num_toilets}</span></span>
                 <span><BiCube size={20} />&nbsp;<span className='property-count'>450&nbsp;ft2</span></span>
             </div>
             <div className='property-more'>
                 <div className='property-poster'>
-                    <h5>By Liza Rose</h5>
+                    <h5>By&nbsp;{house.published_by}</h5>
                 </div>
                 <Rating />
             </div>

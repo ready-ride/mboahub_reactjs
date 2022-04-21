@@ -1,14 +1,27 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import './navbar.css';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { MdOutlineAddCircle } from 'react-icons/md';
+import { FaUserCircle, FaBars } from 'react-icons/fa'
 
-import { FaUserCircle, FaBars } from 'react-icons/fa';
 import Logo from '../../ui-components/Logo/Logo';
 import SmallTextButton from '../../ui-components/Buttons/SmallTextButton/SmallTextButton';
 
+import { userLogout } from '../../services/UserServices';
+
+import './Navbar.css';
+
 export default function Navbar() {
+
+  let auth = JSON.parse(localStorage.getItem('login'));
+
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    userLogout();
+    navigate("/");
+  };
+
   return (
   <nav className="navbar navbar-expand-lg bg-white fixed-top shadow">
     <div className="container">
@@ -29,10 +42,18 @@ export default function Navbar() {
               </Link>
             </li>
             <li className="nav-item dropdown mt-2">
-                <Link to="/signin">
-                  <FaUserCircle />&nbsp;
-                  <span className='mx-2'>Sign In</span>
-                </Link>
+                {
+                  auth ?
+                  <span role="button" onClick={ handleLogout } className='bg-blue p-2 rounded text-white mx-2'>
+                      <FaUserCircle />&nbsp;
+                      logout
+                  </span>
+                  :
+                  <Link to="/signin" className='mx-2'>
+                      <FaUserCircle />&nbsp;
+                      login
+                  </Link>
+                }
               <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <li><span className="dropdown-item">Profile</span></li>
                 <li><span className="dropdown-item">Bookings</span></li>

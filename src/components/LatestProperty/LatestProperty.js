@@ -1,4 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { getHouses } from '../../services/HouseServices';
+import { Oval} from  'react-loader-spinner';
+
 import TextButton from '../../ui-components/TextButton/TextButton';
 import PropertyItem from '../PropertyItem/PropertyItem';
 
@@ -7,12 +10,30 @@ import './LatestProperty.css';
 function LatestProperty() {
     const [item, setItem] = useState('all');
 
+    const [houses, setHouses] = useState();
+    const [houseloading, setHouseLoading] = useState(false);
+    const [error, setError] = useState();
+
+    useEffect(() => {
+        (async() => {
+            setHouseLoading(true);
+            let res = await getHouses();
+            setHouseLoading(false);
+            if (Object.keys(res).includes('errors')) {
+                setError(res.error);
+            }else{
+                setHouses(res);
+            }
+          })();
+    }, []);
+
     const all_style = item === 'all' ? 'latest-property-header-item-active' : 'latest-property-header-item';
     const for_sale_style = item === 'for_sale' ? 'latest-property-header-item-active' : 'latest-property-header-item';
     const for_rent = item === 'for_rent' ? 'latest-property-header-item-active' : 'latest-property-header-item';
+console.log(houses)
   return (
     <div className='latest-property'>
-        <div className='container mx-auto'>
+        <div className='container'>
             <div className='latest-property-header'>
                 <div className='lestest-property-header-left my-2'>
                     <span className='primary-heading'>BROWSE HOT OFFERS</span><br />
@@ -25,12 +46,16 @@ function LatestProperty() {
                 </div>
             </div>
             <div className='latest-property-items d-flex flex-wrap'>
-                <PropertyItem />
-                <PropertyItem />
-                <PropertyItem />
-                <PropertyItem />
-                <PropertyItem />
-                <PropertyItem />
+                {
+                 houseloading ?
+                   <div className='mx-auto'>
+                      <Oval color="#00BFFF" height={200} width={200} />
+                   </div>
+                 :
+                 houses && houses.map((house) => {
+                    return <PropertyItem house={house} />
+                 })
+                }
             </div>
 
             <TextButton text="View all properties" />
@@ -39,4 +64,4 @@ function LatestProperty() {
   )
 }
 
-export default LatestProperty
+export default LatestProperty;

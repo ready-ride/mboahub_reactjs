@@ -9,7 +9,7 @@ function Banner() {
   return (
     <section className='banner-section position-relative'>
         <div className='bg-light-dark'></div>
-        <div className='banner-content'>
+        <div className='banner-content container'>
             <strong>Real Estate Searching Platform</strong>
             <p>Find The House of Your Dream<br />Using Our Platform</p>
             <div className='row mb-4'>
@@ -38,7 +38,7 @@ function Banner() {
         </div>
         <BackgroundSlider
           images={['/photos/banner-photo.jpg', 'https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg']}
-          duration={10} transition={2} />
+          duration={7} transition={2} />
     </section>
   )
 }
