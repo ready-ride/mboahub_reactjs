@@ -10,11 +10,15 @@ import BestCities from './BestCities/BestCities';
 import PropertyAgentSection from '../../components/PropertyAgent/PropertyAgentSection';
 import CountSection from './CountSection/CountSection';
 import TestimonialSection from './TestimonialSection/TestimonialSection';
+import NewsLetterSection from './NewsLetterSection/NewsLetterSection';
+import Footer from '../../components/Footer/Footer';
+import Navbar from '../../components/navbar/Navbar';
 
 
 export const Home = () => {
   return (
     <div className='home'>
+      <Navbar />
       <Banner />
       <BreadCrumb />
       <LatestProperty />
@@ -23,6 +27,8 @@ export const Home = () => {
       <PropertyAgentSection />
       <CountSection />
       <TestimonialSection />
+      <NewsLetterSection />
+      <Footer />
     </div>
   )
 }

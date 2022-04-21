@@ -5,7 +5,7 @@ export async function userSignup(data) {
         body: JSON.stringify(data)
     };
 
-    let res = fetch('http://localhost:4000/v1//signup', requestOptions)
+    let res = fetch('https://myplace-api.herokuapp.com/signup', requestOptions)
         .then(response => response.json())
         .then(data => data);
 
@@ -19,9 +19,16 @@ export async function userSignup(data) {
         body: JSON.stringify(data)
     };
 
-   let res = fetch('http://localhost:4000/v1/login', requestOptions)
+   let res = fetch('https://myplace-api.herokuapp.com/v1/login', requestOptions)
         .then(response => response.json())
         .then(data => data);
-
         return await res;
   }
+
+  export const userLogout = () => {
+    localStorage.removeItem('login');
+  };
+
+  export const userStatus = () => {
+    return JSON.parse(localStorage.getItem('login'));
+  };

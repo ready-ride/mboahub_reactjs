@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import FormInput from '../../components/forms/FormInput';
 import { userLogin } from '../../services/UserServices';
@@ -8,11 +8,13 @@ import './SignInSignUp.css';
 
 const SignIn = () => {
     const [data, setData] = useState({email: '', password: ''});
-    const [response, setResponse] = useState();
+    const [remember, setRemember] = useState(false);
     const [error, setError] = useState();
     const [loading, setLoading] = useState();
 
-    const handleClick = e => {
+    const navigate = useNavigate();
+
+    const handleLogin = e => {
         setLoading(true);
         e.preventDefault();
 
@@ -22,7 +24,12 @@ const SignIn = () => {
             if (Object.keys(res).includes('error')) {
                 setError(res.error);
             }else {
-               response && setResponse(res);
+              if (res){
+                localStorage.setItem('login', JSON.stringify({
+                    token: res.token,
+                }));
+                navigate("/dashboard");
+              };
             }
           })();
     };
@@ -34,22 +41,31 @@ const SignIn = () => {
             [name]: value
         }));
     };
+
   return (
-    <div className='col-md-12'>
+    <div className='col-md-12 signin'>
         <ul >
             {error && <li className='text-danger'>{error}</li> }
         </ul>
         <FormInput type="email" name="email" placeholder="Enter email" label="Email" data={data.email} handleChange={handleChange} />
         <FormInput type="password" name="password" placeholder="Enter password" label="Password" data={data.password} handleChange={handleChange} />
-        <div className='d-flex justify-content-between mt-3'>
-            <div>
-                <input type="checkbox" className="remember-check-box" id="exampleCheck1" />&nbsp;
-                <label className="remember-check-box" htmlFor="exampleCheck1">Remember me</label>
-            </div>
+        <div className='d-flex align-items-center justify-content-between flex-wrap mt-3'>
+            <>
+                <div className='form-row align-items-center'>
+                    <div className="col-auto">
+                        <div className="form-check">
+                            <input value={remember} onChange={e => setRemember(e.target.checked)} className="form-check-input" type="checkbox" id="autoSizingCheck" />&nbsp;
+                            <label className="form-check-label" htmlFor="autoSizingCheck">
+                            Remember me
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </>
             <Link to="/password_reset">Forgot password ?</Link>
         </div>
         {error && <p className='text-danger'>Please check registration errors above and try again</p> }
-        <button type="submit" onClick={handleClick} className="btn btn-primary mt-3 btn btn-block" disabled={loading}>{ loading ? 'please wait..' : 'Login' }</button>
+        <button type="submit" onClick={handleLogin} className="btn btn-primary mt-3 btn btn-block" disabled={loading}>{ loading ? 'please wait..' : 'Login' }</button>
    </div>
   )
 }

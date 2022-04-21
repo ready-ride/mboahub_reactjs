@@ -3,6 +3,7 @@
 .best-cities{
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 .best-city-menu{
     height: 600px;
@@ -22,8 +23,8 @@
     background-size: cover;
 
     height: 600px;
-    padding: 0 3%;
-    padding-top: 25%;
+    padding: 18% 3%;
+    width: 20vw;
 
     display: flex;
     flex-direction: column;

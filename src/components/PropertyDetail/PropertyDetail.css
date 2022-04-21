@@ -5,8 +5,9 @@
     justify-content: space-around;
     align-items: flex-end;
     font-weight: bold;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.521);
 
-    background:linear-gradient(0deg, rgba(22, 21, 22, 0.658), rgba(20, 20, 20, 0.3)), url("https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -48,8 +49,7 @@
 .amenities >*{
     text-align: center;
     border: 1px solid lightgray;
-    height: 150px;
-    padding: 50px 0;
+    padding: 25px 0;
 }
 
 .amenities{
@@ -57,13 +57,14 @@
 }
 
 .agent-top{
-    height: 200px;
+    background: url('https://img.freepik.com/free-vector/gradient-dynamic-blue-lines-background_23-2148995756.jpg');
+    height: 160px;
     position: relative;
 }
 
 .agent-photo{
     position: absolute;
-    height: 100px;
+    height: 130px;
     bottom: -20px;
     left: 30px;
     right: 30px;

@@ -1,5 +1,5 @@
-export async function createHouses(data) {
-    const headers = {'Content-Type': 'application/json', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiZmI5MDQ1OGItMjMzYS00NzgwLTlkMzQtYjFlZDEyYThiNjg0IiwiZXhwIjoxNjQ4OTY1NDU5fQ.8t05L_oEoI4xO7FRCXuCNq1ZENMpo4UdCBQ6NkX2QxA'};
+export async function createHouses(data, token) {
+    const headers = {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`};
 
     const requestOptions = {
         method: 'POST',
@@ -7,7 +7,37 @@ export async function createHouses(data) {
         body: JSON.stringify(data)
     };
 
-    let res = fetch('http://localhost:4000/v1/houses', requestOptions)
+    let res = fetch('https://myplace-api.herokuapp.com/v1/houses', requestOptions)
+        .then(response => response.json())
+        .then(data => data);
+
+    return await res;
+  }
+
+  export async function getMyHouses(token) {
+    const headers = {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`};
+
+    let res = fetch('https://myplace-api.herokuapp.com/v1/my/houses', {headers})
+        .then(response => response.json())
+        .then(data => data);
+
+    return await res;
+  }
+
+  export async function getHouses() {
+    const headers = {'Content-Type': 'application/json'};
+
+    let res = fetch('https://myplace-api.herokuapp.com/v1/houses', {headers})
+        .then(response => response.json())
+        .then(data => data);
+
+    return await res;
+  }
+
+  export async function getHouse(house_id, token) {
+    const headers = {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`};
+
+    let res = fetch(`https://myplace-api.herokuapp.com/v1/houses/${house_id}`, {headers})
         .then(response => response.json())
         .then(data => data);
 

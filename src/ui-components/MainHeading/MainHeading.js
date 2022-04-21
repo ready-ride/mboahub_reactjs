@@ -3,7 +3,7 @@ import './MainHeading.css';
 
 function MainHeading({ heading }) {
   return (
-    <hi className="main-heading">{ heading }</hi>
+    <h3 className="main-heading">{ heading }</h3>
   )
 }
 

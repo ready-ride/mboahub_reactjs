@@ -6,12 +6,22 @@ import TextAreaInput from '../../../components/forms/TextAreaInput';
 
 import { createHouses } from '../../../services/HouseServices';
 
+import { IoMdInformation } from 'react-icons/io';
+import { GoLocation } from 'react-icons/go';
+
 import './NewListing.css';
+import { userStatus } from '../../../services/UserServices';
+import { useNavigate } from 'react-router-dom';
 
 
 
 
 function NewListing() {
+    const navigate = useNavigate();
+
+    let token = userStatus();
+    token = token && token.token;
+
     const [files, setFiles] = useState("");
     const [urls, setUrls] = useState([]);
     const [imageLoading, setImageLoading] = useState(false);
@@ -72,12 +82,12 @@ function NewListing() {
     };
 
         (async() => {
-            let res = await createHouses(houseData);
+            let res = await createHouses(houseData, token);
             setHouseLoading(false);
             if (Object.keys(res).includes('error')) {
                 setError(res['error']);
             }else {
-                response && setResponse(res);
+                setResponse(res);
             }
           })();
     };
@@ -104,7 +114,7 @@ function NewListing() {
         <h5 className='my-2 pb-4 border-bottom'>ADD LISTING</h5>
         <form>
             <div className='listing-info shadow'>
-                <h6>Basic Informations</h6>
+                <h6><span className="text-blue text-bold"><IoMdInformation /></span>Basic Informations</h6>
                 <div className='row'>
                     <div className='col-md-4 mt-2'>
                          <FormInput
@@ -116,7 +126,7 @@ function NewListing() {
                             handleChange={handleChange}
                          />
                     </div>
-                    <div className='col-md-4'>
+                    <div className='col-md-4 mt-4'>
                         <SelectInput
                             label="Home Type"
                             name="home_type"
@@ -136,8 +146,8 @@ function NewListing() {
                     </div>
                 </div>
             </div>
-            <div className='listing-info mt-4 shadow'>
-                <h6>Location of Listing</h6>
+            <div className='listing-info shadow'>
+                <h6><span className="text-blue text-bold"><GoLocation /></span>Location of Listing</h6>
                 <div className='row'>
                     <div className='col-md-6'>
                          <FormInput
@@ -164,7 +174,7 @@ function NewListing() {
                     </div>
                 </div>
             </div>
-            <div className='listing-info mt-4 shadow'>
+            <div className='listing-info shadow'>
                 <h6>Listing Details</h6>
                 <div className='row'>
                     <div className='col-md-6'>
@@ -240,7 +250,7 @@ function NewListing() {
                     </div>
                 </div>
             </div>
-            <div className='listing-info mt-4 shadow'>
+            <div className='listing-info shadow'>
                 <div className='d-flex flex-wrap'>
                     { urls && urls.map((url, i) => <img alt='house-thumbnail' key={i} width="50px" className='img img-thumbnail m-1' src={url}/> )}
                 </div>
@@ -261,8 +271,9 @@ function NewListing() {
                       <button disabled={(files.length === 0)} type="button" className="btn btn-primary btn-block" onClick={ uploadImage } > { imageLoading && '...'} Upload</button>
                     </div>
                 </div>
-                <span className="text-danger">{ error && error }</span>
+                <span className="text-danger">{ error && error }</span><br />
                 <button className='btn btn-primary mt-4' onClick={handleCreateHouse}>{ houseloading && '...' }Save changes</button>
+                { response  && <div className="text-blue">House created successfully !!</div> }
             </div>
         </form>
     </div>
