@@ -4,12 +4,15 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    margin: 10px;
 }
 .best-city-menu{
     height: 600px;
     padding: 18% 3%;
     background-color: $primary-blue;
     width: 40vw;
+    margin: 5px;
+    flex-grow: 1;
 
     background-image: url('https://img.freepik.com/free-vector/gradient-dynamic-blue-lines-background_23-2148995756.jpg');
     background-position: top left;
@@ -22,9 +25,11 @@
     background-repeat: no-repeat;
     background-size: cover;
 
+    flex-grow: 1;
     height: 600px;
     padding: 18% 3%;
-    width: 20vw;
+    margin: 5px;
+    width: 30vw;
 
     display: flex;
     flex-direction: column;
