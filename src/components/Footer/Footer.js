@@ -25,7 +25,7 @@ function Footer() {
         <div className='container'>
             <div className='upper-footer row'>
                 <div className='col-sm'>
-                    <Logo text="MyPlace Inc"/>
+                    <Logo text="MboaHub Inc"/>
                     <p className='text-gray mt-4'>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar.
                     </p>
@@ -68,7 +68,7 @@ function Footer() {
         </div>
         <div className='lower-footer bg-gray'>
             <div className='container pt-4 d-flex-between-center text-bold text-small'>
-                <span className='text-dark-blue'>&copy;&nbsp;MyPlace 2022&nbsp;.All rights reserved.</span>
+                <span className='text-dark-blue'>&copy;&nbsp;MboaHub 2022&nbsp;.All rights reserved.</span>
                 <div className='text-blue'>
                     <span>Terms of use</span>&nbsp;&nbsp;
                     <span>Privacy Policy</span>&nbsp;&nbsp;
