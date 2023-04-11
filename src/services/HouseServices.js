@@ -7,7 +7,7 @@ export async function createHouses(data, token) {
         body: JSON.stringify(data)
     };
 
-    let res = fetch(`${process.env.REACT_APP_API_BASE_URL}/my/houses`, requestOptions)
+    let res = fetch(`http://localhost:3000/v1/my/houses`, requestOptions)
         .then(response => response.json())
         .then(data => data)
         .catch(err => console.log(err));
@@ -18,7 +18,7 @@ export async function createHouses(data, token) {
   export async function getMyHouses(token) {
     const headers = {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`};
 
-    let res = fetch(`${process.env.REACT_APP_API_BASE_URL}/my/houses`, {headers})
+    let res = fetch(`http://localhost:3000/v1/my/houses`, {headers})
         .then(response => response.json())
         .then(data => data)
         .catch(err => console.log(err));
@@ -29,7 +29,7 @@ export async function createHouses(data, token) {
   export async function getHouses() {
     const headers = {'Content-Type': 'application/json'};
 
-    let res = fetch(`${process.env.REACT_APP_API_BASE_URL}/houses`, {headers})
+    let res = fetch(`http://localhost:3000/v1/houses`, {headers})
         .then(response => response.json())
         .then(data => data)
         .catch(err => console.log(err));
@@ -40,7 +40,7 @@ export async function createHouses(data, token) {
   export async function getHouse(house_id) {
     const headers = {'Content-Type': 'application/json'};
 
-    let res = fetch(`${process.env.REACT_APP_API_BASE_URL}/houses/${house_id}`, {headers})
+    let res = fetch(`http://localhost:3000/v1/houses/${house_id}`, {headers})
         .then(response => response.json())
         .then(data => data)
         .catch(err => console.log(err));
