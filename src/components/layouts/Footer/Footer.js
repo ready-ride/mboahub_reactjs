@@ -1,6 +1,6 @@
 import React from 'react';
-import ContactItem from '../../ui-components/ContactItem/ContactItem';
-import Logo from '../../ui-components/Logo/Logo';
+import ContactItem from '../../../components/common/ContactItem/ContactItem';
+import Logo from '../../../components/common/Logo/Logo';
 
 import { AiOutlineMail,
          AiOutlinePhone,
@@ -15,8 +15,8 @@ import { MdOutlineLocationOn } from 'react-icons/md';
 import { FaGooglePlay } from 'react-icons/fa';
 
 import './Footer.scss';
-import IconBox from '../../ui-components/IconBox/IconBox';
-import TextButton from '../../ui-components/TextButton/TextButton';
+import IconBox from '../../../components/common/IconBox/IconBox';
+import TextButton from '../../../components/common/TextButton/TextButton';
 
 
 function Footer() {

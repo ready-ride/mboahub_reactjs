@@ -4,11 +4,11 @@ import { Oval} from  'react-loader-spinner'
 
 import { AiFillEye, AiFillHeart } from 'react-icons/ai';
 
-import ActionButton from '../../ui-components/ActionButton/ActionButton';
-import LocationInfo from '../../ui-components/LocationInfo/LocationInfo';
-import MainHeading from '../../ui-components/MainHeading/MainHeading';
-import PropertyType from '../../ui-components/PropertyType/PropertyType';
-import Rating from '../../ui-components/Rating/Rating';
+import ActionButton from '../../components/common/ActionButton/ActionButton';
+import LocationInfo from '../../components/common/LocationInfo/LocationInfo';
+import MainHeading from '../../components/common/MainHeading/MainHeading';
+import PropertyType from '../../components/common/PropertyType/PropertyType';
+import Rating from '../../components/common/Rating/Rating';
 
 function PropertyHeader({house}) {
     const backgroundImage = house && house.images[0];

@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaUserAlt, FaPhone, FaCalendarCheck } from 'react-icons/fa';
 
-import TextButton from '../../ui-components/TextButton/TextButton';
+import TextButton from '../../components/common/TextButton/TextButton';
 import FormInput from '../forms/FormInput';
 import SelectInput from '../forms/SelectInput';
 import './ContactForm.css';

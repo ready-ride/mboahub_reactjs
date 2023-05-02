@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { FaBed, FaBath } from 'react-icons/fa';
 import { AiOutlinePhone, AiOutlineMail} from 'react-icons/ai';
@@ -7,39 +7,23 @@ import { MdOutlineHouse, MdPeopleOutline, MdFence } from 'react-icons/md';
 import { TiArrowBackOutline } from 'react-icons/ti';
 import { GiRiceCooker } from 'react-icons/gi';
 
-import ButtonHeading from '../../ui-components/ButtonHeading/ButtonHeading';
-import ContactItem from '../../ui-components/ContactItem/ContactItem';
-import Rating from '../../ui-components/Rating/Rating';
-import TextButton from '../../ui-components/TextButton/TextButton';
+import ButtonHeading from '../../components/common/ButtonHeading/ButtonHeading';
+import ContactItem from '../../components/common/ContactItem/ContactItem';
+import Rating from '../../components/common/Rating/Rating';
+import TextButton from '../../components/common/TextButton/TextButton';
 import BreadCrumb from '../BreadCrumb/BreadCrumb';
 import ContactForm from '../ContactForm/ContactForm';
-import Footer from '../Footer/Footer';
+import Footer from '../../components/layouts/Footer/Footer';
 import ImageGallery from '../ImageGallery/ImageGallery';
 import MapComponent from '../MapComponent/MapComponent';
 
-import { getHouse } from '../../services/HouseServices';
-
 import './PropertyDetail.css';
 import PropertyHeader from './PropertyHeader';
-import Navbar from '../navbar/navbar';
+import Navbar from '../../components/layouts/navbar/navbar';
+import { useFetchHouse } from '../../hooks/houses/useFetchHouse';
 
 function PropertyDetail() {
-    const { house_id } = useParams();
-
-    const [house, setHouse] = useState();
-    const [error, setError] = useState();
-
-    useEffect(() => {
-        (async() => {
-            let res = await getHouse(house_id);
-            if (Object.keys(res).includes('errors')) {
-                setError(res.error);
-                error && console.log(error);
-            }else{
-                setHouse(res.house);
-            }
-          })();
-    }, []);
+    const { house, error } = useFetchHouse();
   const avatar = '/photos/avatar.png'
 
   return (
@@ -51,7 +35,7 @@ function PropertyDetail() {
             <div className='col-md-1'></div>
             <div className='col-md-5'>
             <Link to="/">
-                <span className='p-2 bg-blue text-white text-small mb-4 rounded'>
+                <span className='p-2 bg-primary text-white text-small mb-4 rounded'>
                    <TiArrowBackOutline size={30} />&nbsp;BACK
                 </span>
             </Link>

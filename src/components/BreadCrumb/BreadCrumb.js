@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { BsDot } from 'react-icons/bs';
 
-import ActionButton from '../../ui-components/ActionButton/ActionButton';
+import ActionButton from '../../components/common/ActionButton/ActionButton';
 
 import './BreadCrumb.css';
 

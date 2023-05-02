@@ -1,6 +1,6 @@
 import React from 'react';
 
-import SmallTextButton from '../../../ui-components/Buttons/SmallTextButton/SmallTextButton';
+import SmallTextButton from '../../../components/common/Buttons/SmallTextButton/SmallTextButton';
 
 function BestCityItem() {
   return (

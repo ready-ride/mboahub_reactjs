@@ -7,10 +7,10 @@ import { FaBed, FaBath } from 'react-icons/fa';
 
 
 import './PropertyItem.css';
-import PropertyType from '../../ui-components/PropertyType/PropertyType';
-import Rating from '../../ui-components/Rating/Rating';
+import PropertyType from '../../components/common/PropertyType/PropertyType';
+import Rating from '../../components/common/Rating/Rating';
 import { Link } from 'react-router-dom';
-import IconBox from '../../ui-components/IconBox/IconBox';
+import IconBox from '../../components/common/IconBox/IconBox';
 import { costInThousands } from '../../services/utilities';
 
 const PropertyItem = ({house}) => {
@@ -36,7 +36,7 @@ const PropertyItem = ({house}) => {
                         </div>
                         <div className='up-right-bottom'>
                             <BiCamera size={20} />&nbsp;
-                            <span className='bg-blue p-1 text-small rounded'>{house.images.length}</span>
+                            <span className='bg-primary p-1 text-small rounded'>{house.images.length}</span>
                         </div>
                     </div>
                 </div>

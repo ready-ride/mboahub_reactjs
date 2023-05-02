@@ -8,10 +8,10 @@ import {
         AiFillLinkedin,
     } from 'react-icons/ai';
 
-import Rating from '../../ui-components/Rating/Rating';
+import Rating from '../../components/common/Rating/Rating';
 import { Link } from 'react-router-dom';
-import IconBox from '../../ui-components/IconBox/IconBox';
-import SmallTextButton from '../../ui-components/Buttons/SmallTextButton/SmallTextButton';
+import IconBox from '../../components/common/IconBox/IconBox';
+import SmallTextButton from '../../components/common/Buttons/SmallTextButton/SmallTextButton';
 
 const PropertyAgent = () => {
   return (

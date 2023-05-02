@@ -6,44 +6,25 @@ import { MdOutlineHouse, MdPeopleOutline, MdFence } from 'react-icons/md';
 import { TiArrowBackOutline } from 'react-icons/ti';
 import { GiRiceCooker } from 'react-icons/gi';
 
-import Navbar from '../../../components/navbar/navbar';
+import Navbar from '../../../components/layouts/navbar/navbar';
 import ImageGallery from '../../../components/ImageGallery/ImageGallery';
 import MapComponent from '../../../components/MapComponent/MapComponent';
 
-import { getHouse } from '../../../services/HouseServices';
+import { useFetchHouse } from '../../../hooks/houses/useFetchHouse';
 
 function Listingitem() {
-    const { house_id } = useParams();
-
-    const [house, setHouse] = useState();
-    const [houseloading, setHouseLoading] = useState(false);
-    const [error, setError] = useState();
-
-    useEffect(() => {
-        (async() => {
-            setHouseLoading(true);
-            let res = await getHouse(house_id);
-            setHouseLoading(false);
-            if (Object.keys(res).includes('errors')) {
-                setError(res.error);
-                error && console.log(error);
-            }else{
-                setHouse(res.house);
-            }
-          })();
-    }, []);
-
+  const { house, houseloading, error } = useFetchHouse();
   return (
     <div>
         <Navbar />
         <div className='row property-content bg-gray'>
             <div className='col-md-12'>
             <Link to="/dashboard/my_listings">
-                <span className='p-2 bg-blue text-white text-small mb-4 rounded'>
+                <span className='p-2 bg-primary text-white text-small mb-4 rounded'>
                    <TiArrowBackOutline size={30} />&nbsp;BACK
                 </span>
             </Link>
-                { houseloading && <ImageGallery images={ house && house.images } />}
+                { !houseloading && <ImageGallery images={ house && house.images } />}
                 <div className='amenities row text-small'>
                     <span className='col-md-3'>
                         <MdOutlineHouse size={50} color="#3270FC" /><br />

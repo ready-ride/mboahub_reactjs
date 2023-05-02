@@ -5,7 +5,7 @@ export async function userSignup(data) {
         body: JSON.stringify(data)
     };
 console.log(process.env.REACT_APP_API_BASE_URL)
-    let res = fetch(`http://localhost:3000/v1/signup`, requestOptions)
+    let res = fetch(`${process.env.REACT_APP_API_BASE_URL}/signup`, requestOptions)
         .then(response => response.json())
         .then(data => data)
         .catch(err => console.log(err));
@@ -20,7 +20,7 @@ console.log(process.env.REACT_APP_API_BASE_URL)
         body: JSON.stringify(data)
     };
 
-   let res = fetch(`http://localhost:3000/v1/login`, requestOptions)
+   let res = fetch(`${process.env.REACT_APP_API_BASE_URL}/login`, requestOptions)
         .then(response => response.json())
         .then(data => data)
         .catch(err => console.log(err));

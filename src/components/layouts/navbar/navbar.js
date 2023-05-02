@@ -4,10 +4,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import { MdOutlineAddCircle } from 'react-icons/md';
 import { FaUserCircle, FaBars } from 'react-icons/fa'
 
-import Logo from '../../ui-components/Logo/Logo';
-import SmallTextButton from '../../ui-components/Buttons/SmallTextButton/SmallTextButton';
+import Logo from '../../../components/common/Logo/Logo';
+import SmallTextButton from '../../../components/common/Buttons/SmallTextButton/SmallTextButton';
 
-import { userLogout } from '../../services/UserServices';
+import { userLogout } from '../../../services/UserServices';
 
 import './navbar.css';
 
@@ -44,7 +44,7 @@ export default function Navbar() {
             <li className="nav-item dropdown mt-2">
                 {
                   auth ?
-                  <span role="button" onClick={ handleLogout } className='bg-blue p-2 rounded text-white mx-2'>
+                  <span role="button" onClick={ handleLogout } className='bg-primary p-2 rounded text-white mx-2'>
                       <FaUserCircle />&nbsp;
                       logout
                   </span>

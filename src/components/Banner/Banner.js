@@ -26,7 +26,7 @@ function Banner() {
                           <option id="for_rent">For rent</option>
                           <option id="for_sale">For sale</option>
                       </select>
-                      <button type='button' className='bg-blue col-md-2 text-small text-bold text-white'>
+                      <button type='button' className='bg-primary col-md-2 text-small text-bold text-white'>
                         Search&nbsp;&nbsp;
                         <AiOutlineSearch />
                       </button>

@@ -8,7 +8,7 @@ import { MdArrowDropUp } from 'react-icons/md';
 
 import { Home } from './pages/home/home';
 
-import SignInSignUp from './pages/SignInSignUp/SignInSignUp';
+import SignInSignUp from './pages/Auth/SignInSignUp';
 import Dashboard from './pages/Dashboard/Dashboard';
 import PropertyDetail from './components/PropertyDetail/PropertyDetail';
 import NewListing from './pages/Dashboard/NewListing/NewListing';

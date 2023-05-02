@@ -13,21 +13,21 @@ import { BsFacebook, BsTwitter } from 'react-icons/bs';
 import TextAreaInput from '../../../components/forms/TextAreaInput';
 
 function MyProfile() {
+  const [imageUrl, setImageUrl] = useState();
+  const [imageLoading, setImageLoading] = useState(false);
+
+  const [imageCoverUrl, setImageCoverUrl] = useState();
+  const [imageCoverLoading, setImageCoverLoading] = useState(false);
+
+  const hiddenFileInput = React.useRef(null);
+  const hiddenCoverFileInput = React.useRef(null);
+  
     let token = userStatus();
     token = token && token.token;
 
     if(!token){
        return <Navigate to="/signin" />
     }
-
-    const [imageUrl, setImageUrl] = useState();
-    const [imageLoading, setImageLoading] = useState(false);
-
-    const [imageCoverUrl, setImageCoverUrl] = useState();
-    const [imageCoverLoading, setImageCoverLoading] = useState(false);
-
-  const hiddenFileInput = React.useRef(null);
-  const hiddenCoverFileInput = React.useRef(null);
 
   const handleClick = event => {
     hiddenFileInput.current.click();
@@ -106,7 +106,7 @@ function MyProfile() {
                     <div className='agent-cover-image'>
                         <span
                             role='button'
-                            className='text-white text-small bg-blue rounded-top'
+                            className='text-white text-small bg-primary rounded-top'
                             onClick={handleCoverClick}
                             >
                             { imageCoverLoading ? 'uploading ...' : 'Change Cover' }
@@ -132,7 +132,7 @@ function MyProfile() {
                             <FormInput handleChange={''} data={''} name="phone" type="text" label="Phone" icon={<AiOutlinePhone size={15} />} />
                             <FormInput handleChange={''} data={''} name="agency" type="text" label="Agency" icon={<FaBuilding size={15} />} />
                             <TextAreaInput name="about_me" label="About Me" data={''} handleChange={''} />
-                            <button className='text-white bg-blue py-2 px-4 mt-4 rounded'>Save changes</button>
+                            <button className='text-white bg-primary py-2 px-4 mt-4 rounded'>Save changes</button>
                         </form>
                     </div>
                 </div>
@@ -152,7 +152,7 @@ function MyProfile() {
                                 <FormInput handleChange={''} data={''} name="current_password" type="text" label="Current Password" icon={<AiOutlineUnlock size={15} />} />
                                 <FormInput handleChange={''} data={''} name="new_password" type="text" label="New Password" icon={<AiOutlineLock size={15} />} />
                                 <FormInput handleChange={''} data={''} name="confirm_password" type="text" label="Confirm Password" icon={<FaShieldAlt size={15} />} />
-                                <button className='text-white bg-blue py-2 px-4 mt-3 rounded'>Save changes</button>
+                                <button className='text-white bg-primary py-2 px-4 mt-3 rounded'>Save changes</button>
                             </form>
                         </div>
                     </div>
@@ -167,7 +167,7 @@ function MyProfile() {
                                 <FormInput handleChange={''} data={''} name="facebook" type="text" label="Facebook" icon={<BsFacebook size={15} />} />
                                 <FormInput handleChange={''} data={''} name="twitter" type="text" label="Twitter" icon={<BsTwitter size={15} />} />
                                 <FormInput handleChange={''} data={''} name="instagram" type="text" label="Instagram" icon={<AiFillInstagram size={15} />} />
-                                <button className='text-white bg-blue py-2 px-4 mt-3 rounded'>Save changes</button>
+                                <button className='text-white bg-primary py-2 px-4 mt-3 rounded'>Save changes</button>
                             </form>
                         </div>
                     </div>

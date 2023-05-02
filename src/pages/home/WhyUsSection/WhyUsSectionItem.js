@@ -1,6 +1,6 @@
 import React from 'react';
 
-import IconBox from '../../../ui-components/IconBox/IconBox';
+import IconBox from '../../../components/common/IconBox/IconBox';
 
 export default function WhyUsSectionItem({title, content, icon}) {
   return (

@@ -11,8 +11,8 @@ import PropertyAgentSection from '../../components/PropertyAgent/PropertyAgentSe
 import CountSection from './CountSection/CountSection';
 import TestimonialSection from './TestimonialSection/TestimonialSection';
 import NewsLetterSection from './NewsLetterSection/NewsLetterSection';
-import Footer from '../../components/Footer/Footer';
-import Navbar from '../../components/navbar/navbar';
+import Footer from '../../components/layouts/Footer/Footer';
+import Navbar from '../../components/layouts/navbar/navbar';
 
 
 export const Home = () => {

@@ -1,32 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { getHouses } from '../../services/HouseServices';
+import React, { useState } from 'react';
 import { Oval} from  'react-loader-spinner';
 
-import TextButton from '../../ui-components/TextButton/TextButton';
+import TextButton from '../../components/common/TextButton/TextButton';
 import PropertyItem from '../PropertyItem/PropertyItem';
 
 import './LatestProperty.css';
+import { useFetchHouses } from '../../hooks/houses/useFetchHouses';
 
 function LatestProperty() {
     const [item, setItem] = useState('all');
 
-    const [houses, setHouses] = useState();
-    const [houseloading, setHouseLoading] = useState(false);
-    const [error, setError] = useState();
-
-    useEffect(() => {
-        (async() => {
-            setHouseLoading(true);
-            let res = await getHouses();
-            setHouseLoading(false);
-            if (res && Object.keys(res).includes('errors')) {
-                setError(res.error);
-                error && console.log(error);
-            }else{
-                setHouses(res);
-            }
-          })();
-    }, []);
+    const { houses, houseloading, error } = useFetchHouses();
 
     const all_style = item === 'all' ? 'latest-property-header-item-active' : 'latest-property-header-item';
     const for_sale_style = item === 'for_sale' ? 'latest-property-header-item-active' : 'latest-property-header-item';

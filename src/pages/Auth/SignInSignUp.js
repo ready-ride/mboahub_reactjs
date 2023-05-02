@@ -6,7 +6,7 @@ import SignUp from './SignUp';
 
 import { FiLogOut, FiUserPlus } from 'react-icons/fi';
 import { Navigate } from 'react-router-dom';
-import Navbar from '../../components/navbar/navbar';
+import Navbar from '../../components/layouts/navbar/navbar';
 
 function SignInSignUp() {
     const [form, setForm] = useState('signin');

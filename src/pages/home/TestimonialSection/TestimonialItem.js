@@ -1,8 +1,8 @@
 import React from 'react';
 import { RiDoubleQuotesR } from 'react-icons/ri';
 
-import SmallTextButton from '../../../ui-components/Buttons/SmallTextButton/SmallTextButton';
-import Rating from '../../../ui-components/Rating/Rating';
+import SmallTextButton from '../../../components/common/Buttons/SmallTextButton/SmallTextButton';
+import Rating from '../../../components/common/Rating/Rating';
 
 function TestimonialItem() {
   return (
