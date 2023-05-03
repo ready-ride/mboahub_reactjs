@@ -1,47 +1,13 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 import FormInput from '../../components/forms/FormInput';
-import { userLogin } from '../../services/UserServices';
 
 import './SignInSignUp.css';
+import { useLogin } from '../../hooks/auth/useLogin';
 
 const SignIn = () => {
-    const [data, setData] = useState({email: '', password: ''});
-    const [remember, setRemember] = useState(false);
-    const [errors, setErrors] = useState();
-    const [loading, setLoading] = useState();
-
-    const navigate = useNavigate();
-
-    const handleLogin = e => {
-        setLoading(true);
-        e.preventDefault();
-
-        userLogin(data).then((res) => {
-            localStorage.setItem('login', JSON.stringify({
-                token: res.token,
-            }));
-            setLoading(false);
-
-            if (Object.keys(res).includes('errors')){
-                setErrors(res['errors']);
-            }else if(res.token){
-                navigate("/dashboard");
-            }
-        }).catch((error) => {
-            setLoading(false);
-            console.log(error);
-        });
-    };
-
-    const handleChange = e => {
-        const { name, value } = e.target;
-        setData(prevState => ({
-            ...prevState,
-            [name]: value
-        }));
-    };
+  const { data, remember, setRemember, errors, loading, handleLogin, handleChange } = useLogin();
 
   return (
     <div className='col-md-12 signin'>

@@ -14,16 +14,24 @@ export const useFetchHouse = () => {
   useEffect(() => {
       (async() => {
           setHouseLoading(true);
-          let res = await getRequest(HOUSE_URL);
-          setHouseLoading(false);
-          if (Object.keys(res).includes('errors')) {
-              setError(res.error);
-              error && console.log(error);
-          }else{
-              setHouse(res.house);
+          // let res = await getRequest(HOUSE_URL);
+          // setHouseLoading(false);
+          // if (Object.keys(res).includes('errors')) {
+          //     setError(res.error);
+          //     error && console.log(error);
+          // }else{
+          //     setHouse(res.house);
+          // }
+          try{
+            let res = await getRequest(HOUSE_URL);
+            setHouseLoading(false);
+            setHouse(res.house);
+          }catch(e){
+            setHouseLoading(false);
+            setError(e);
           }
         })();
-  }, []);
+  }, [house]);
 
-  return { house, error };
+  return { house, houseloading, error };
 };

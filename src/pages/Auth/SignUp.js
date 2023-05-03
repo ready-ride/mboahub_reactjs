@@ -1,52 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { userSignup } from '../../services/UserServices';
 import FormInput from '../../components/forms/FormInput';
 import './SignInSignUp.css';
+import { useSignUp } from '../../hooks/auth/useSignUp';
 
 const SignUp = () => {
-    const [data, setData] = useState(
-    {
-        email: '',
-        password: '',
-        password_confirmation: '',
-    });
-    const [response, setResponse] = useState();
-    const [errors, setErrors] = useState();
-    const [loading, setLoading] = useState(false);
-
-    const handleSignup = e => {
-        e.preventDefault();
-        setLoading(true);
-
-          userSignup(data).then((res) => {
-             setLoading(false);
-
-             if(res.status === 'ok'){
-                setLoading(false);
-                setResponse(res);
-             }else if(Object.keys(res).includes('errors')){
-                setLoading(false);
-                setErrors(res['errors']);
-            }}).catch((error) => {
-            setLoading(false);
-            console.log(error);
-        });
-    };
-
-    const handleChange = e => {
-        const { name, value } = e.target;
-        setData(prevState => ({
-            ...prevState,
-            [name]: value
-        }));
-    };
+  const { handleSignup, handleChange, response, loading, errors, setResponse, data } = useSignUp();
 
   return (
     <div className='col-md-12'>
         <ul >
-            {errors && errors.map((e, i) => <li className='text-danger' key={i}>{e}</li>) }
+            {errors && <li className='text-danger'>{errors}</li> }
         </ul>
         <FormInput type="email" name="email" placeholder="Enter Email" label="Email" data={data.email} handleChange={handleChange} />
         <FormInput type="password" name="password" placeholder="Enter Password" label="Password" data={data.password} handleChange={handleChange} />

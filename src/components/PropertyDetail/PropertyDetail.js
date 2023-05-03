@@ -23,7 +23,7 @@ import Navbar from '../../components/layouts/navbar/navbar';
 import { useFetchHouse } from '../../hooks/houses/useFetchHouse';
 
 function PropertyDetail() {
-    const { house, error } = useFetchHouse();
+  const { house, error } = useFetchHouse();
   const avatar = '/photos/avatar.png'
 
   return (

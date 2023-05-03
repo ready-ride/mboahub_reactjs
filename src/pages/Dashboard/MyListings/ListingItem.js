@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { FaBed, FaBath } from 'react-icons/fa';
 import { MdOutlineHouse, MdPeopleOutline, MdFence } from 'react-icons/md';
@@ -24,7 +24,7 @@ function Listingitem() {
                    <TiArrowBackOutline size={30} />&nbsp;BACK
                 </span>
             </Link>
-                { !houseloading && <ImageGallery images={ house && house.images } />}
+                { <ImageGallery images={ house && house.images } />}
                 <div className='amenities row text-small'>
                     <span className='col-md-3'>
                         <MdOutlineHouse size={50} color="#3270FC" /><br />

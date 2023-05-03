@@ -10,15 +10,9 @@ import Navbar from '../../components/layouts/navbar/navbar';
 
 function SignInSignUp() {
     const [form, setForm] = useState('signin');
+    const token = JSON.parse(localStorage.getItem('login'));
 
-    const [auth, setAuth] = useState('');
-
-    useEffect(() => {
-      const token = JSON.parse(localStorage.getItem('login'));
-      setAuth(token);
-    }, [])
-
-    if(auth){
+    if(token){
         return <Navigate to="/dashboard" />;
     }
   return (

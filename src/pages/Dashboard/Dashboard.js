@@ -8,8 +8,10 @@ import { MdEmail, MdPeopleAlt } from 'react-icons/md';
 import { AiOutlineAreaChart, AiOutlineFileAdd } from 'react-icons/ai';
 import DashboardMenu from './DashboardMenu';
 import Navbar from '../../components/layouts/navbar/navbar';
+import { Navigate } from 'react-router-dom';
 
 function Dashboard() {
+
   return (
    <>
       <Navbar />

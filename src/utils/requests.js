@@ -15,6 +15,23 @@ export async function postRequestWithToken(data, token, url) {
   return await res;
 }
 
+export async function postRequest(data, url) {
+  const headers = {'Content-Type': 'application/json'};
+
+  const requestOptions = {
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify(data)
+  };
+
+  let res = fetch(url, requestOptions)
+      .then(response => response.json())
+      .then(data => data)
+      .catch(err => console.log(err));
+
+  return await res;
+}
+
 export async function getRequestWithToken(token, url) {
   const headers = {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`};
 

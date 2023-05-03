@@ -37,8 +37,8 @@ function LatestProperty() {
                       <Oval color="#00BFFF" height={200} width={200} />
                    </div>
                  :
-                 houses && houses.map((house) => {
-                    return <div className='col-sm'><PropertyItem house={house} key={house.id} /></div>
+                 houses && houses.map((house, i) => {
+                    return <div key={i} className='col-sm'><PropertyItem house={house} key={house.id} /></div>
                  })
                 }
             </div>
