@@ -9,7 +9,7 @@ function TestimonialItem() {
     <div className='testimonial-item col-sm'>
         <div className='testimonial-item-header'>
             <div className='d-flex align-items-center'>
-                <img src="https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg" alt="testimonial" className="rounded-circle" width="75px" height="75px" />
+                <img src="/photos/anthony-moore.webp" alt="testimonial" className="rounded-circle" width="75px" height="75px" />
                 <div>
                     <strong className='text-dark-blue text-small'>ANTHONY MOORE</strong>
                     <Rating />

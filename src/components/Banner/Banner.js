@@ -37,7 +37,7 @@ function Banner() {
             <span className='advanced-search'>Advanced Search</span>
         </div>
         <BackgroundSlider
-          images={['/photos/banner-photo.jpg', 'https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg']}
+          images={['/photos/banner-photo-1.webp', '/photos/banner-photo-2.webp']}
           duration={7} transition={2} />
     </section>
   )

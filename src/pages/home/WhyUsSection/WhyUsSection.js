@@ -18,7 +18,7 @@ function WhyUsSection() {
                 <WhyUsSectionItem title="Secure Payments Panel" icon={<BiSupport size="30" />}/>
             </div>
             <div>
-                <img src="https://homeradar.kwst.net/images/all/27.jpg" alt="about_us" width="100%"/>
+                <img src="/photos/why-us-1.webp" alt="about_us" width="100%"/>
             </div>
         </div>
     </div>
