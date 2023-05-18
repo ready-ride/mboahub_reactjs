@@ -10,9 +10,6 @@ const SignUp = () => {
 
   return (
     <div className='col-md-12'>
-        <ul >
-            {errors && <li className='text-danger'>{errors}</li> }
-        </ul>
         <FormInput type="email" name="email" placeholder="Enter Email" label="Email" data={data.email} handleChange={handleChange} />
         <FormInput type="password" name="password" placeholder="Enter Password" label="Password" data={data.password} handleChange={handleChange} />
         <FormInput type="password" name="password_confirmation" placeholder="Enter Password Confirmation" label="Password Confirmation" data={data.password_confirmation} handleChange={handleChange} />
@@ -31,9 +28,8 @@ const SignUp = () => {
             </>
             <Link to="/password_reset">Forgot password ?</Link>
         </div>
-        {errors && <p className='text-danger'>Please check registration errors above and try again</p> }
         <button type="submit" onClick={ handleSignup } className="btn btn-primary mt-3 btn btn-block" disabled={loading}>{ loading ? 'please wait..' : 'Register' }</button>
-        { response && <p className='text-success'>{response.email} created successfully. You may now login</p>}
+        {errors && <p className='text-danger'>{errors[0]}</p> }
    </div>
   )
 }

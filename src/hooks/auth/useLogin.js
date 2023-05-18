@@ -24,12 +24,15 @@ const handleLogin = e => {
     (async() => {
       try{
         let res = await postRequest(data, LOGIN_URL);
-        if (res.token) {
+        if (res.success && res.data.token) {
             localStorage.setItem('login', JSON.stringify({
-              token: res.token,
+              token: res.data.token,
           }));
           navigate("/dashboard");
           setLoading(false);
+          } else{
+            setErrors(res.errors);
+            setLoading(false);
           }
       }catch(e){
         setLoading(false);

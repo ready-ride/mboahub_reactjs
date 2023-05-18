@@ -16,6 +16,16 @@ export const useSignUp = () => {
 
     const navigate = useNavigate();
 
+    const formatError = (errors) => {
+      errors.forEach((error) => {
+        if (error.toLowerCase().includes('validation')) {
+          error = error.split(':');
+          error = error[1].split(',');
+          setErrors(error);
+        }
+      })
+    }
+
     const handleSignup = e => {
       setLoading(true);
       e.preventDefault();
@@ -29,12 +39,15 @@ export const useSignUp = () => {
       (async() => {
         try{
           let res = await postRequest(data, SIGNUP_URL);
-          if (res.token) {
+          if (res.success) {
             localStorage.setItem('login', JSON.stringify({
-              token: res.token,
+              token: res.data.token,
           }));
           navigate("/dashboard");
           setLoading(false);
+          } else {
+            formatError(res.errors);
+            setLoading(false);
           }
         }catch(e){
           setLoading(false);

@@ -11,9 +11,6 @@ const SignIn = () => {
 
   return (
     <div className='col-md-12 signin'>
-        <ul >
-            {errors && <li className='text-danger'>{errors[0]}</li> }
-        </ul>
         <FormInput type="email" name="email" placeholder="Enter email" label="Email" data={data.email} handleChange={handleChange} />
         <FormInput type="password" name="password" placeholder="Enter password" label="Password" data={data.password} handleChange={handleChange} />
         <div className='d-flex align-items-center justify-content-between flex-wrap mt-3'>
@@ -31,8 +28,8 @@ const SignIn = () => {
             </>
             <Link to="/password_reset">Forgot password ?</Link>
         </div>
-        {errors && <p className='text-danger'>Please check login errors above and try again</p> }
         <button type="submit" onClick={handleLogin} className="btn btn-primary mt-3 btn btn-block" disabled={loading}>{ loading ? 'please wait..' : 'Login' }</button>
+        {errors && <p className='text-danger'>{errors}</p> }
    </div>
   )
 }

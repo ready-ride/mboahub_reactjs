@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 
 import Banner from '../../components/Banner/Banner'
 import BreadCrumb from '../../components/BreadCrumb/BreadCrumb'

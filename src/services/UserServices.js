@@ -4,5 +4,9 @@
   };
 
   export const userStatus = () => {
-    return JSON.parse(localStorage.getItem('login'));
+    const login_token= JSON.parse(localStorage.getItem('login'));
+    if (login_token && login_token.token == null) {
+      localStorage.removeItem('login');
+    }
+    return login_token;
   };
