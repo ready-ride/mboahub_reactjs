@@ -14,7 +14,6 @@ function Dashboard() {
 
   return (
    <>
-      <Navbar />
       <div className="row dashboard">
         <div className='dashboard-menu'>
             <div className='left-menu shadow'>

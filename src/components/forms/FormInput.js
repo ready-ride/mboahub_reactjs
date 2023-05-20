@@ -4,7 +4,7 @@ import './FormInput.css';
 function FormInput({name, type, placeholder, label, data, handleChange, icon}) {
   return (
     <div className="form-group my-3">
-        <label htmlFor={name} className="text-small text-dark-blue mb-2">{label} &nbsp;</label>
+        {label && <label htmlFor={name} className="text-small text-dark-blue mb-2">{label} &nbsp;</label>}
         <div className='input-container'>
            {
              icon &&

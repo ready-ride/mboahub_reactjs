@@ -38,7 +38,7 @@ function LatestProperty() {
                    </div>
                  :
                  houses && houses.map((house, i) => {
-                    return <div key={i} className='col-sm'><PropertyItem house={house} key={house.id} /></div>
+                  return i < 8 && <div key={i} className='col-sm'><PropertyItem house={house} key={house.id} /></div>
                  })
                 }
             </div>

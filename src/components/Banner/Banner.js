@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import BackgroundSlider from 'react-background-slider';
 
 import { AiOutlineSearch } from 'react-icons/ai';
@@ -6,6 +7,8 @@ import { AiOutlineSearch } from 'react-icons/ai';
 import './Banner.css';
 
 function Banner() {
+  const navigate = useNavigate();
+
   return (
     <section className='banner-section position-relative'>
         <div className='bg-light-dark'></div>
@@ -26,7 +29,7 @@ function Banner() {
                           <option id="for_rent">For rent</option>
                           <option id="for_sale">For sale</option>
                       </select>
-                      <button type='button' className='bg-primary col-md-2 text-small text-bold text-white'>
+                      <button type='button' onClick={() =>navigate('/properties')} className='bg-primary col-md-2 text-small text-bold text-white'>
                         Search&nbsp;&nbsp;
                         <AiOutlineSearch />
                       </button>

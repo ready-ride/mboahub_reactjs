@@ -12,7 +12,7 @@ import { MdOutlineDeleteForever } from 'react-icons/md';
 import { FiEdit } from 'react-icons/fi';
 import { useFetchMyHouses } from '../../../hooks/houses/useFetchMyHouses';
 
-function AllListings() {
+function AllMyListings() {
     let token = userStatus();
     token = token && token.token;
     const { houses, houseloading, error } = useFetchMyHouses();
@@ -61,4 +61,4 @@ function AllListings() {
   )
 }
 
-export default AllListings;
+export default AllMyListings;
