@@ -45,7 +45,6 @@ export async function getRequestWithToken(token, url) {
 
 export async function getRequest(url) {
     const headers = {'Content-Type': 'application/json'};
-
     let res = fetch(url, {headers})
         .then(response => response.json())
         .then(data => data)
