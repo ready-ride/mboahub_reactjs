@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Oval} from  'react-loader-spinner';
+import { useNavigate } from 'react-router-dom';
 
 import TextButton from '../../components/common/TextButton/TextButton';
 import PropertyItem from '../PropertyItem/PropertyItem';
@@ -9,6 +10,8 @@ import { useFetchHouses } from '../../hooks/houses/useFetchHouses';
 
 function LatestProperty() {
     const [item, setItem] = useState('all');
+
+    const navigate = useNavigate();
 
     const { houses, houseloading, error } = useFetchHouses();
 
@@ -42,7 +45,7 @@ function LatestProperty() {
                  })
                 }
             </div>
-            <div>
+            <div onClick={() =>navigate('/properties')}>
                 <TextButton text="View all properties" />
             </div>
         </div>

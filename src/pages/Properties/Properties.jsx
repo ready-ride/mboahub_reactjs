@@ -74,7 +74,7 @@ const Properties = () => {
         <div className='position-fixed w-50'>
           <MapComponent />
         </div>
-        <div className='position-absolute mx-2 end-0 d-flex w-50 flex-wrap row'>
+        <div style={{height: '100vh'}} className='position-absolute mx-2 end-0 d-flex w-50 flex-wrap row'>
           {houseloading ?
             <div className='mx-auto col-md-6'>
               <Oval color="#00BFFF" height={200} width={200} />
@@ -89,7 +89,8 @@ const Properties = () => {
                   <span className='rounded bg-white border border-primary text-primary p-2 mx-2'>{1}</span>
                   <span className='text-primary p-2 mx-2'>...</span>
                   <button className='bg-primary text-white p-1' onClick={handlePageClickPrev}>Prev</button>
-                </>}
+                </>
+              }
               <span className='bg-white text-primary p-2 border mx-1 rounded border-primary'>{params.page + 1}</span>
               {params.page < num_pages - 1 &&
                 <>

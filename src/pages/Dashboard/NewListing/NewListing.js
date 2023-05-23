@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-// import GooglePlaces from '../../../components/apis/GooglePlaces/GooglePlaces';
+import React, { useState, useEffect } from 'react';
+import GooglePlaces from '../../../components/apis/GooglePlaces/GooglePlaces';
 import FormInput from '../../../components/forms/FormInput';
 import SelectInput from '../../../components/forms/SelectInput';
 import TextAreaInput from '../../../components/forms/TextAreaInput';
@@ -14,6 +14,11 @@ import { useUploadImage } from '../../../hooks/images/useUploadImage';
 import { useHouseCreate } from '../../../hooks/houses/useHouseCreate';
 
 function NewListing() {
+  const [address, setAddress] = useState("");
+  const [coordinates, setCoordinates] = useState({
+    lat: null,
+    lng: null
+  });
     let token = userStatus();
     token = token && token.token;
 
@@ -23,8 +28,6 @@ function NewListing() {
     const { files, urls, imageLoading, handleFileChange, uploadImage } = useUploadImage();
     const { handleChange, handleSelect, handleCreateHouse, error, houseloading, response, data } = useHouseCreate(urls);
     
-  
-
     const houseOptions = [
         {label: 'Select house type', value: ''},
         {label: 'Single Room', value: 'single_room'},
@@ -33,6 +36,17 @@ function NewListing() {
         {label: 'Villa', value: 'villa'},
         {label: 'Hotel', value: 'hotel'},
       ]
+    
+  let addressArr = '';
+
+  useEffect(() => {
+    addressArr = address.split(', ');
+    data.city = address.split(', ')[0];
+    data.street = address;
+    data.lat = coordinates.lat;
+    data.lng = coordinates.lng;
+    data.country = addressArr[addressArr.length - 1];
+  }, [address, coordinates]);
 
   return (
     <div className='new-listing'>
@@ -41,7 +55,7 @@ function NewListing() {
             <div className='listing-info shadow'>
                 <h6><span className="text-blue text-bold"><IoMdInformation /></span>Basic Informations</h6>
                 <div className='row'>
-                    <div className='col-md-4 mt-2'>
+                    <div className='col-md-4'>
                          <FormInput
                             type="text"
                             name="listing_name"
@@ -53,51 +67,54 @@ function NewListing() {
                     </div>
                     <div className='col-md-4 mt-4'>
                         <SelectInput
-                            label="Home Type"
-                            options={houseOptions}
-                            name="home_type"
-                            data={data.home_type}
-                            handleSelect={handleSelect}
-                             />
+                          label="Home Type"
+                          options={houseOptions}
+                          name="home_type"
+                          data={data.home_type}
+                          handleSelect={handleSelect}
+                        />
                     </div>
-                    <div className='col-md-4 mt-2'>
+                    <div className='col-md-4'>
                         <FormInput
-                            type="text"
-                            name="cost"
-                            placeholder="Listing Price"
-                            label="Listing Price"
-                            data={data.cost}
-                            handleChange={handleChange}
-                         />
+                          type="text"
+                          name="cost"
+                          placeholder="Listing Price"
+                          label="Listing Price"
+                          data={data.cost}
+                          handleChange={handleChange}
+                        />
                     </div>
                 </div>
             </div>
             <div className='listing-info shadow'>
-                <h6><span className="text-blue text-bold"><GoLocation /></span>Location of Listing</h6>
+                <div className="text-blue text-bold d-flex">
+                  <GoLocation />
+                  <h6 className='ml-2'>Location of Listing</h6>
+                </div>
                 <div className='row'>
-                    <div className='col-md-6'>
-                         <FormInput
-                            type="text"
-                            name="city"
-                            placeholder="City"
-                            label="City"
-                            data={data.city}
-                            handleChange={handleChange}
-                         />
-                    </div>
-                    <div className='col-md-6'>
-                        <FormInput
-                            type="text"
-                            name="street"
-                            placeholder="Enter Sreet"
-                            label="Listing Street"
-                            data={data.street}
-                            handleChange={handleChange}
-                         />
-                    </div>
-                    <div className='col-md-12'>
-                      {/* <GooglePlaces /> */}
-                    </div>
+                  <div className='col-md-12'>
+                    <GooglePlaces address={address} setAddress={setAddress} coordinates={coordinates} setCoordinates={setCoordinates} />
+                  </div>
+                  <div className='col-md-6'>
+                    <FormInput
+                      type="text"
+                      name="city"
+                      placeholder="City"
+                      label="City"
+                      data={data.city }
+                      handleChange={handleChange}
+                    />
+                  </div>
+                  <div className='col-md-6'>
+                    <FormInput
+                      type="text"
+                      name="country"
+                      placeholder="Enter Country"
+                      label="Listing Country"
+                      data={data.country}
+                      handleChange={handleChange}
+                    />
+                  </div>
                 </div>
             </div>
             <div className='listing-info shadow'>

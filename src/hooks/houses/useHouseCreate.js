@@ -13,6 +13,16 @@ export const useHouseCreate = (urls) => {
   const [error, setError] = useState();
   const [houseloading, setHouseLoading] = useState(false);
 
+  const formatError = (errors) => {
+    errors.forEach((error) => {
+      if (error.toLowerCase().includes('validation')) {
+        error = error.split(':');
+        error = error[1].split(',');
+        setError(error);
+      }
+    })
+  }
+
   const handleCreateHouse = e => {
     e.preventDefault();
 
@@ -26,6 +36,9 @@ const houseData = {
     location: {
         city: data.city,
         street: data.street,
+        lat: data.lat,
+        lng: data.lng,
+        country: data.country
     },
     properties: {
         num_bed_rooms: data.num_bed_rooms,
@@ -40,11 +53,12 @@ const houseData = {
 
     (async() => {
         let res = await postRequestWithToken(houseData, token, MY_HOUSES_URL);
+        console.log(res);
         setHouseLoading(false);
-        if (Object.keys(res).includes('error')) {
-            setError(res['error']);
+        if (res.success) {
+          setResponse(res); 
         }else {
-            setResponse(res);
+          formatError(res['errors']);
         }
       })();
 };

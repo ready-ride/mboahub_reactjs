@@ -14,14 +14,6 @@ export const useFetchHouse = () => {
   useEffect(() => {
       (async() => {
           setHouseLoading(true);
-          // let res = await getRequest(HOUSE_URL);
-          // setHouseLoading(false);
-          // if (Object.keys(res).includes('errors')) {
-          //     setError(res.error);
-          //     error && console.log(error);
-          // }else{
-          //     setHouse(res.house);
-          // }
           try{
             let res = await getRequest(HOUSE_URL);
             setHouseLoading(false);
@@ -31,7 +23,7 @@ export const useFetchHouse = () => {
             setError(e);
           }
         })();
-  }, [house]);
+  }, []);
 
   return { house, houseloading, error };
 };
