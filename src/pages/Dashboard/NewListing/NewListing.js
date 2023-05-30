@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable import/no-named-as-default */
 /* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable prefer-destructuring */

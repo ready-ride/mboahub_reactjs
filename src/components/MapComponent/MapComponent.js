@@ -61,27 +61,24 @@ function MapComponent({
         }}
       >
         {
-          houses && houses.map((house) => {
-            console.log(house);
-            return (
-              <div
-                className="marker-container radius"
-                lat={Number(house.lat)}
-                lng={Number(house.lng)}
-                key={house.id}
-              >
-                <span>
-                  {house.listing_name}
-                </span>
-                <img
-                  alt="house icon"
-                  className="pointer"
-                  width="100%"
-                  src={house.images[1]}
-                />
-              </div>
-            );
-          })
+          houses && houses.map((house) => (
+            <div
+              className="marker-container radius"
+              lat={Number(house.lat)}
+              lng={Number(house.lng)}
+              key={house.id}
+            >
+              <span>
+                {house.listing_name}
+              </span>
+              <img
+                alt="house icon"
+                className="pointer"
+                width="100%"
+                src={house.images[1]}
+              />
+            </div>
+          ))
         }
       </GoogleMapReact>
     </div>
