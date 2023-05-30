@@ -1,0 +1,16 @@
+.map-container {
+  height: '200px';
+  width: '100%';
+  overflow: hidden;
+  z-index: 100;
+}
+.marker-container {
+  position: 'absolute'; transform: 'translate(-50%, -50%)'; 
+  width: 120px;
+  height: 150px;
+  padding: 5px;
+  z-index: 1;
+  &:hover{
+    z-index: 2;
+  }
+}

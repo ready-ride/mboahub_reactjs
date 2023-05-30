@@ -1,16 +1,91 @@
-import React from 'react';
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable import/no-named-as-default */
+/* eslint-disable react/no-unknown-property */
+/* eslint-disable react/prop-types */
+import React, { useState, useEffect } from 'react';
+import GoogleMapReact from 'google-map-react';
+import './MapComponent.scss';
+// import { GoLocation } from 'react-icons/go';
+import mapStyles from './mapStyles';
 
-function MapComponent() {
-    return(
-        <iframe title='map' 
-          src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d63677.41112265173!2d9.715712!3d4.053401599999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2scm!4v1649772269174!5m2!1sen!2scm" 
-          width="100%" 
-          height="800px" 
-          style={{"border":0}} 
-          allowFullScreen="" 
-          referrerPolicy="no-referrer-when-downgrade">
-        </iframe>
-    )
+const houses = [
+  {
+    id: '6c4797bd-a4e3-4593-9daf-212129a86746',
+    listing_name: 'Kimberlie Kling',
+    summary: 'Et culpa nihil. Quaerat amet et. Enim esse ab.',
+    home_type: 'studio',
+    cost: '10000',
+    location: 'Lucioville, 729 Osinski Square',
+    properties: {
+      num_bed_rooms: 1,
+      sitting_room: 3,
+      parking: null,
+      kitchen: 0,
+      fence: false,
+      num_toilets: 2,
+    },
+    published_at: '2023-05-19',
+    images: [
+      'https://homeradar.kwst.net/images/all/9.jpg',
+      'https://homeradar.kwst.net/images/all/9.jpg',
+      'https://homeradar.kwst.net/images/all/9.jpg',
+    ],
+    published_by: 'jj46867538',
+    house_count: 2,
+    email: 'jj46867538@gmail.com',
+    lat: 2.05,
+    lng: 9.05,
+  },
+];
+
+function MapComponent({
+  height, width,
+}) {
+  const [coords, setCoords] = useState({});
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(({ coords: { latitude, longitude } }) => {
+      setCoords({ lat: latitude, lng: longitude });
+    });
+  }, []);
+  return (
+    <div style={{ height: `${height}`, width: `${width}` }}>
+      <GoogleMapReact
+        bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY }}
+        defaultCenter={coords}
+        center={coords}
+        defaultZoom={14}
+        margin={[50, 50, 50, 50]}
+        options={{ disableDefaultUI: true, zoomControl: true, styles: mapStyles }}
+        onChange={(e) => {
+          setCoords({ lat: e.center.lat, lng: e.center.lng });
+        }}
+      >
+        {
+          houses && houses.map((house) => {
+            console.log(house);
+            return (
+              <div
+                className="marker-container radius"
+                lat={Number(house.lat)}
+                lng={Number(house.lng)}
+                key={house.id}
+              >
+                <span>
+                  {house.listing_name}
+                </span>
+                <img
+                  alt="house icon"
+                  className="pointer"
+                  width="100%"
+                  src={house.images[1]}
+                />
+              </div>
+            );
+          })
+        }
+      </GoogleMapReact>
+    </div>
+  );
 }
 
 export default MapComponent;
