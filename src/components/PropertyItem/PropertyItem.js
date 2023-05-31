@@ -14,7 +14,7 @@ import IconBox from '../common/IconBox/IconBox';
 import { costInThousands } from '../../services/utilities';
 
 const PropertyItem = ({ house }) => {
-  const backgroundImage = house?.images[0];
+  const backgroundImage = house.images[0];
 
   return (
     <div className="property-item bg-white rounded shadow my-4">
@@ -29,7 +29,7 @@ const PropertyItem = ({ house }) => {
               <span>
                 <MdLocationOn />
 &nbsp;
-                {house?.location }
+                {house && house.location }
               </span>
             </div>
           </div>
@@ -41,29 +41,29 @@ const PropertyItem = ({ house }) => {
             <div className="up-right-bottom">
               <BiCamera size={20} />
 &nbsp;
-              <span className="bg-primary p-1 text-small rounded">{house?.images?.length}</span>
+              <span className="bg-primary p-1 text-small rounded">{house.images.length || ''}</span>
             </div>
           </div>
         </div>
       </Link>
       <div className="property-item-down bg-white">
         <div className="property__item__down-top">
-          <h4>{house?.listing_name}</h4>
+          <h4>{house.listing_name || ''}</h4>
           <h5>
             FCFA&nbsp;
-            {costInThousands(house?.cost)}
+            {costInThousands(house.cost || '')}
           </h5>
-          <p>{`${house?.summary?.slice(0, 60)}...`}</p>
+          <p>{`${ house && house.summary && house.summary.slice(0, 60)}...`}</p>
           <div className="property-features">
             <span>
               <FaBed size={20} />
 &nbsp;
-              <span className="property-count">{house?.properties?.num_bed_rooms}</span>
+              <span className="property-count">{house && house.properties && house.properties.num_bed_rooms}</span>
             </span>
             <span>
               <FaBath size={20} />
 &nbsp;
-              <span className="property-count">{house?.properties?.num_toilets}</span>
+              <span className="property-count">{house && house.properties && house.properties.num_toilets}</span>
             </span>
             <span>
               <BiCube size={20} />
@@ -76,7 +76,7 @@ const PropertyItem = ({ house }) => {
           <div className="property-poster">
             <h5>
               By&nbsp;
-              {house?.published_by}
+              {house && house.published_by}
             </h5>
           </div>
           <Rating />
