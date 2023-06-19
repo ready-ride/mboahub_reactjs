@@ -1,6 +1,5 @@
 export async function postRequestWithToken(data, token, url) {
   const headers = {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`};
-
   const requestOptions = {
       method: 'POST',
       headers: headers,

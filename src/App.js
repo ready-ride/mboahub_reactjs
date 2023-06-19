@@ -18,7 +18,6 @@ import AllMyListings from './pages/Dashboard/MyListings/AllMyListings';
 import Listingitem from './pages/Dashboard/MyListings/ListingItem';
 import Properties from './pages/Properties/Properties';
 import Navbar from './components/layouts/navbar/navbar';
-;
 
 function App() {
 

@@ -10,6 +10,7 @@ import SmallTextButton from '../../../components/common/Buttons/SmallTextButton/
 import { userLogout } from '../../../services/UserServices';
 
 import './navbar.css';
+import SearchBar from '../../../pages/Properties/SearchBar';
 
 export default function Navbar() {
 
@@ -23,47 +24,50 @@ export default function Navbar() {
   };
 
   return (
-  <nav className="navbar navbar-expand-lg bg-white fixed-top shadow">
-    <div className="container">
-      <Logo />
-      <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span className="navbar-toggler-icon text-blue">
-            <FaBars />
-        </span>
-      </button>
-      <div className="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul className="navbar-nav">
-            <li className="nav-item">
-              <Link to="/" className="nav-link active" aria-current="page">Home</Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/dashboard" className="nav-link">
-                 <SmallTextButton text="Add Listing" icon={<MdOutlineAddCircle />} />
-              </Link>
-            </li>
-            <li className="nav-item dropdown mt-2">
-                {
-                  auth ?
-                  <span role="button" onClick={ handleLogout } className='bg-primary p-2 rounded text-white mx-2'>
-                      <FaUserCircle />&nbsp;
-                      logout
-                  </span>
-                  :
-                  <Link to="/signin" className='mx-2'>
-                      <FaUserCircle />&nbsp;
-                      login
-                  </Link>
-                }
-              <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <li><span className="dropdown-item">Profile</span></li>
-                <li><span className="dropdown-item">Bookings</span></li>
-                <li><span className="dropdown-item">My Houses</span></li>
-                <li><span className="dropdown-item">Logout</span></li>
-              </ul>
-            </li>
-          </ul>
+  <div className='d-flex flex-column fixed-top'>
+    <nav className="navbar navbar-expand-lg bg-white shadow">
+      <div className="container">
+        <Logo />
+        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon text-blue">
+              <FaBars />
+          </span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul className="navbar-nav">
+              <li className="nav-item">
+                <Link to="/" className="nav-link active" aria-current="page">Home</Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/dashboard" className="nav-link">
+                  <SmallTextButton text="Add Listing" icon={<MdOutlineAddCircle />} />
+                </Link>
+              </li>
+              <li className="nav-item dropdown mt-2">
+                  {
+                    auth ?
+                    <span role="button" onClick={ handleLogout } className='bg-primary p-2 rounded text-white mx-2'>
+                        <FaUserCircle />&nbsp;
+                        logout
+                    </span>
+                    :
+                    <Link to="/signin" className='mx-2'>
+                        <FaUserCircle />&nbsp;
+                        login
+                    </Link>
+                  }
+                <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <li><span className="dropdown-item">Profile</span></li>
+                  <li><span className="dropdown-item">Bookings</span></li>
+                  <li><span className="dropdown-item">My Houses</span></li>
+                  <li><span className="dropdown-item">Logout</span></li>
+                </ul>
+              </li>
+            </ul>
+        </div>
       </div>
-    </div>
-  </nav>
+    </nav>
+    {window.location.pathname == '/properties' && <SearchBar />}
+  </div>
   )
 }

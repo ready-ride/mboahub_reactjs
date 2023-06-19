@@ -53,10 +53,11 @@ export const useHouseCreate = (urls) => {
     (async () => {
       const res = await postRequestWithToken(houseData, token, MY_HOUSES_URL);
       setHouseLoading(false);
-      if (res.success) {
+      if (res && res.success) {
+        console.log(res);
         setResponse(res);
       } else {
-        formatError(res.errors);
+        formatError(res && res.errors);
       }
     })();
   };

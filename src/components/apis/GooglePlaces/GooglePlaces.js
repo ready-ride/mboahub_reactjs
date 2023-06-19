@@ -36,13 +36,13 @@ export default function GooglePlaces({ address, setAddress, setCoordinates }) {
               <div>
                 {loading ? <div><Oval color="#00BFFF" height={50} width={50} /></div> : null}
 
-                {suggestions.map((suggestion, i) => {
+                {suggestions.map((suggestion) => {
                   const style = {
                     backgroundColor: suggestion.active ? '#41b6e6' : '#fff',
                   };
 
                   return (
-                    <div key={i} style={style} {...getSuggestionItemProps(suggestion)}>
+                    <div key={suggestion.index} style={style} {...getSuggestionItemProps(suggestion)}>
                       {suggestion.description}
                     </div>
                   );

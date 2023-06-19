@@ -8,38 +8,38 @@ import './MapComponent.scss';
 // import { GoLocation } from 'react-icons/go';
 import mapStyles from './mapStyles';
 
-const houses = [
-  {
-    id: '6c4797bd-a4e3-4593-9daf-212129a86746',
-    listing_name: 'Kimberlie Kling',
-    summary: 'Et culpa nihil. Quaerat amet et. Enim esse ab.',
-    home_type: 'studio',
-    cost: '10000',
-    location: 'Lucioville, 729 Osinski Square',
-    properties: {
-      num_bed_rooms: 1,
-      sitting_room: 3,
-      parking: null,
-      kitchen: 0,
-      fence: false,
-      num_toilets: 2,
-    },
-    published_at: '2023-05-19',
-    images: [
-      'https://homeradar.kwst.net/images/all/9.jpg',
-      'https://homeradar.kwst.net/images/all/9.jpg',
-      'https://homeradar.kwst.net/images/all/9.jpg',
-    ],
-    published_by: 'jj46867538',
-    house_count: 2,
-    email: 'jj46867538@gmail.com',
-    lat: 2.05,
-    lng: 9.05,
-  },
-];
+// const houses = [
+//   {
+//     id: '6c4797bd-a4e3-4593-9daf-212129a86746',
+//     listing_name: 'Kimberlie Kling',
+//     summary: 'Et culpa nihil. Quaerat amet et. Enim esse ab.',
+//     home_type: 'studio',
+//     cost: '10000',
+//     location: 'Lucioville, 729 Osinski Square',
+//     properties: {
+//       num_bed_rooms: 1,
+//       sitting_room: 3,
+//       parking: null,
+//       kitchen: 0,
+//       fence: false,
+//       num_toilets: 2,
+//     },
+//     published_at: '2023-05-19',
+//     images: [
+//       'https://homeradar.kwst.net/images/all/9.jpg',
+//       'https://homeradar.kwst.net/images/all/9.jpg',
+//       'https://homeradar.kwst.net/images/all/9.jpg',
+//     ],
+//     published_by: 'jj46867538',
+//     house_count: 2,
+//     email: 'jj46867538@gmail.com',
+//     lat: 2.05,
+//     lng: 9.05,
+//   },
+// ];
 
 function MapComponent({
-  height, width,
+  height, width, houses
 }) {
   const [coords, setCoords] = useState({});
   useEffect(() => {
