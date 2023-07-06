@@ -35,7 +35,7 @@ function App() {
                 </Route>
                 <Route path='edit_profile' element={<MyProfile />} />
             </Route>
-            <Route path="properties" element={ <Properties /> } />
+            <Route path="properties/:listingName?/:location?/:businessType?" element={ <Properties /> } />
             <Route path="houses/:house_id" element={ <PropertyDetail />} />
         </Routes>
         <ScrollToTop smooth component={<MdArrowDropUp color="#fff" />} style={{"padding": "5px", "background": "#3270FC", "borderRadius": "2px", "boxShadow": "0 4px 2px -2px gray"}}/>

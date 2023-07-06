@@ -6,11 +6,16 @@ import { PageWrapper } from './style';
 import useFetchHouses from '../../hooks/houses/useFetchHouses';
 import PropertyItem from '../../components/PropertyItem/PropertyItem';
 import Footer from '../../components/layouts/Footer/Footer';
+import { useParams } from 'react-router-dom';
 
 const Properties = () => {
   const {
     handlePageClickPrev, handlePageClickNext, numPages, params, houses, houseloading,
   } = useFetchHouses();
+
+  const { listingName, location, businessType } = useParams();
+  console.log(listingName, location, businessType)
+
   return (
     <PageWrapper>
       <div className='row w-100 bg-white' style={{ marginTop: 150, zIndex: -100 }}>
