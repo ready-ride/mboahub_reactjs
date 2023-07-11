@@ -18,11 +18,13 @@ import AllMyListings from './pages/Dashboard/MyListings/AllMyListings';
 import Listingitem from './pages/Dashboard/MyListings/ListingItem';
 import Properties from './pages/Properties/Properties';
 import Navbar from './components/layouts/navbar/navbar';
+import { SearchInputContextProvider } from './contexts/SearchInputContext';
 
 function App() {
 
   return (
     <div className="App">
+      <SearchInputContextProvider>
         <Navbar />
         <Routes>
             <Route path="/" element={ <Home /> } />
@@ -39,6 +41,7 @@ function App() {
             <Route path="houses/:house_id" element={ <PropertyDetail />} />
         </Routes>
         <ScrollToTop smooth component={<MdArrowDropUp color="#fff" />} style={{"padding": "5px", "background": "#3270FC", "borderRadius": "2px", "boxShadow": "0 4px 2px -2px gray"}}/>
+        </SearchInputContextProvider>
     </div>
   );
 }

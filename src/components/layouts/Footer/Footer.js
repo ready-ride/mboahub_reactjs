@@ -57,10 +57,7 @@ function Footer() {
                     </div>
                 </div>
                 <div className='col-sm text-dark-blue'>
-                  <h5 className='my-4 text-bold'>Download our API</h5>
-                  <p className='text-gray mt-4'>
-                     Start working with Homeradar that can provide everything you need
-                  </p>
+                  <h5 className='my-4 text-bold'>Download our APP</h5>
                   <TextButton text="App Store" icon={<AiFillApple />} btnclass="w-100" />
                   <TextButton text="App Store" icon={<FaGooglePlay />} btnclass="w-100" />
                 </div>
