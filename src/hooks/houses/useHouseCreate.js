@@ -14,6 +14,7 @@ export const useHouseCreate = (urls) => {
   const [houseloading, setHouseLoading] = useState(false);
 
   const formatError = (errors) => {
+    console.log(errors)
     errors.forEach((error) => {
       if (error.toLowerCase().includes('validation')) {
         error = error.split(':');
@@ -27,37 +28,15 @@ export const useHouseCreate = (urls) => {
     e.preventDefault();
     setHouseLoading(true);
 
-    const houseData = {
-      listing_name: data.listing_name,
-      summary: data.summary,
-      home_type: data.home_type || '',
-      cost: data.cost,
-      location: {
-        city: data.city,
-        street: data.street,
-        lat: data.lat,
-        lng: data.lng,
-        country: data.country,
-      },
-      properties: {
-        num_bed_rooms: data.num_bed_rooms,
-        sitting_room: data.sitting_room,
-        parking: data.parking,
-        kitchen: data.kitchen,
-        fence: data.fence,
-        num_toilets: data.num_toilets,
-      },
-      images: urls,
-    };
-
+    const houseData = {...data, images: urls};
     (async () => {
       const res = await postRequestWithToken(houseData, token, MY_HOUSES_URL);
       setHouseLoading(false);
       if (res && res.success) {
-        console.log(res);
         setResponse(res);
       } else {
-        formatError(res && res.errors);
+        //formatError(res && res.errors);
+        console.log(res)
       }
     })();
   };

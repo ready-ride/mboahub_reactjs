@@ -43,6 +43,7 @@ function NewListing() {
     { label: 'Apartment', value: 'apartment' },
     { label: 'Villa', value: 'villa' },
     { label: 'Hotel', value: 'hotel' },
+    { label: 'Land', value: 'land' },
   ];
 
   let addressArr = '';
@@ -65,6 +66,17 @@ function NewListing() {
             <span className="text-blue text-bold"><IoMdInformation /></span>
             Basic Informations
           </h6>
+          <div className='row'>
+            <div className="col-md-4 mt-4">
+              <SelectInput
+                label="For sale or rental"
+                options={[{ label: 'Sale or rent', value: '' }, { label: 'For sale', value: 'for_sale' }, { label: 'For rent', value: 'for_rent' }, ]}
+                name="businessType"
+                data={data.businessType}
+                handleSelect={handleSelect}
+              />
+            </div>
+          </div>
           <div className="row">
             <div className="col-md-4">
               <FormInput
@@ -78,7 +90,7 @@ function NewListing() {
             </div>
             <div className="col-md-4 mt-4">
               <SelectInput
-                label="Home Type"
+                label="Property Type"
                 options={houseOptions}
                 name="home_type"
                 data={data.home_type}

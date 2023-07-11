@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { getRequest } from '../../utils/requests';
 import { HOUSES_URL } from '../../routes/server';
 
-export const useFetchHouses = () => {
+export const useFetchHouses = (inputObj) => {
   const [houses, setHouses] = useState();
   const [houseCount, setHouseCount] = useState();
   const [houseloading, setHouseLoading] = useState(false);
@@ -10,23 +10,50 @@ export const useFetchHouses = () => {
   const [params, setParams] = useState({ limit: 6, page: 0 });
 
   const numPages = Math.round(houseCount / params.limit);
-
   useEffect(() => {
     (async () => {
       setHouseLoading(true);
-      const url = `${HOUSES_URL}?limit=${params.limit}&page=${params.page}`;
-
+      let url = `${HOUSES_URL}?limit=${params.limit}&page=${params.page}`;
+     
+      if (inputObj && inputObj.listingName) {
+        url += `&listingName=${inputObj.listingName}`;
+      }
+      if (inputObj && inputObj.location) {
+        url += `&location=${inputObj.location}`
+      }
+      if (inputObj && inputObj.businessType) {
+        url += `&businessType=${inputObj.businessType}`
+      }
+      if (inputObj && inputObj.street) {
+        url += `&street=${inputObj.street}`;
+      }
+      if (inputObj && inputObj.city) {
+        url += `&city=${inputObj.city}`
+      }
+      if (inputObj && inputObj.country) {
+        url += `&country=${inputObj.country}`
+      }
+      if (inputObj && inputObj.homeType) {
+        url += `&homeType=${inputObj.homeType}`
+      } 
+      
       const res = await getRequest(url);
-      if (res.success) {
+      try{
+        if (res.success) {
+          setHouseLoading(false);
+          setHouses(res.data.houses);
+          setHouseCount(res.data.num_houses);
+        } else {
+          setHouseLoading(false);
+          setError(res.errors);
+        }
+      } catch {
         setHouseLoading(false);
-        setHouses(res.data.houses);
-        setHouseCount(res.data.num_houses);
-      } else {
-        setHouseLoading(false);
-        setError(res.errors);
+        setError("a server error occurred");
       }
     })();
-  }, [params]);
+    console.log("houses loaded")
+  }, [params, inputObj]);
 
   function handlePageClickPrev() {
     if (params.page === 0) return;

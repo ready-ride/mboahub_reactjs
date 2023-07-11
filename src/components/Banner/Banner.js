@@ -1,23 +1,15 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BackgroundSlider from 'react-background-slider';
 import { AiOutlineSearch } from 'react-icons/ai';
 import './Banner.css';
-import { PROPERTIES_URL, getPropertiesUrl } from '../../routes/frontend';
+import { PROPERTIES_URL } from '../../routes/frontend';
+import { SearchInputContext } from '../../contexts/SearchInputContext';
 
 function Banner() {
-  const [listingName, setListingName] = useState('');
-  const [location, setLocation] = useState('');
-  const [businessType, setBusinessType] = useState('');
   const navigate = useNavigate();
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-
-    const URL = getPropertiesUrl(listingName, location, businessType);
-
-    navigate(URL);
-  }
+  const {inputObj, setInputObj} = useContext(SearchInputContext);
 
   return (
     <section className='banner-section position-relative'>
@@ -28,15 +20,15 @@ function Banner() {
             <div className='row mb-4'>
                <div className='col-sm-12 col-md-8'>
                   <div className='form-section row'>
-                      <input type="text" value={listingName} onChange={(e) => setListingName(e.target.value)} className='col-md-4' placeholder='What are you looking for?' />
-                      <input type="text" value={location} onChange={(e) => setLocation(e.target.value)} className='col-md-3' placeholder='Where are you looking for?' />
+                      <input type="text" value={inputObj && inputObj.listingName} onChange={(e) => setInputObj({...inputObj, listingName: e.target.value})} className='col-md-4' placeholder='What are you looking for?' />
+                      <input type="text" value={inputObj && inputObj.location} onChange={(e) => setInputObj({...inputObj, location: e.target.value})} className='col-md-3' placeholder='Where are you looking for?' />
                       {/* <SelectInput  name="businessType" options={businessTypeOptions} data={businessType} handleSelect={(e) => setBusinessType(e.target.value)} /> */}
-                      <select value={businessType} onChange={(e) => setBusinessType(e.target.value)} name="businessType" className='col-md-3'>
+                      <select value={inputObj && inputObj.businessType} onChange={(e) => setInputObj({...inputObj, businessType: e.target.value})} name="businessType" className='col-md-3'>
                           <option value="all">All Types</option>
-                          <option value="forRent">For rent</option>
-                          <option value="forSale">For sale</option>
+                          <option value="for_rent">For rent</option>
+                          <option value="for_sale">For sale</option>
                       </select>
-                      <button type='button' onClick={handleSearch} className='bg-primary col-md-2 text-small text-bold text-white'>
+                      <button type='button' onClick={() => navigate(PROPERTIES_URL)} className='bg-primary col-md-2 text-small text-bold text-white'>
                         Search&nbsp;&nbsp;
                         <AiOutlineSearch />
                       </button>
