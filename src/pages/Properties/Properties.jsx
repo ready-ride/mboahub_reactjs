@@ -1,20 +1,19 @@
 /* eslint-disable import/no-named-as-default */
-import React from 'react';
+import React, { useContext } from 'react';
 import 'react-range-slider-input/dist/style.css';
 import { Oval } from 'react-loader-spinner';
 import { PageWrapper } from './style';
 import useFetchHouses from '../../hooks/houses/useFetchHouses';
 import PropertyItem from '../../components/PropertyItem/PropertyItem';
 import Footer from '../../components/layouts/Footer/Footer';
-import { useParams } from 'react-router-dom';
+import { SearchInputContext } from '../../contexts/SearchInputContext';
 
 const Properties = () => {
+  const {inputObj} = useContext(SearchInputContext);
+
   const {
     handlePageClickPrev, handlePageClickNext, numPages, params, houses, houseloading,
-  } = useFetchHouses();
-
-  const { listingName, location, businessType } = useParams();
-  console.log(listingName, location, businessType)
+  } = useFetchHouses(inputObj);
 
   return (
     <PageWrapper>

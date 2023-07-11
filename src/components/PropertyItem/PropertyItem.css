@@ -1,5 +1,6 @@
 .property-item{
     min-width: 250px;
+    max-width: 500px;
     height: 500px;
 }
 
