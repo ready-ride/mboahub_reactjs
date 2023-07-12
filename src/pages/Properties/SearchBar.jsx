@@ -7,9 +7,9 @@ import { SearchInputContext } from '../../contexts/SearchInputContext';
 
 const SearchBar = () => {
   const [street, setStreet] = useState('');
-  const [city, setCity] = useState('All Cities');
-  const [country, setCountry] = useState('All Countries');
-  const [homeType, setHomeType] = useState('All Categories');
+  const [city, setCity] = useState('');
+  const [country, setCountry] = useState('');
+  const [homeType, setHomeType] = useState('');
  // const [value, setValue] = useState([30, 60]);
 
 
@@ -53,7 +53,7 @@ const {inputObj, setInputObj} = useContext(SearchInputContext);
           <FormInput
             type="text"
             name="city"
-            placeholder="City"
+            placeholder="All Cities"
             data={city}
             handleChange={(e) => setCity(e.target.value)}
           />
@@ -62,7 +62,7 @@ const {inputObj, setInputObj} = useContext(SearchInputContext);
           <FormInput
             type="text"
             name="country"
-            placeholder="Country"
+            placeholder="All Countries"
             data={country}
             handleChange={(e) => setCountry(e.target.value)}
           />
