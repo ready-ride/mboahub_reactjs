@@ -24,7 +24,7 @@ import { useFetchHouse } from '../../hooks/houses/useFetchHouse';
 
 function PropertyDetail() {
   const { house } = useFetchHouse();
-  const avatar = '/photos/avatar.png';
+  const avatar = house && house.user.avatar || '/photos/avatar.png';
 
   return (
     <div>
@@ -109,9 +109,9 @@ function PropertyDetail() {
               <div className="agent-photo bg-white rounded shadow p-3 d-flex justify-content-around">
                 <img className="img img-thumbnail" src={`${avatar}`} width="120px" alt="agent" />
                 <div className="text-blue bold text-small">
-                  <h5>{house && house.published_by}</h5>
+                  <h5>{house && house.user.published_by}</h5>
                   <strong>
-                    {house && house.house_count}
+                    {house && house.user.house_count}
 &nbsp;&nbsp;
                     <span className="text-gray">Property Listings</span>
                   </strong>
@@ -120,15 +120,15 @@ function PropertyDetail() {
               </div>
             </div>
             <div className="agent-bottom bg-white shadow rounded-bottom py-4 text-small">
-              <ContactItem icon={<AiOutlinePhone size="20" />} title="Phone" text="+7(123)987654" />
-              <ContactItem icon={<AiOutlineMail size="20" />} title="Mail" text={house && house.email} />
+              <ContactItem icon={<AiOutlinePhone size="20" />} title="Phone" text={house && house.user.phone || "UNAVAILABLE"} />
+              <ContactItem icon={<AiOutlineMail size="20" />} title="Mail" text={house && house.user.email} />
               <div className="pt-3 px-3 border-top">
                 <TextButton text="View Profile" />
               </div>
             </div>
             <div className="mt-4 shadow rounded bg-white">
               <ButtonHeading text="Contact Property" />
-              <ContactForm />
+              <ContactForm ownerId={house && house.user.id} houseId={house && house.id}/>
             </div>
           </div>
         </div>

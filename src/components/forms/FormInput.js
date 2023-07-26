@@ -1,7 +1,7 @@
 import React from 'react';
 import './FormInput.css';
 
-function FormInput({name, type, placeholder, label, data, handleChange, icon}) {
+function FormInput({name, type, placeholder, label, data, handleChange, icon, disabled}) {
   return (
     <div className="form-group my-3">
         {label && <label htmlFor={name} className="text-small text-dark-blue mb-2">{label} &nbsp;</label>}
@@ -12,7 +12,7 @@ function FormInput({name, type, placeholder, label, data, handleChange, icon}) {
               {icon}
              </div>
            }
-           <input type={type} value={data||''} onChange={ handleChange } id={name} name={name} placeholder={placeholder} />
+           <input disabled={disabled} type={type} value={data||''} onChange={ handleChange } id={name} name={name} placeholder={placeholder} />
         </div>
     </div>
   )

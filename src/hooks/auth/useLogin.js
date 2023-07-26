@@ -31,12 +31,11 @@ const handleLogin = e => {
           navigate("/dashboard");
           setLoading(false);
           } else{
-            setErrors(res.errors);
+            setErrors(res.data.errors);
             setLoading(false);
           }
       }catch(e){
         setLoading(false);
-        setErrors(e);
       }
     })();
 };
