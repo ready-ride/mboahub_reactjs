@@ -68,7 +68,6 @@ export const useSingleImageUpload = () => {
     .then(imageUrl => {
        setImageUrl(imageUrl);
        setImageLoading(false);
-       console.log(imageUrl)
     })
     .catch(err => {
         setImageLoading(false);
