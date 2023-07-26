@@ -11,11 +11,32 @@ import { FaUser, FaRegUser, FaBuilding, FaShieldAlt, FaKey } from 'react-icons/f
 import { AiFillInstagram, AiOutlineMail, AiOutlinePhone,AiOutlineLock, AiOutlineUnlock } from 'react-icons/ai';
 import { BsFacebook, BsTwitter } from 'react-icons/bs';
 import TextAreaInput from '../../../components/forms/TextAreaInput';
+import { useUserDetails } from '../../../hooks/auth/useUserDetails';
+import { Oval } from 'react-loader-spinner';
 
 function MyProfile() {
+  const [password, setPassword] = useState({
+    new_password: '',
+    current_password: '',
+    password_confirmation: ''
+  });
+
   const hiddenFileInput = React.useRef(null);
   const hiddenCoverFileInput = React.useRef(null);
-  
+
+  const { 
+      handlePasswordChange, 
+      socialsLoading, 
+      personalInfoLoading, 
+      passwordLoading, 
+      handleChange, 
+      handleSocialsUpdate,
+      handlePersonalInfoUpdate, 
+      errors, 
+      loading, 
+      data 
+    } = useUserDetails();
+
     let token = userStatus();
     token = token && token.token;
 
@@ -40,8 +61,37 @@ function MyProfile() {
     handleCoverImageUpload 
   } = useSingleImageUpload();
 
-  const backgroundImage = 'https://img.freepik.com/free-vector/gradient-dynamic-blue-lines-background_23-2148995756.jpg';
-  const avatar = '/photos/avatar.png'
+  if (imageUrl) {
+    data.image_url = imageUrl;
+  }
+
+  if (imageCoverUrl) {
+    data.image_cover_url = imageCoverUrl;
+  }
+
+  const backgroundImage = data && data.image_cover_url || 'https://img.freepik.com/free-vector/gradient-dynamic-blue-lines-background_23-2148995756.jpg';
+  const avatar = data && data.image_url || '/photos/avatar.png';
+  if (loading) {
+    return <Oval
+            height={80}
+            width={80}
+            color='#3270FC'
+            wrapperStyle={{}}
+            wrapperClass=""
+            visible={true}
+            ariaLabel='oval-loading'
+            secondaryColor="#F5F7FB"
+            strokeWidth={2}
+            strokeWidthSecondary={2}
+          />
+  }
+
+  const handlePassword = (e) => {
+    e.preventDefault();
+    const {current_password, new_password, password_confirmation} = password;
+    handlePasswordChange(current_password, new_password, password_confirmation);
+    setPassword({new_password: '', current_password: '', password_confirmation: ''})
+  };
 
   return (
     <div className='my-profile'>
@@ -58,7 +108,7 @@ function MyProfile() {
                     <div className='avatar-container' style={{backgroundImage: `url(${imageCoverUrl ? imageCoverUrl : backgroundImage})`}}>
                     <div className='bg-light-dark'></div>
                     <div className='agent-avatar'>
-                        <img alt="user avatar" src={`${imageUrl ? imageUrl: avatar}`} width='80px' height='80px' />
+                        <img alt="user avatar" src={`${imageUrl ? imageUrl : avatar}`} width='80px' height='80px' />
                         &nbsp;&nbsp;
                         <span
                             role='button'
@@ -96,14 +146,19 @@ function MyProfile() {
                         <strong className='text-dark-blue text-small p-4'>Personal Info</strong>
                     </div>
                     <div className='perfornal-info-form px-4 pb-4'>
-                        <form>
-                            <FormInput handleChange={''} data={''} name="first_name" type="text" label="First Name" icon={<FaRegUser size={15} />} />
-                            <FormInput handleChange={''} data={''} name="last_name" type="text" label="Last Name" icon={<FaRegUser size={15} />} />
-                            <FormInput handleChange={''} data={''} name="email" type="text" label="Email Address" icon={<AiOutlineMail size={15} />} />
-                            <FormInput handleChange={''} data={''} name="phone" type="text" label="Phone" icon={<AiOutlinePhone size={15} />} />
-                            <FormInput handleChange={''} data={''} name="agency" type="text" label="Agency" icon={<FaBuilding size={15} />} />
-                            <TextAreaInput name="about_me" label="About Me" data={''} handleChange={''} />
-                            <button className='text-white bg-blue py-2 px-4 mt-4 rounded'>Save changes</button>
+                        <form onSubmit={handlePersonalInfoUpdate}>
+                            <FormInput handleChange={handleChange} data={data && data.first_name} name="first_name" type="text" label="First Name" icon={<FaRegUser size={15} />} />
+                            <FormInput handleChange={handleChange} data={data && data.last_name} name="last_name" type="text" label="Last Name" icon={<FaRegUser size={15} />} />
+                            <FormInput handleChange={handleChange} data={data && data.email} disabled name="email" type="text" label="Email Address" icon={<AiOutlineMail size={15} />} />
+                            <FormInput handleChange={handleChange} data={data && data.street} name="street" type="text" label="Address" icon={<AiOutlineMail size={15} />} />
+                            <FormInput handleChange={handleChange} data={data && data.city} name="City" type="text" label="City" icon={<AiOutlineMail size={15} />} />
+                            <FormInput handleChange={handleChange} data={data && data.country} name="country" type="text" label="Country" icon={<AiOutlineMail size={15} />} />
+                            <FormInput handleChange={handleChange} data={data && data.phone} name="phone" type="text" label="Phone" icon={<AiOutlinePhone size={15} />} />
+                            <FormInput handleChange={handleChange} data={data && data.agency} name="agency" type="text" label="Agency" icon={<FaBuilding size={15} />} />
+                            <TextAreaInput name="about" label="About Me" data={data && data.about} handleChange={handleChange} />
+                            <button type="submit" className='text-white bg-primary py-2 px-4 mt-4 rounded'>
+                              { personalInfoLoading ? 'Saving ...' : 'Save changes' }
+                            </button>
                         </form>
                     </div>
                 </div>
@@ -119,11 +174,14 @@ function MyProfile() {
                             </strong>
                         </div>
                         <div className='perfornal-info-form px-4 pb-4'>
-                            <form>
-                                <FormInput handleChange={''} data={''} name="current_password" type="text" label="Current Password" icon={<AiOutlineUnlock size={15} />} />
-                                <FormInput handleChange={''} data={''} name="new_password" type="text" label="New Password" icon={<AiOutlineLock size={15} />} />
-                                <FormInput handleChange={''} data={''} name="confirm_password" type="text" label="Confirm Password" icon={<FaShieldAlt size={15} />} />
-                                <button className='text-white bg-blue py-2 px-4 mt-3 rounded'>Save changes</button>
+                            <form onSubmit={handlePassword}>
+                                <FormInput handleChange={(e) => setPassword({...password, current_password: e.target.value})} data={password.current_password} name="current_password" type="password" label="Current Password" icon={<AiOutlineUnlock size={15} />} />
+                                <FormInput handleChange={(e) => setPassword({...password, new_password: e.target.value})} data={password.new_password} name="new_password" type="password" label="New Password" icon={<AiOutlineLock size={15} />} />
+                                <FormInput handleChange={(e) => setPassword({...password, password_confirmation: e.target.value})} data={password.password_confirmation} name="password_confirmation" type="password" label="Confirm Password" icon={<FaShieldAlt size={15} />} />
+                                <button type="submit" className='text-white bg-primary py-2 px-4 mt-3 rounded'>
+                                {passwordLoading ? 'Saving...' : 'Save changes' }
+                                </button>
+                                {errors && <p className='text-danger'>{errors}</p> }
                             </form>
                         </div>
                     </div>
@@ -134,11 +192,13 @@ function MyProfile() {
                             <strong className='text-dark-blue text-small'>Your Socials</strong>
                         </div>
                         <div className='perfornal-info-form px-4 pb-4'>
-                            <form>
-                                <FormInput handleChange={''} data={''} name="facebook" type="text" label="Facebook" icon={<BsFacebook size={15} />} />
-                                <FormInput handleChange={''} data={''} name="twitter" type="text" label="Twitter" icon={<BsTwitter size={15} />} />
-                                <FormInput handleChange={''} data={''} name="instagram" type="text" label="Instagram" icon={<AiFillInstagram size={15} />} />
-                                <button className='text-white bg-blue py-2 px-4 mt-3 rounded'>Save changes</button>
+                            <form onSubmit={handleSocialsUpdate}>
+                                <FormInput handleChange={handleChange} data={data && data.facebook_url} name="facebook_url" type="text" label="Facebook" icon={<BsFacebook size={15} />} />
+                                <FormInput handleChange={handleChange} data={data && data.twitter_url} name="twitter_url" type="text" label="Twitter" icon={<BsTwitter size={15} />} />
+                                <FormInput handleChange={handleChange} data={data && data.instagram_url} name="instagram_url" type="text" label="Instagram" icon={<AiFillInstagram size={15} />} />
+                                <button type="submit" className='text-white bg-primary py-2 px-4 mt-3 rounded'>
+                                {socialsLoading ? 'Saving...' : 'Save changes' }
+                                </button>
                             </form>
                         </div>
                     </div>
