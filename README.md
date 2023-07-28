@@ -1,70 +1,97 @@
-# Getting Started with Create React App
+# Mboahub Frontend - Real Estate Marketplace
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Mboahub Logo](mboahub_landing_page.png)
 
-## Available Scripts
+Mboahub is a cutting-edge Real Estate Marketplace built with React.js, utilizing modern technologies such as hooks, context API, and fetch to interact with the backend API. The application aims to provide an intuitive and seamless experience for users looking to buy, sell, or rent properties.
 
-In the project directory, you can run:
+## Table of Contents
 
-### `npm start`
+- [Features](#features)
+- [Installation](#installation)
+- [Technologies Used](#technologies-used)
+- [Getting Started](#getting-started)
+- [API Integration](#api-integration)
+- [Contributing](#contributing)
+- [License](#license)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- User-friendly interface for easy property search and listing
+- Advanced search filters to refine property searches
+- Secure user authentication and authorization
+- Interactive property details with images, descriptions, and amenities
+- Property favoriting and bookmarking
+- Real-time notifications for new properties and updates
+- Responsive design for seamless usage on various devices
+- Efficient state management using React hooks and context API
 
-### `npm test`
+## Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Before running the application, make sure you have Node.js and npm installed on your system.
 
-### `npm run build`
+1. Clone the repository:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+git clone https://github.com/ngodi/mboahub_reactjs.git
+cd mboahub_reactjs
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. Install dependencies:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+npm install
+```
 
-### `npm run eject`
+3. Configure the backend API URL:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+   Open the `.env` file and replace the value of `REACT_APP_BACKEND_API_URL` with the URL of the backend API.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4. Run the development server:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+npm start
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Visit `http://localhost:3000` in your browser to access the application.
 
-## Learn More
+## Technologies Used
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- React.js: Frontend JavaScript library for building user interfaces
+- React Hooks: To add state and lifecycle features to functional components
+- React Context API: For global state management across components
+- Fetch API: For making HTTP requests to the backend API
+- Bootstrap: For responsive and modern UI components
+- React Router: For handling navigation and routing
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Getting Started
 
-### Code Splitting
+Follow these steps to get started with contributing or using the Mboahub Frontend:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+1. **Fork** the repository from the official Mboahub Frontend repository on GitHub.
+2. **Clone** your forked repository to your local development environment.
+3. Create a new branch for your feature or bug fix:
+   ```bash
+   git checkout -b feature/new-feature
+   ```
+4. Implement your changes and **commit** them with descriptive commit messages.
+5. **Push** your changes to your forked repository on GitHub:
+   ```bash
+   git push origin feature/new-feature
+   ```
+6. Open a **pull request** in the official Mboahub Frontend repository and describe your changes.
 
-### Analyzing the Bundle Size
+## API Integration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+The Mboahub Frontend interacts with the Mboahub Backend API to fetch property data, user information, and other relevant data. The backend API should be up and running for the frontend to function correctly.
 
-### Making a Progressive Web App
+Please refer to the [Mboahub Backend API documentation](https://api.mboahub.com/docs) for details on how to set up and use the API.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Contributing
 
-### Advanced Configuration
+We welcome contributions from the community to enhance Mboahub Frontend. To contribute, follow the steps mentioned in the [Getting Started](#getting-started) section. Be sure to read our [Contribution Guidelines](CONTRIBUTING.md) before submitting a pull request.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## License
 
-### Deployment
+Mboahub Frontend is distributed under the [MIT License](LICENSE).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+For any questions or issues, please contact the Mboahub team at albertngodi@gmail.com. Happy coding!
