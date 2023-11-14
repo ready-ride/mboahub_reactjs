@@ -7,9 +7,9 @@ import LatestProperty from '../../components/LatestProperty/LatestProperty';
 import WhyUsSection from './WhyUsSection/WhyUsSection';
 
 import './home.css';
-import BestCities from './BestCities/BestCities';
-import PropertyAgentSection from '../../components/PropertyAgent/PropertyAgentSection';
-import CountSection from './CountSection/CountSection';
+//import BestCities from './BestCities/BestCities';
+//import PropertyAgentSection from '../../components/PropertyAgent/PropertyAgentSection';
+//import CountSection from './CountSection/CountSection';
 import TestimonialSection from './TestimonialSection/TestimonialSection';
 import NewsLetterSection from './NewsLetterSection/NewsLetterSection';
 import Footer from '../../components/layouts/Footer/Footer';
@@ -22,9 +22,9 @@ export const Home = () => (
     <LatestProperty />
     <MapComponent />
     <WhyUsSection />
-    <BestCities />
-    <PropertyAgentSection />
-    <CountSection />
+    {/* <BestCities /> */}
+    {/* <PropertyAgentSection /> */}
+    {/* <CountSection /> */}
     <TestimonialSection />
     <NewsLetterSection />
     <Footer />

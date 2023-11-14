@@ -7,7 +7,7 @@ export const useFetchHouses = (inputObj) => {
   const [houseCount, setHouseCount] = useState();
   const [houseloading, setHouseLoading] = useState(false);
   const [error, setError] = useState();
-  const [params, setParams] = useState({ limit: 6, page: 0 });
+  const [params, setParams] = useState({ limit: 10, page: 0 });
 
   const numPages = Math.round(houseCount / params.limit);
   useEffect(() => {
