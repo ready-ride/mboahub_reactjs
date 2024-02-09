@@ -19,6 +19,7 @@ import Listingitem from './pages/Dashboard/MyListings/ListingItem';
 import Properties from './pages/Properties/Properties';
 import Navbar from './components/layouts/navbar/navbar';
 import { SearchInputContextProvider } from './contexts/SearchInputContext';
+import BottomNav from './components/layouts/BottomNav/BottomNav';
 
 function App() {
 
@@ -40,6 +41,7 @@ function App() {
             <Route path="properties/:listingName?/:location?/:businessType?" element={ <Properties /> } />
             <Route path="houses/:house_id" element={ <PropertyDetail />} />
         </Routes>
+        <BottomNav />
         <ScrollToTop smooth component={<MdArrowDropUp color="#fff" />} style={{"padding": "5px", "background": "#3270FC", "borderRadius": "2px", "boxShadow": "0 4px 2px -2px gray"}}/>
         </SearchInputContextProvider>
     </div>
