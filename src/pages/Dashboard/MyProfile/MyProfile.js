@@ -37,6 +37,15 @@ function MyProfile() {
       data 
     } = useUserDetails();
 
+    const { 
+      imageUrl, 
+      imageLoading, 
+      imageCoverUrl, 
+      imageCoverLoading, 
+      handleImageUpload, 
+      handleCoverImageUpload 
+    } = useSingleImageUpload();
+
     let token = userStatus();
     token = token && token.token;
 
@@ -51,15 +60,6 @@ function MyProfile() {
   const handleCoverClick = event => {
     hiddenCoverFileInput.current.click();
   }
-
-  const { 
-    imageUrl, 
-    imageLoading, 
-    imageCoverUrl, 
-    imageCoverLoading, 
-    handleImageUpload, 
-    handleCoverImageUpload 
-  } = useSingleImageUpload();
 
   if (imageUrl) {
     data.image_url = imageUrl;

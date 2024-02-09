@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import { MdOutlineAddCircle } from 'react-icons/md';
-import { FaUserCircle, FaBars } from 'react-icons/fa'
+import { FaUserCircle } from 'react-icons/fa'
 
 import Logo from '../../../components/common/Logo/Logo';
 import SmallTextButton from '../../../components/common/Buttons/SmallTextButton/SmallTextButton';
@@ -28,12 +28,7 @@ export default function Navbar() {
     <nav className="navbar navbar-expand-lg bg-white shadow">
       <div className="container">
         <Logo />
-        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon text-blue">
-              <FaBars />
-          </span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarNavDropdown">
+        <div className="collapse navbar-collapse">
             <ul className="navbar-nav">
               <li className="nav-item">
                 <Link to="/" className="nav-link active" aria-current="page">Home</Link>
@@ -56,12 +51,6 @@ export default function Navbar() {
                         login
                     </Link>
                   }
-                <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <li><span className="dropdown-item">Profile</span></li>
-                  <li><span className="dropdown-item">Bookings</span></li>
-                  <li><span className="dropdown-item">My Houses</span></li>
-                  <li><span className="dropdown-item">Logout</span></li>
-                </ul>
               </li>
             </ul>
         </div>
