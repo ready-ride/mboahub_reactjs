@@ -13,7 +13,7 @@ import MapComponent from '../../../components/MapComponent/MapComponent';
 import { useFetchHouse } from '../../../hooks/houses/useFetchHouse';
 
 function Listingitem() {
-  const { house, houseloading, error } = useFetchHouse();
+  const { house } = useFetchHouse();
   return (
     <div>
         <Navbar />

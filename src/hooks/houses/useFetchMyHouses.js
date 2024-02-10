@@ -23,7 +23,7 @@ export const useFetchMyHouses = () => {
               setHouses(res);
           }
         })();
-  }, []);
+  }, [error, token]);
 
   return { houses, houseloading, error };
 }

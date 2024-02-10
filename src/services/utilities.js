@@ -1,3 +1,3 @@
-export const costInThousands = cost => {
-   return parseInt(cost).toLocaleString();
-};
+export const costInThousands = (cost) => {
+  return parseInt(cost).toLocaleString()
+}

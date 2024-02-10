@@ -1,20 +1,19 @@
-import React, { Component } from 'react';
-import { Oval } from 'react-loader-spinner';
-
+import React, { Component } from 'react'
+import { Oval } from 'react-loader-spinner'
 
 export class FallBack extends Component {
   render() {
     return (
-      <div style={{width: '100vw', height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-         <Oval
+      <div style={{ width: '100vw', height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <Oval
           height={80}
           width={80}
           color='#3270FC'
           wrapperStyle={{}}
-          wrapperClass=""
-          visible={true}
+          wrapperClass=''
+          visible
           ariaLabel='oval-loading'
-          secondaryColor="#F5F7FB"
+          secondaryColor='#F5F7FB'
           strokeWidth={2}
           strokeWidthSecondary={2}
         />
@@ -23,4 +22,4 @@ export class FallBack extends Component {
   }
 }
 
-export default FallBack;
+export default FallBack
