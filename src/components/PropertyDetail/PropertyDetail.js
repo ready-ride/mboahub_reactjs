@@ -24,7 +24,7 @@ import { useFetchHouse } from '../../hooks/houses/useFetchHouse';
 
 function PropertyDetail() {
   const { house } = useFetchHouse();
-  const avatar = house && house.user.avatar || '/photos/avatar.png';
+  const avatar = house?.user?.avatar || '/photos/avatar.png';
 
   return (
     <div>
@@ -120,8 +120,8 @@ function PropertyDetail() {
               </div>
             </div>
             <div className="agent-bottom bg-white shadow rounded-bottom py-4 text-small">
-              <ContactItem icon={<AiOutlinePhone size="20" />} title="Phone" text={house && house.user.phone || "UNAVAILABLE"} />
-              <ContactItem icon={<AiOutlineMail size="20" />} title="Mail" text={house && house.user.email} />
+              <ContactItem icon={<AiOutlinePhone size="20" />} title="Phone" text={house?.user?.phone || "UNAVAILABLE"} />
+              <ContactItem icon={<AiOutlineMail size="20" />} title="Mail" text={house?.user?.email} />
               <div className="pt-3 px-3 border-top">
                 <TextButton text="View Profile" />
               </div>

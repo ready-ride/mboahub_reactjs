@@ -23,7 +23,7 @@ export const useFetchHouse = () => {
             setError(e);
           }
         })();
-  }, []);
+  }, [HOUSE_URL]);
 
   return { house, houseloading, error };
 };

@@ -13,17 +13,6 @@ export const useHouseCreate = (urls) => {
   const [error, setError] = useState();
   const [houseloading, setHouseLoading] = useState(false);
 
-  const formatError = (errors) => {
-    console.log(errors)
-    errors.forEach((error) => {
-      if (error.toLowerCase().includes('validation')) {
-        error = error.split(':');
-        error = error[1].split(',');
-        setError(error);
-      }
-    });
-  };
-
   const handleCreateHouse = (e) => {
     e.preventDefault();
     setHouseLoading(true);
@@ -36,7 +25,7 @@ export const useHouseCreate = (urls) => {
         setResponse(res);
       } else {
         //formatError(res && res.errors);
-        console.log(res)
+        setError(res.errors)
       }
     })();
   };

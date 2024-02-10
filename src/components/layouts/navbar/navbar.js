@@ -56,7 +56,7 @@ export default function Navbar() {
         </div>
       </div>
     </nav>
-    {window.location.pathname == '/properties' && <SearchBar />}
+    {window.location.pathname === '/properties' && <SearchBar />}
   </div>
   )
 }

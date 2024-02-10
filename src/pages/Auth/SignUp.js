@@ -6,7 +6,7 @@ import './SignInSignUp.css';
 import { useSignUp } from '../../hooks/auth/useSignUp';
 
 const SignUp = () => {
-  const { handleSignup, handleChange, response, loading, errors, setResponse, data } = useSignUp();
+  const { handleSignup, handleChange, loading, errors, data } = useSignUp();
 
   return (
     <div className='col-md-12'>

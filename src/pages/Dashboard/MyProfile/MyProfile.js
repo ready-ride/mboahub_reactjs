@@ -69,8 +69,8 @@ function MyProfile() {
     data.image_cover_url = imageCoverUrl;
   }
 
-  const backgroundImage = data && data.image_cover_url || 'https://img.freepik.com/free-vector/gradient-dynamic-blue-lines-background_23-2148995756.jpg';
-  const avatar = data && data.image_url || '/photos/avatar.png';
+  const backgroundImage = data?.image_cover_url || 'https://img.freepik.com/free-vector/gradient-dynamic-blue-lines-background_23-2148995756.jpg';
+  const avatar = data?.image_url || '/photos/avatar.png';
   if (loading) {
     return <Oval
             height={80}

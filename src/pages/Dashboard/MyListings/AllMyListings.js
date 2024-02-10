@@ -1,21 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 import LocationInfo from '../../../components/common/LocationInfo/LocationInfo';
 import Rating from '../../../components/common/Rating/Rating';
-
 import { Oval} from  'react-loader-spinner'
-
-import { userStatus } from '../../../services/UserServices';
-
 import { MdOutlineDeleteForever } from 'react-icons/md';
 import { FiEdit } from 'react-icons/fi';
 import { useFetchMyHouses } from '../../../hooks/houses/useFetchMyHouses';
 
 function AllMyListings() {
-    let token = userStatus();
-    token = token && token.token;
-    const { houses, houseloading, error } = useFetchMyHouses();
+    const { houses, houseloading } = useFetchMyHouses();
 
   return (
     <div>
