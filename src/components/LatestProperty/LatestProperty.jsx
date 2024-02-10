@@ -10,17 +10,20 @@ import PropertyItem from '../PropertyItem/PropertyItem'
 
 import './LatestProperty.css'
 import { useFetchHouses } from '../../hooks/houses/useFetchHouses'
+import { ALL, FOR_RENT, FOR_SALE } from '../../constants/houseDetails'
 
 function LatestProperty() {
-  const [item, setItem] = useState('all')
+  const [item, setItem] = useState(ALL)
 
   const navigate = useNavigate()
 
   const { houses, houseloading } = useFetchHouses()
 
-  const allStyle = item === 'all' ? 'latest-property-header-item-active' : 'latest-property-header-item'
-  const forSaleStyle = item === 'for_sale' ? 'latest-property-header-item-active' : 'latest-property-header-item'
-  const forRent = item === 'for_rent' ? 'latest-property-header-item-active' : 'latest-property-header-item'
+  const allStyle = item === ALL ? 'latest-property-header-item-active' : 'latest-property-header-item'
+  const forSaleStyle = item === FOR_SALE ? 'latest-property-header-item-active' : 'latest-property-header-item'
+  const forRent = item === FOR_RENT ? 'latest-property-header-item-active' : 'latest-property-header-item'
+
+  const allProperties = (item === ALL)? houses : houses?.filter((property) => property.business_type === item)
 
   return (
     <div className='latest-property'>
@@ -32,13 +35,13 @@ function LatestProperty() {
             <span className='secondary-heading'>Latest Properties</span>
           </div>
           <div className='latest-property-header-right my-2 rounded'>
-            <span onClick={() => setItem('all')} className={allStyle}>
+            <span onClick={() => setItem(ALL)} className={allStyle}>
               All Categories
             </span>
-            <span onClick={() => setItem('for_sale')} className={forSaleStyle}>
+            <span onClick={() => setItem(FOR_SALE)} className={forSaleStyle}>
               For Sale
             </span>
-            <span onClick={() => setItem('for_rent')} className={forRent}>
+            <span onClick={() => setItem(FOR_RENT)} className={forRent}>
               For rent
             </span>
           </div>
@@ -49,8 +52,8 @@ function LatestProperty() {
               <Oval color='#00BFFF' height={200} width={200} />
             </div>
           ) : (
-            houses &&
-            houses.map(
+            allProperties &&
+            allProperties.map(
               (house, i) =>
                 i < 8 && (
                   <div key={i} className='col-sm'>
