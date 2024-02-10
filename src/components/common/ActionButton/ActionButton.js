@@ -1,16 +1,16 @@
-import React from 'react';
-import './ActionButton.css';
+import React from 'react'
+import './ActionButton.css'
 
-import { FcShare } from 'react-icons/fc';
+import { FcShare } from 'react-icons/fc'
 
-function ActionButton({text}) {
+function ActionButton({ text }) {
   return (
     <button>
-        <FcShare />
-        &nbsp;&nbsp;
-        <span>{text}</span>
+      <FcShare />
+      &nbsp;&nbsp;
+      <span>{text}</span>
     </button>
   )
 }
 
-export default ActionButton;
+export default ActionButton
