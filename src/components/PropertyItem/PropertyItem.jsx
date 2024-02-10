@@ -12,6 +12,7 @@ import PropertyType from '../common/PropertyType/PropertyType'
 import Rating from '../common/Rating/Rating'
 import IconBox from '../common/IconBox/IconBox'
 import { costInThousands } from '../../services/utilities'
+import { BUSINESS_TYPE_OBJECT, PROPERTY_TYPE_OBJECT } from '../../constants/houseDetails'
 
 const PropertyItem = ({ house }) => {
   const backgroundImage = house.images[0]
@@ -22,8 +23,8 @@ const PropertyItem = ({ house }) => {
         <div className='property-item-up' style={{ backgroundImage: `url(${backgroundImage})` }}>
           <div className='property-item-up-left'>
             <div className='up-left-top'>
-              <PropertyType type='Sale' />
-              <PropertyType type='Apartment' />
+              <PropertyType type={BUSINESS_TYPE_OBJECT[house.business_type]} />
+              <PropertyType type={PROPERTY_TYPE_OBJECT[house.home_type]} />
             </div>
             <div className='up-left-bottom'>
               <span>
