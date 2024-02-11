@@ -17,7 +17,7 @@ function WhyUsSection() {
       <div className='why-us-section mx-4 d-flex align-items-center justify-content-between'>
         <div>
           <div className='secondary-heading'>Why Choose Our Properties</div>
-          <div className='tertiary-heading'>Check video presentation to find out more about us .</div>
+          <div className='tertiary-heading'>Find out more about us.</div>
           <WhyUsSectionItem title='24 Hours Support' content={twentyFourSupport} icon={<BiSupport size='30' />} />
           <WhyUsSectionItem title='User Admin Panel' content={userAdminPanel} icon={<BiSupport size='30' />} />
           <WhyUsSectionItem title='Secure Payments Panel' content={securePayments} icon={<BiSupport size='30' />} />

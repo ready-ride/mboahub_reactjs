@@ -25,11 +25,13 @@ function Footer() {
       <div className='container'>
         <div className='upper-footer row'>
           <div className='col-sm'>
-            <Logo text='MboaHub Inc' />
-            <p className='text-gray mt-4'>
+            <Logo />
+            <br />
+            {/* <p className='text-gray mt-4'>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar.
-            </p>
+            </p> */}
             <div className='open-hours'>
+              <h5>Open Hours</h5>
               <strong className='text-blue text-dark-blue'>
                 Monday - Friday: <span className='text-blue'>8am - 6pm</span>
               </strong>
@@ -38,8 +40,15 @@ function Footer() {
                 Saturday - Sunday: <span className='text-blue'>9am - 3pm</span>
               </strong>
             </div>
+            <br />
+            <div className='d-flex justify-content-start'>
+              <IconBox icon={<AiFillFacebook size={20} />} bg_color='#2270FC' text_color='#FFFFFF' icon_size='m-1 p-1' />
+              <IconBox icon={<AiOutlineTwitter size={20} />} bg_color='#2270FC' text_color='#FFFFFF' icon_size='m-1 p-1' />
+              <IconBox icon={<AiFillInstagram size={20} />} bg_color='#2270FC' text_color='#FFFFFF' icon_size='m-1 p-1' />
+              <IconBox icon={<AiFillLinkedin size={20} />} bg_color='#2270FC' text_color='#FFFFFF' icon_size='m-1 p-1' />
+            </div>
           </div>
-          <div className='col-sm text-dark-blue'>
+          {/* <div className='col-sm text-dark-blue'>
             <h5 className='my-4 text-bold'>Helpful links</h5>
             <ul className='helpful-links'>
               <li>About Our Company</li>
@@ -48,27 +57,24 @@ function Footer() {
               <li className='mt-1'>Contacts</li>
               <li>Help Center</li>
             </ul>
+          </div> */}
+          <div className='col-sm text-dark-blue'>
+            <br /><br /> <br />
+            <h5 className='mt-2 my-2 text-bold'>Contact Info</h5>
+            <ContactItem icon={<AiOutlineMail size='20' />} text='yourmail@domain.com' />
+            <ContactItem icon={<MdOutlineLocationOn size='20' />} text='USA 27TH Brooklyn NY' />
+            <ContactItem icon={<AiOutlinePhone size='20' />} text='+7(111)123456789' />
           </div>
           <div className='col-sm text-dark-blue'>
-            <h5 className='my-4 text-bold'>Contact Info</h5>
-            <ContactItem icon={<AiOutlineMail size='20' />} title='Mail' text='yourmail@domain.com' />
-            <ContactItem icon={<MdOutlineLocationOn size='20' />} title='Adress' text='USA 27TH Brooklyn NY' />
-            <ContactItem icon={<AiOutlinePhone size='20' />} title='Phone' text='+7(111)123456789' />
-            <div className='d-flex justify-content-between'>
-              <IconBox icon={<AiFillFacebook size={30} />} bg_color='#2270FC' text_color='#FFFFFF' icon_size='m-1 p-1' />
-              <IconBox icon={<AiOutlineTwitter size={30} />} bg_color='#2270FC' text_color='#FFFFFF' icon_size='m-1 p-1' />
-              <IconBox icon={<AiFillInstagram size={30} />} bg_color='#2270FC' text_color='#FFFFFF' icon_size='m-1 p-1' />
-              <IconBox icon={<AiFillLinkedin size={30} />} bg_color='#2270FC' text_color='#FFFFFF' icon_size='m-1 p-1' />
-            </div>
-          </div>
-          <div className='col-sm text-dark-blue'>
-            <h5 className='my-4 text-bold'>Download our APP</h5>
+            <br /><br /><br />
+            <h5 className='mt-2 text-bold'>Download our APP</h5>
             <TextButton text='App Store' icon={<AiFillApple />} btnclass='w-100' />
             <TextButton text='App Store' icon={<FaGooglePlay />} btnclass='w-100' />
           </div>
         </div>
       </div>
       <div className='lower-footer bg-gray'>
+        <br /><br /><br />
         <div className='container pt-4 d-flex-between-center text-bold text-small'>
           <span className='text-dark-blue'>&copy;&nbsp;MboaHub 2022&nbsp;.All rights reserved.</span>
           <div className='text-blue'>

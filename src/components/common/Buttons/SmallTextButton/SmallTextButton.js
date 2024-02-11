@@ -1,11 +1,11 @@
 import React from 'react'
 import './SmallTextButton.scss'
 
-function SmallTextButton({ text, classes, icon }) {
+function SmallTextButton({ text, classes, icon, handleClick }) {
   return (
-    <span className={`small-text-button ${classes}`}>
+    <button onClick={handleClick} className={`small-text-button ${classes}`}>
       {icon}&nbsp;&nbsp;{text}
-    </span>
+    </button>
   )
 }
 

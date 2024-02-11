@@ -48,3 +48,15 @@
     padding-top: 20px;
 }
 
+
+@media screen and (max-width: 600px) {
+  .agent-listing {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .property-agent{
+    width: 90vw;
+    min-width: 300px;
+  }
+}
