@@ -35,3 +35,14 @@
     flex-direction: column;
     align-items: flex-start;
 }
+
+@media screen and (max-width: 600px) {
+  .best-cities {
+    flex-direction: column;
+  }
+
+  .best-city-content, .best-city-menu {
+    width: 95vw;
+    height: 400px;
+  }
+}
