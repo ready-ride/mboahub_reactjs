@@ -8,18 +8,18 @@ import { MdArrowDropUp } from 'react-icons/md'
 
 import { Home } from './pages/home/home'
 
-import SignInSignUp from './pages/Auth/SignInSignUp'
-import Dashboard from './pages/Dashboard/Dashboard'
-import PropertyDetail from './components/PropertyDetail/PropertyDetail'
-import NewListing from './pages/Dashboard/NewListing/NewListing'
-import MyListings from './pages/Dashboard/MyListings/MyListings'
-import MyProfile from './pages/Dashboard/MyProfile/MyProfile'
-import AllMyListings from './pages/Dashboard/MyListings/AllMyListings'
-import Listingitem from './pages/Dashboard/MyListings/ListingItem'
-import Properties from './pages/Properties/Properties'
-import Navbar from './components/layouts/navbar/navbar'
-import { SearchInputContextProvider } from './contexts/SearchInputContext'
-import BottomNav from './components/layouts/BottomNav/BottomNav'
+import SignInSignUp from './pages/Auth/SignInSignUp';
+import Dashboard from './pages/Dashboard/Dashboard';
+import PropertyDetail from './components/PropertyDetail/PropertyDetail';
+import NewListing from './pages/Dashboard/NewListing/NewListing';
+import MyListings from './pages/Dashboard/MyListings/MyListings';
+import MyProfile from './pages/Dashboard/MyProfile/MyProfile';
+import AllMyListings from './pages/Dashboard/MyListings/AllMyListings';
+import Listingitem from './pages/Dashboard/MyListings/ListingItem';
+import Properties from './pages/Properties/Properties';
+import Navbar from './components/layouts/navbar/navbar';
+import { SearchInputContextProvider } from './contexts/SearchInputContext';
+import BottomNav from './components/layouts/BottomNav/BottomNav';
 
 function App() {
   return (
@@ -41,12 +41,8 @@ function App() {
           <Route path='houses/:house_id' element={<PropertyDetail />} />
         </Routes>
         <BottomNav />
-        <ScrollToTop
-          smooth
-          component={<MdArrowDropUp color='#fff' />}
-          style={{ padding: '5px', background: '#3270FC', borderRadius: '2px', boxShadow: '0 4px 2px -2px gray' }}
-        />
-      </SearchInputContextProvider>
+        <ScrollToTop smooth component={<MdArrowDropUp color="#fff" />} style={{"padding": "5px", "background": "#3270FC", "borderRadius": "2px", "boxShadow": "0 4px 2px -2px gray"}}/>
+        </SearchInputContextProvider>
     </div>
   )
 }

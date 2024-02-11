@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
-import { MdOutlineAddCircle } from 'react-icons/md'
+import { MdOutlineAddCircle } from 'react-icons/md';
 import { FaUserCircle } from 'react-icons/fa'
 
 import Logo from '../../common/Logo/Logo'
@@ -23,34 +23,33 @@ export default function Navbar() {
   }
 
   return (
-    <div className='d-flex flex-column fixed-top'>
-      <nav className='navbar navbar-expand-lg bg-white shadow'>
-        <div className='container'>
-          <Logo />
-          <div className='collapse navbar-collapse'>
-            <ul className='navbar-nav'>
-              <li className='nav-item'>
-                <Link to='/' className='nav-link active' aria-current='page'>
-                  Home
+  <div className='d-flex flex-column fixed-top'>
+    <nav className="navbar navbar-expand-lg bg-white shadow">
+      <div className="container">
+        <Logo />
+        <div className="collapse navbar-collapse">
+            <ul className="navbar-nav">
+              <li className="nav-item">
+                <Link to="/" className="nav-link active" aria-current="page">Home</Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/dashboard" className="nav-link">
+                  <SmallTextButton text="Add Listing" icon={<MdOutlineAddCircle />} />
                 </Link>
               </li>
-              <li className='nav-item'>
-                <Link to='/dashboard' className='nav-link'>
-                  <SmallTextButton text='Add Listing' icon={<MdOutlineAddCircle />} />
-                </Link>
-              </li>
-              <li className='nav-item dropdown mt-2'>
-                {auth ? (
-                  <span role='button' onClick={handleLogout} className='bg-primary p-2 rounded text-white mx-2'>
-                    <FaUserCircle />
-                    &nbsp; logout
-                  </span>
-                ) : (
-                  <Link to='/signin' className='mx-2'>
-                    <FaUserCircle />
-                    &nbsp; login
-                  </Link>
-                )}
+              <li className="nav-item dropdown mt-2">
+                  {
+                    auth ?
+                    <span role="button" onClick={ handleLogout } className='bg-primary p-2 rounded text-white mx-2'>
+                        <FaUserCircle />&nbsp;
+                        logout
+                    </span>
+                    :
+                    <Link to="/signin" className='mx-2'>
+                        <FaUserCircle />&nbsp;
+                        login
+                    </Link>
+                  }
               </li>
             </ul>
           </div>

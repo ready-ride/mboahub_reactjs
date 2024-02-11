@@ -37,10 +37,17 @@ function MyProfile() {
     data
   } = useUserDetails()
 
-  const { imageUrl, imageLoading, imageCoverUrl, imageCoverLoading, handleImageUpload, handleCoverImageUpload } = useSingleImageUpload()
+    const { 
+      imageUrl, 
+      imageLoading, 
+      imageCoverUrl, 
+      imageCoverLoading, 
+      handleImageUpload, 
+      handleCoverImageUpload 
+    } = useSingleImageUpload();
 
-  let token = userStatus()
-  token = token && token.token
+    let token = userStatus();
+    token = token && token.token;
 
   if (!token) {
     return <Navigate to='/signin' />
