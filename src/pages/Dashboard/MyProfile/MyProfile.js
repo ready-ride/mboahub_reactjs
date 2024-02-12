@@ -100,7 +100,7 @@ function MyProfile() {
     <div className='my-profile'>
       <strong className='text-dark-blue mb-4'>EDIT PROFILE</strong>
       <hr />
-      <div className='d-flex-between-start'>
+      <div className='d-flex-between-start my-profile-container'>
         <div className='my-profile-left-container'>
           <div className='my-profile-left'>
             <strong className='d-flex align-items-center text-blue'>

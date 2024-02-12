@@ -1,0 +1,27 @@
+.hamburger-menu {
+  z-index: 100;
+  width: 100%;
+  position: fixed;
+  height: 87vh;
+  margin: 0 auto;
+  margin-top: -15px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  animation: slideInAnimation 0.5s ease;
+}
+
+.hamburger-menu > * {
+  width: 80vw;
+  height: 50px;
+  padding-left: 40px;
+  padding-top: 10px;
+  border-bottom: 1px solid lightgray;
+  cursor: pointer;
+}
+
+@keyframes slideInAnimation {
+  from { left: -50%; }
+  to {left: 0%;}
+}

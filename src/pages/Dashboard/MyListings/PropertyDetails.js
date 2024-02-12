@@ -12,7 +12,7 @@ import MapComponent from '../../../components/MapComponent/MapComponent'
 
 import { useFetchHouse } from '../../../hooks/houses/useFetchHouse'
 
-function Listingitem() {
+function PropertyDetails() {
   const { house } = useFetchHouse()
   return (
     <div>
@@ -83,4 +83,4 @@ function Listingitem() {
   )
 }
 
-export default Listingitem
+export default PropertyDetails

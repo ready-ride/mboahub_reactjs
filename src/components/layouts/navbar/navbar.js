@@ -1,26 +1,15 @@
-import React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-
-import { MdOutlineAddCircle } from 'react-icons/md';
+import React, { useContext } from 'react'
+import { Link } from 'react-router-dom'
 import { FaUserCircle } from 'react-icons/fa'
 
-import Logo from '../../common/Logo/Logo'
-import SmallTextButton from '../../common/Buttons/SmallTextButton/SmallTextButton'
-
-import { userLogout } from '../../../services/UserServices'
-
+import Logo from '../../common/Logo/Logo';
 import './navbar.css'
 import SearchBar from '../../../pages/Properties/SearchBar'
+import { ADMIN_DASHBOARD_URL, HOME_URL } from '../../../routes/frontend';
+import { UserContext } from '../../../contexts/UserContext';
 
 export default function Navbar() {
-  const auth = JSON.parse(localStorage.getItem('login'))
-
-  const navigate = useNavigate()
-
-  const handleLogout = () => {
-    userLogout()
-    navigate('/')
-  }
+  const { isAdmin } = useContext(UserContext);
 
   return (
   <div className='d-flex flex-column fixed-top'>
@@ -30,27 +19,17 @@ export default function Navbar() {
         <div className="collapse navbar-collapse">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <Link to="/" className="nav-link active" aria-current="page">Home</Link>
+                <Link to={HOME_URL} className="nav-link active" aria-current="page">Home</Link>
               </li>
-              <li className="nav-item">
-                <Link to="/dashboard" className="nav-link">
-                  <SmallTextButton text="Add Listing" icon={<MdOutlineAddCircle />} />
+              {
+                isAdmin &&
+                <li className="nav-item dropdown mt-2">
+                <Link to={ADMIN_DASHBOARD_URL} className='mx-2'>
+                    <FaUserCircle />&nbsp;
+                    Dashboard
                 </Link>
               </li>
-              <li className="nav-item dropdown mt-2">
-                  {
-                    auth ?
-                    <span role="button" onClick={ handleLogout } className='bg-primary p-2 rounded text-white mx-2'>
-                        <FaUserCircle />&nbsp;
-                        logout
-                    </span>
-                    :
-                    <Link to="/signin" className='mx-2'>
-                        <FaUserCircle />&nbsp;
-                        login
-                    </Link>
-                  }
-              </li>
+              }
             </ul>
           </div>
         </div>
