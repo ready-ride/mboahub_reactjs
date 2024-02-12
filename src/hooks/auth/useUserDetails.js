@@ -1,54 +1,57 @@
-import { useState, useEffect } from 'react'
-import { PASSWORD_UPDATE_URL, USER_DETAILS_URL } from '../../routes/server'
-import { getRequestWithToken, putRequestWithToken } from '../../utils/requests'
+/* eslint-disable no-param-reassign */
+/* eslint-disable camelcase */
+/* eslint-disable import/prefer-default-export */
+import { useState, useEffect } from 'react';
+import { PASSWORD_UPDATE_URL, USER_DETAILS_URL } from '../../routes/server';
+import { getRequestWithToken, putRequestWithToken } from '../../utils/requests';
 
 export const useUserDetails = () => {
-  const [errors, setErrors] = useState()
-  const [loading, setLoading] = useState(false)
-  const [data, setData] = useState(null)
-  const [passwordLoading, setPasswordLoading] = useState(false)
-  const [personalInfoLoading, setPersonalInfoLoading] = useState(false)
-  const [socialsLoading, setSocialsLoading] = useState(false)
+  const [errors, setErrors] = useState();
+  const [loading, setLoading] = useState(false);
+  const [data, setData] = useState(null);
+  const [passwordLoading, setPasswordLoading] = useState(false);
+  const [personalInfoLoading, setPersonalInfoLoading] = useState(false);
+  const [socialsLoading, setSocialsLoading] = useState(false);
 
-  const { token } = JSON.parse(localStorage.getItem('login'))
+  const { token } = JSON.parse(localStorage.getItem('login'));
   if (!token) {
-    localStorage.removeItem('login')
+    localStorage.removeItem('login');
   }
 
   const formatError = (errors) => {
     errors.forEach((error) => {
       if (error.toLowerCase().includes('validation')) {
-        error = error.split(':')
-        error = error[1].split(',')
-        setErrors(error)
+        error = error.split(':');
+        error = error[1].split(',');
+        setErrors(error);
       }
-    })
-  }
+    });
+  };
 
   useEffect(() => {
-    setLoading(true)
-    ;(async () => {
+    setLoading(true);
+    (async () => {
       try {
-        const res = await getRequestWithToken(token, USER_DETAILS_URL)
+        const res = await getRequestWithToken(token, USER_DETAILS_URL);
         if (res.success) {
-          setData(res.data)
-          setLoading(false)
+          setData(res.data);
+          setLoading(false);
         } else {
-          formatError(res.errors)
-          setLoading(false)
+          formatError(res.errors);
+          setLoading(false);
         }
       } catch (e) {
-        setLoading(false)
+        setLoading(false);
       }
-    })()
-  }, [token])
+    })();
+  }, [token]);
 
   const handleUpdate = (e, next) => {
     const updateData = {
       address: {
         city: data.city || '',
         street: data.street || '',
-        country: data.country || ''
+        country: data.country || '',
       },
       personal: {
         first_name: data.first_name || '',
@@ -60,67 +63,66 @@ export const useUserDetails = () => {
         facebook_url: data.facebook_url || '',
         twitter_url: data.twitter_url || '',
         instagram_url: data.instagram_url || '',
-        about: data.about || ''
-      }
-    }
-    e.preventDefault()
-    next(true)
-    ;(async () => {
+        about: data.about || '',
+      },
+    };
+    e.preventDefault();
+    next(true);
+    (async () => {
       try {
-        const res = await putRequestWithToken(updateData, token, USER_DETAILS_URL)
+        const res = await putRequestWithToken(updateData, token, USER_DETAILS_URL);
         if (res.success) {
-          setData(res.data)
-          next(false)
+          setData(res.data);
+          next(false);
         } else {
-          formatError(res.errors)
-          next(false)
+          formatError(res.errors);
+          next(false);
         }
       } catch (e) {
-        next(false)
+        next(false);
       }
-    })()
-  }
+    })();
+  };
 
   const handleSocialsUpdate = (e) => {
-    handleUpdate(e, setSocialsLoading)
-  }
+    handleUpdate(e, setSocialsLoading);
+  };
 
   const handlePersonalInfoUpdate = (e) => {
-    handleUpdate(e, setPersonalInfoLoading)
-  }
+    handleUpdate(e, setPersonalInfoLoading);
+  };
 
   const handlePasswordChange = (current_password, new_password, password_confirmation) => {
-    setPasswordLoading(true)
+    setPasswordLoading(true);
     const updateData = {
       current_password,
       password: new_password,
-      password_confirmation
-    }
+      password_confirmation,
+    };
 
-    console.log(updateData)
-    ;(async () => {
+    (async () => {
       try {
-        const res = await putRequestWithToken(updateData, token, PASSWORD_UPDATE_URL)
+        const res = await putRequestWithToken(updateData, token, PASSWORD_UPDATE_URL);
         if (res.success) {
-          setData(res.data)
-          setPasswordLoading(false)
+          setData(res.data);
+          setPasswordLoading(false);
         } else {
-          formatError(res.errors)
-          setPasswordLoading(false)
+          formatError(res.errors);
+          setPasswordLoading(false);
         }
       } catch (e) {
-        setPasswordLoading(false)
+        setPasswordLoading(false);
       }
-    })()
-  }
+    })();
+  };
 
   const handleChange = (e) => {
-    const { name, value } = e.target
+    const { name, value } = e.target;
     setData((prevState) => ({
       ...prevState,
-      [name]: value
-    }))
-  }
+      [name]: value,
+    }));
+  };
 
   return {
     handlePasswordChange,
@@ -132,6 +134,6 @@ export const useUserDetails = () => {
     passwordLoading,
     errors,
     loading,
-    data
-  }
-}
+    data,
+  };
+};

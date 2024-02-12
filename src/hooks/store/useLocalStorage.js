@@ -1,22 +1,20 @@
-import { AUTH_TOKEN } from "../../constants/auth";
+import { AUTH_TOKEN } from '../../constants/auth';
 
 const useLocalStorage = () => {
   const setAuthToken = (token) => {
-  localStorage.setItem(AUTH_TOKEN, JSON.stringify(token));
+    localStorage.setItem(AUTH_TOKEN, JSON.stringify(token));
   };
 
-  const getAuthToken = () => {
-  return JSON.parse(localStorage.getItem(AUTH_TOKEN))
-  };
+  const getAuthToken = () => JSON.parse(localStorage.getItem(AUTH_TOKEN));
 
   const removeAuthToken = () => {
-  localStorage.removeItem(AUTH_TOKEN);
+    localStorage.removeItem(AUTH_TOKEN);
   };
   return {
     setAuthToken,
     getAuthToken,
-    removeAuthToken
-  }
-}
+    removeAuthToken,
+  };
+};
 
 export default useLocalStorage;

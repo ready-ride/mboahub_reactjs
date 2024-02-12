@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { createContext, useState } from 'react';
 
 export const MenuContext = createContext();
@@ -9,5 +10,5 @@ export const MenuProvider = ({ children }) => {
     <MenuContext.Provider value={{ showMenu, setShowMenu }}>
       {children}
     </MenuContext.Provider>
-  )
-}
+  );
+};

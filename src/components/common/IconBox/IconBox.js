@@ -1,11 +1,14 @@
-import React from 'react'
+/* eslint-disable react/prop-types */
+import React from 'react';
 
-function IconBox({ icon, text_color, bg_color, icon_size }) {
+function IconBox({
+  icon, textColor, bgColor, iconSize,
+}) {
   return (
-    <div style={{ color: `${text_color}`, background: `${bg_color}` }} className={`rounded ${icon_size}`}>
+    <div style={{ color: `${textColor}`, background: `${bgColor}` }} className={`rounded ${iconSize}`}>
       {icon}
     </div>
-  )
+  );
 }
 
-export default IconBox
+export default IconBox;

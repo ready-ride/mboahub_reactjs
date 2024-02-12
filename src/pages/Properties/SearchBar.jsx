@@ -1,18 +1,18 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState } from 'react';
 // import RangeSlider from 'react-range-slider-input';
-import { AiOutlineSearch } from 'react-icons/ai'
-import FormInput from '../../components/forms/FormInput'
-import SelectInput from '../../components/forms/SelectInput'
-import { SearchInputContext } from '../../contexts/SearchInputContext'
+import { AiOutlineSearch } from 'react-icons/ai';
+import FormInput from '../../components/forms/FormInput';
+import SelectInput from '../../components/forms/SelectInput';
+import { SearchInputContext } from '../../contexts/SearchInputContext';
 
 const SearchBar = () => {
-  const [street, setStreet] = useState('')
-  const [city, setCity] = useState('')
-  const [country, setCountry] = useState('')
-  const [homeType, setHomeType] = useState('')
+  const [street, setStreet] = useState('');
+  const [city, setCity] = useState('');
+  const [country, setCountry] = useState('');
+  const [homeType, setHomeType] = useState('');
   // const [value, setValue] = useState([30, 60]);
 
-  const { inputObj, setInputObj } = useContext(SearchInputContext)
+  const { inputObj, setInputObj } = useContext(SearchInputContext);
 
   const houseOptions = [
     { label: 'Select house type', value: '' },
@@ -20,44 +20,46 @@ const SearchBar = () => {
     { label: 'Studio', value: 'studio' },
     { label: 'Apartment', value: 'apartment' },
     { label: 'Villa', value: 'villa' },
-    { label: 'Hotel', value: 'hotel' }
-  ]
+    { label: 'Hotel', value: 'hotel' },
+  ];
 
   const filterHouse = (e) => {
-    e.preventDefault()
-    setInputObj({ ...inputObj, city, street, country, homeType })
-  }
+    e.preventDefault();
+    setInputObj({
+      ...inputObj, city, street, country, homeType,
+    });
+  };
 
   return (
-    <div className='row w-100 bg-white'>
-      <div className='col-md-12'>
-        <div className='d-flex align-items-center'>
-          <strong className='mx-4 mt-2'>Search:</strong>
-          <div className='col-md-2 mt-2 mx-2'>
+    <div className="row w-100 bg-white">
+      <div className="col-md-12">
+        <div className="d-flex align-items-center">
+          <strong className="mx-4 mt-2">Search:</strong>
+          <div className="col-md-2 mt-2 mx-2">
             <FormInput
-              type='text'
-              name='street'
-              placeholder='Street address'
+              type="text"
+              name="street"
+              placeholder="Street address"
               data={street}
               handleChange={(e) => setStreet(e.target.value)}
             />
           </div>
-          <div className='col-md-2 mt-2 mx-2'>
-            <FormInput type='text' name='city' placeholder='All Cities' data={city} handleChange={(e) => setCity(e.target.value)} />
+          <div className="col-md-2 mt-2 mx-2">
+            <FormInput type="text" name="city" placeholder="All Cities" data={city} handleChange={(e) => setCity(e.target.value)} />
           </div>
-          <div className='col-md-2 mt-2 mx-2'>
+          <div className="col-md-2 mt-2 mx-2">
             <FormInput
-              type='text'
-              name='country'
-              placeholder='All Countries'
+              type="text"
+              name="country"
+              placeholder="All Countries"
               data={country}
               handleChange={(e) => setCountry(e.target.value)}
             />
           </div>
-          <div className='col-md-2 mt-2 mx-2'>
-            <SelectInput options={houseOptions} name='homeType' data={homeType} handleSelect={(e) => setHomeType(e.target.value)} />
+          <div className="col-md-2 mt-2 mx-2">
+            <SelectInput options={houseOptions} name="homeType" data={homeType} handleSelect={(e) => setHomeType(e.target.value)} />
           </div>
-          <button type='button' onClick={filterHouse} className='bg-primary rounded py-2 col-md-2 text-small text-bold text-white'>
+          <button type="button" onClick={filterHouse} className="bg-primary rounded py-2 col-md-2 text-small text-bold text-white">
             Search&nbsp;&nbsp;
             <AiOutlineSearch />
             {/* <RangeSlider value={value} onInput={setValue} /> */}
@@ -65,7 +67,7 @@ const SearchBar = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default SearchBar
+export default SearchBar;

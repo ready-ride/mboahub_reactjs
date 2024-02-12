@@ -1,10 +1,11 @@
-export const PROPERTIES_URL = '/properties'
+/* eslint-disable no-param-reassign */
+export const PROPERTIES_URL = '/properties';
 export const getPropertiesUrl = (listingName, location, businessType) => {
-  listingName = listingName ? `/${listingName}` : ''
-  location = location ? `/${location}` : ''
-  businessType = businessType ? `/${businessType}` : ''
+  listingName = listingName ? `/${listingName}` : '';
+  location = location ? `/${location}` : '';
+  businessType = businessType ? `/${businessType}` : '';
 
-  return `${PROPERTIES_URL}${listingName}${location}${businessType}`
+  return `${PROPERTIES_URL}${listingName}${location}${businessType}`;
 };
 
 export const ADMIN_DASHBOARD_URL = '/dashboard';

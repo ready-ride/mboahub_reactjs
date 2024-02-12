@@ -1,25 +1,29 @@
-import React, { Component } from 'react'
-import { Oval } from 'react-loader-spinner'
+/* eslint-disable react/prefer-stateless-function */
+import React, { Component } from 'react';
+import { Oval } from 'react-loader-spinner';
 
 export class FallBack extends Component {
   render() {
     return (
-      <div style={{ width: '100vw', height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <div style={{
+        width: '100vw', height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center',
+      }}
+      >
         <Oval
           height={80}
           width={80}
-          color='#3270FC'
+          color="#3270FC"
           wrapperStyle={{}}
-          wrapperClass=''
+          wrapperClass=""
           visible
-          ariaLabel='oval-loading'
-          secondaryColor='#F5F7FB'
+          ariaLabel="oval-loading"
+          secondaryColor="#F5F7FB"
           strokeWidth={2}
           strokeWidthSecondary={2}
         />
       </div>
-    )
+    );
   }
 }
 
-export default FallBack
+export default FallBack;

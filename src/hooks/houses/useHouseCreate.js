@@ -1,50 +1,50 @@
 /* eslint-disable no-param-reassign */
-import { useState } from 'react'
-import { postRequestWithToken } from '../../utils/requests'
-import { MY_HOUSES_URL } from '../../routes/server'
-import { userStatus } from '../../services/UserServices'
+import { useState } from 'react';
+import { postRequestWithToken } from '../../utils/requests';
+import { MY_HOUSES_URL } from '../../routes/server';
+import { userStatus } from '../../services/UserServices';
 
 export const useHouseCreate = (urls) => {
-  let token = userStatus()
-  token = token && token.token
+  let token = userStatus();
+  token = token && token.token;
 
-  const [data, setData] = useState({})
-  const [response, setResponse] = useState()
-  const [error, setError] = useState()
-  const [houseloading, setHouseLoading] = useState(false)
+  const [data, setData] = useState({});
+  const [response, setResponse] = useState();
+  const [error, setError] = useState();
+  const [houseloading, setHouseLoading] = useState(false);
 
   const handleCreateHouse = (e) => {
-    e.preventDefault()
-    setHouseLoading(true)
+    e.preventDefault();
+    setHouseLoading(true);
 
-    const houseData = { ...data, images: urls }
-    ;(async () => {
-      const res = await postRequestWithToken(houseData, token, MY_HOUSES_URL)
-      setHouseLoading(false)
+    const houseData = { ...data, images: urls };
+    (async () => {
+      const res = await postRequestWithToken(houseData, token, MY_HOUSES_URL);
+      setHouseLoading(false);
       if (res && res.success) {
-        setResponse(res)
+        setResponse(res);
       } else {
         // formatError(res && res.errors);
-        setError(res.errors)
+        setError(res.errors);
       }
-    })()
-  }
+    })();
+  };
 
   const handleChange = (e) => {
-    const { name, value } = e.target
+    const { name, value } = e.target;
     setData((prevState) => ({
       ...prevState,
-      [name]: value
-    }))
-  }
+      [name]: value,
+    }));
+  };
 
   const handleSelect = (e) => {
-    const { name, value } = e.target
+    const { name, value } = e.target;
     setData((prevState) => ({
       ...prevState,
-      [name]: value
-    }))
-  }
+      [name]: value,
+    }));
+  };
 
   return {
     handleChange,
@@ -53,8 +53,8 @@ export const useHouseCreate = (urls) => {
     error,
     houseloading,
     response,
-    data
-  }
-}
+    data,
+  };
+};
 
-export default useHouseCreate
+export default useHouseCreate;
