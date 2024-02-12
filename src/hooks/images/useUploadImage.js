@@ -1,94 +1,103 @@
-import { useState } from 'react'
+/* eslint-disable no-console */
+/* eslint-disable no-unused-vars */
+import { useState } from 'react';
 
 export const useUploadImage = () => {
-  const [files, setFiles] = useState('')
-  const [urls, setUrls] = useState([])
-  const [imageLoading, setImageLoading] = useState(false)
+  const [files, setFiles] = useState('');
+  const [urls, setUrls] = useState([]);
+  const [imageLoading, setImageLoading] = useState(false);
 
   const uploadImage = (e) => {
-    setImageLoading(true)
-    e.preventDefault()
+    setImageLoading(true);
+    e.preventDefault();
     Object.entries(files).map((image) => {
-      const data = new FormData()
-      data.append('file', image[1])
-      data.append('upload_preset', process.env.REACT_APP_HOUSE_PRESET)
-      data.append('cloud_name', process.env.REACT_APP_CLOUDINARY_NAME)
+      const data = new FormData();
+      data.append('file', image[1]);
+      data.append('upload_preset', process.env.REACT_APP_HOUSE_PRESET);
+      data.append('cloud_name', process.env.REACT_APP_CLOUDINARY_NAME);
 
       fetch(process.env.REACT_APP_CLOUDINARY_URL, { method: 'post', body: data })
         .then((resp) => resp.json())
         .then((data) => {
-          setUrls((prevState) => [...prevState, data.url])
+          setUrls((prevState) => [...prevState, data.url]);
         })
-        .catch((err) => console.log(err))
+        .catch((err) => console.log(err));
 
-      return 0
-    })
+      return 0;
+    });
 
-    setImageLoading(false)
-    setFiles('')
-  }
+    setImageLoading(false);
+    setFiles('');
+  };
 
   const handleFileChange = (e) => {
-    setFiles(e.target.files)
-  }
+    setFiles(e.target.files);
+  };
 
-  return { files, urls, imageLoading, handleFileChange, uploadImage }
-}
+  return {
+    files, urls, imageLoading, handleFileChange, uploadImage,
+  };
+};
 
 export const useSingleImageUpload = () => {
-  const [imageUrl, setImageUrl] = useState()
-  const [imageLoading, setImageLoading] = useState(false)
+  const [imageUrl, setImageUrl] = useState();
+  const [imageLoading, setImageLoading] = useState(false);
 
-  const [imageCoverUrl, setImageCoverUrl] = useState()
-  const [imageCoverLoading, setImageCoverLoading] = useState(false)
+  const [imageCoverUrl, setImageCoverUrl] = useState();
+  const [imageCoverLoading, setImageCoverLoading] = useState(false);
 
   const imageUpload = (imageFile) => {
-    const data = new FormData()
-    data.append('file', imageFile)
-    data.append('upload_preset', process.env.REACT_APP_USER_PRESET)
-    data.append('cloud_name', process.env.REACT_APP_CLOUDINARY_NAME)
+    const data = new FormData();
+    data.append('file', imageFile);
+    data.append('upload_preset', process.env.REACT_APP_USER_PRESET);
+    data.append('cloud_name', process.env.REACT_APP_CLOUDINARY_NAME);
 
     const res = fetch(process.env.REACT_APP_CLOUDINARY_URL, {
       method: 'post',
-      body: data
+      body: data,
     })
       .then((resp) => resp.json())
       .then((data) => data.url)
-      .catch((err) => err)
+      .catch((err) => err);
 
-    return res
-  }
+    return res;
+  };
 
   const handleImageUpload = (event) => {
-    setImageLoading(true)
-    const fileImage = event.target.files[0]
+    setImageLoading(true);
+    const fileImage = event.target.files[0];
 
     imageUpload(fileImage)
       .then((imageUrl) => {
-        setImageUrl(imageUrl)
-        setImageLoading(false)
+        setImageUrl(imageUrl);
+        setImageLoading(false);
       })
       .catch((err) => {
-        setImageLoading(false)
-        console.log(err)
-      })
-  }
+        setImageLoading(false);
+        console.log(err);
+      });
+  };
 
   const handleCoverImageUpload = (event) => {
-    setImageCoverLoading(true)
-    const fileImage = event.target.files[0]
+    setImageCoverLoading(true);
+    const fileImage = event.target.files[0];
 
     imageUpload(fileImage)
       .then((imageUrl) => {
-        setImageCoverUrl(imageUrl)
-        setImageCoverLoading(false)
-        console.log(imageUrl)
+        setImageCoverUrl(imageUrl);
+        setImageCoverLoading(false);
       })
       .catch((err) => {
-        setImageCoverLoading(false)
-        console.log(err)
-      })
-  }
+        setImageCoverLoading(false);
+      });
+  };
 
-  return { imageUrl, imageLoading, imageCoverUrl, imageCoverLoading, handleImageUpload, handleCoverImageUpload }
-}
+  return {
+    imageUrl,
+    imageLoading,
+    imageCoverUrl,
+    imageCoverLoading,
+    handleImageUpload,
+    handleCoverImageUpload,
+  };
+};

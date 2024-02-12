@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { createContext } from 'react';
 import useLocalStorage from '../hooks/store/useLocalStorage';
 
@@ -12,5 +13,5 @@ export const UserProvider = ({ children }) => {
     <UserContext.Provider value={{ isLoggedIn, isAdmin }}>
       {children}
     </UserContext.Provider>
-  )
-}
+  );
+};

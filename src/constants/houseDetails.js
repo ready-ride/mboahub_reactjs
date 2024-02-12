@@ -14,5 +14,5 @@ export const ROOM = 'room';
 export const PROPERTY_TYPE_OBJECT = {
   [APARTMENT]: 'Apartment',
   [STUDIO]: 'Studio',
-  [ROOM]: 'Room'
+  [ROOM]: 'Room',
 };

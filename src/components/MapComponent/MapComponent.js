@@ -2,11 +2,11 @@
 /* eslint-disable import/no-named-as-default */
 /* eslint-disable react/no-unknown-property */
 /* eslint-disable react/prop-types */
-import React, { useState, useEffect } from 'react'
-import GoogleMapReact from 'google-map-react'
-import './MapComponent.scss'
+import React, { useState, useEffect } from 'react';
+import GoogleMapReact from 'google-map-react';
+import './MapComponent.scss';
 // import { GoLocation } from 'react-icons/go';
-import mapStyles from './mapStyles'
+import mapStyles from './mapStyles';
 
 // const houses = [
 //   {
@@ -39,12 +39,12 @@ import mapStyles from './mapStyles'
 // ];
 
 function MapComponent({ height, width, houses }) {
-  const [coords, setCoords] = useState({})
+  const [coords, setCoords] = useState({});
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(({ coords: { latitude, longitude } }) => {
-      setCoords({ lat: latitude, lng: longitude })
-    })
-  }, [])
+      setCoords({ lat: latitude, lng: longitude });
+    });
+  }, []);
   return (
     <div style={{ height: `${height}`, width: `${width}` }}>
       <GoogleMapReact
@@ -55,19 +55,19 @@ function MapComponent({ height, width, houses }) {
         margin={[50, 50, 50, 50]}
         options={{ disableDefaultUI: true, zoomControl: true, styles: mapStyles }}
         onChange={(e) => {
-          setCoords({ lat: e.center.lat, lng: e.center.lng })
+          setCoords({ lat: e.center.lat, lng: e.center.lng });
         }}
       >
-        {houses &&
-          houses.map((house) => (
-            <div className='marker-container radius' lat={Number(house.lat)} lng={Number(house.lng)} key={house.id}>
+        {houses
+          && houses.map((house) => (
+            <div className="marker-container radius" lat={Number(house.lat)} lng={Number(house.lng)} key={house.id}>
               <span>{house.listing_name}</span>
-              <img alt='house icon' className='pointer' width='100%' src={house.images[1]} />
+              <img alt="house icon" className="pointer" width="100%" src={house.images[1]} />
             </div>
           ))}
       </GoogleMapReact>
     </div>
-  )
+  );
 }
 
-export default MapComponent
+export default MapComponent;
