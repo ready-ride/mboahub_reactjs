@@ -1,48 +1,57 @@
-import React, { useState } from 'react';
-import { FaUserCircle, FaHome } from 'react-icons/fa';
-import { MdAddCircle } from "react-icons/md";
+import React, { useContext } from 'react';
+import { FaHome } from 'react-icons/fa';
+import { MdAddCircle, MdOutlineMenuOpen, MdRealEstateAgent } from "react-icons/md";
 import './styles.css';
-import { Link, useNavigate } from 'react-router-dom';
-import { userLogout } from '../../../services/UserServices';
+import { Link } from 'react-router-dom';
+import { UserContext } from '../../../contexts/UserContext';
+import { ADMIN_DASHBOARD_URL, HOME_URL, PROPERTIES_URL } from '../../../routes/frontend';
+import { MenuContext } from '../../../contexts/MenuContext';
+import { inLocation } from '../../../utils/functions';
 
 const BottomNav = () => {
-  const [show, setShow] = useState(false);
+  const { isLoggedIn } = useContext(UserContext);
+  const { setShowMenu } = useContext(MenuContext);
 
-  const navigate = useNavigate();
-  let auth = JSON.parse(localStorage.getItem('login'));
-
-  const handleLogout = () => {
-    userLogout();
-    setShow(false);
-    navigate("/");
+  const handleShowMenu = () => {
+    if (inLocation(ADMIN_DASHBOARD_URL)) {
+      setShowMenu(true)
+    } else {
+      return
+    }
   };
 
   return (
-    <nav className='bottom-nav' onMouseLeave={() => setShow(false)}>
+    <nav className='bottom-nav'>
       <ul>
         <li>
-          <Link to="/">
+          <Link to={HOME_URL}>
             <FaHome size={30} />
             <span>Home</span>
           </Link>
         </li>
-        <li>
-          <Link to="/dashboard">
+        {
+          isLoggedIn &&
+          <li>
+          <Link to={`${ADMIN_DASHBOARD_URL}/new_listing`}>
             <MdAddCircle size={30} />
             <span>New</span>
           </Link>
         </li>
-        <li className='signin-wrapper' onMouseOver={() => setShow(true)}>
-           { show && 
-             <div className='sub-menu-nav' onMouseLeave={() => setShow(false)}>
-                <span onClick={() => setShow(false)}><Link to="/dashboard">Dashboard</Link></span>
-                { auth? <span onClick={ handleLogout } >Logout</span> : <span><Link to="/signin">Login</Link></span>}
-             </div>
-           }
-            <Link to=''>
-              <FaUserCircle size={30} />
-              <span>User</span>
-            </Link>
+        }
+        {
+          !isLoggedIn &&
+        <li>
+          <Link to={PROPERTIES_URL}>
+            <MdRealEstateAgent size={30} />
+            <span>Properties</span>
+          </Link>
+        </li>
+        }
+        <li className='signin-wrapper' onClick={handleShowMenu}>   
+          <Link>
+            <MdOutlineMenuOpen size={30} />
+            <span>Menu</span>
+          </Link>
         </li>
       </ul>
     </nav>

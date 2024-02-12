@@ -2,3 +2,8 @@ nav{
     padding: 5px 0;
     position: relative;
 }
+
+.navbar-nav {
+  display: flex;
+  align-items: flex-start;
+}

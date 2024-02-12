@@ -6,6 +6,7 @@
   top: 94vh;
   width: 100%;
   display: none;
+  z-index: 100;
 }
 
 .bottom-nav ul {
