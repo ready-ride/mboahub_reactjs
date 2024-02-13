@@ -10,12 +10,13 @@ import { GoLocation } from 'react-icons/go';
 import GooglePlaces from '../../../components/apis/GooglePlaces/GooglePlaces';
 import FormInput from '../../../components/forms/FormInput';
 import SelectInput from '../../../components/forms/SelectInput';
-import TextAreaInput from '../../../components/forms/TextAreaInput';
 
 import './NewListing.css';
 import { userStatus } from '../../../services/UserServices';
 import { useUploadImage } from '../../../hooks/images/useUploadImage';
 import useHouseCreate from '../../../hooks/houses/useHouseCreate';
+import ListingDetails from './ListingDetails';
+import LandedListingDetails from './LandedListingDetails';
 
 function NewListing() {
   const [address, setAddress] = useState('');
@@ -144,88 +145,23 @@ function NewListing() {
             </div>
           </div>
         </div>
-        <div className="listing-info shadow">
-          <h6>Listing Details</h6>
-          <div className="row">
-            <div className="col-md-6">
-              <div className="row">
-                <div className="col-md-6">
-                  <FormInput
-                    type="text"
-                    name="num_bed_rooms"
-                    placeholder="No. of bedrooms"
-                    label="Bedrooms"
-                    data={data.num_bed_rooms}
-                    handleChange={handleChange}
-                  />
-                </div>
-                <div className="col-md-6">
-                  <FormInput
-                    type="text"
-                    name="sitting_room"
-                    placeholder="No. of Sitting Room"
-                    label="Sitting rooms"
-                    data={data.sitting_room}
-                    handleChange={handleChange}
-                  />
-                </div>
-              </div>
-              <div className="row">
-                <div className="col-md-6">
-                  <SelectInput
-                    name="parking"
-                    label="Garage"
-                    data={data.parking}
-                    options={[
-                      { label: 'Has Parking', value: true },
-                      { label: 'No Parking', value: false },
-                    ]}
-                    handleSelect={handleSelect}
-                  />
-                </div>
-                <div className="col-md-6">
-                  <SelectInput
-                    name="kitchen"
-                    label="Kitchen ?"
-                    data={data.kitchen}
-                    options={[
-                      { label: 'Has Kitchen', value: true },
-                      { label: 'No Kitchen', value: false },
-                    ]}
-                    handleSelect={handleSelect}
-                  />
-                </div>
-              </div>
-              <div className="row">
-                <div className="col-md-6 mt-3">
-                  <SelectInput
-                    name="fence"
-                    label="Fenced ?"
-                    data={data.fence}
-                    options={[
-                      { label: 'Is Fenced', value: true },
-                      { label: 'Not Fenced', value: false },
-                    ]}
-                    handleSelect={handleSelect}
-                  />
-                </div>
-                <div className="col-md-6">
-                  <FormInput
-                    type="text"
-                    name="num_toilets"
-                    placeholder="No. of Toilets"
-                    label="Toilets"
-                    data={data.num_toilets}
-                    handleChange={handleChange}
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="col-md-6">
-              <TextAreaInput data={data.summary} handleChange={handleChange} label="Listing Details" name="summary" />
-            </div>
-          </div>
-        </div>
+        {
+          data?.home_type === 'land'
+            ? (
+              <LandedListingDetails
+                handleChange={handleChange}
+                handleSelect={handleSelect}
+                data={data}
+              />
+            )
+            : (
+              <ListingDetails
+                handleChange={handleChange}
+                handleSelect={handleSelect}
+                data={data}
+              />
+            )
+        }
         <div className="listing-info shadow">
           <div className="d-flex flex-wrap">
             {urls && urls.map((url, i) => <img alt="house-thumbnail" key={i} width="50px" className="img img-thumbnail m-1" src={url} />)}
