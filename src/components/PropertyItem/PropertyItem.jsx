@@ -77,7 +77,7 @@ const PropertyItem = ({ house }) => {
           <div className="property-poster">
             <h5>
               By&nbsp;
-              {house && house.published_by}
+              {house?.user.published_by}
             </h5>
           </div>
           <Rating />

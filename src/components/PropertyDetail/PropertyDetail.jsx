@@ -14,13 +14,13 @@ import TextButton from '../common/TextButton/TextButton';
 import BreadCrumb from '../BreadCrumb/BreadCrumb';
 import ContactForm from '../ContactForm/ContactForm';
 import Footer from '../layouts/Footer/Footer';
-import ImageGallery from '../ImageGallery/ImageGallery';
 import MapComponent from '../MapComponent/MapComponent';
 
 import './PropertyDetail.css';
 import PropertyHeader from './PropertyHeader';
 import Navbar from '../layouts/navbar/navbar';
 import { useFetchHouse } from '../../hooks/houses/useFetchHouse';
+import PropertyImageGallery from '../ImageGallery/PropertyImageGallery';
 
 function PropertyDetail() {
   const { house } = useFetchHouse();
@@ -40,7 +40,7 @@ function PropertyDetail() {
               &nbsp;BACK
             </span>
           </Link>
-          <ImageGallery images={house && house.images} />
+          {house && <PropertyImageGallery images={house.images} />}
           <div className="amenities row text-small">
             <span className="col-md-3">
               <MdOutlineHouse size={50} color="#3270FC" />

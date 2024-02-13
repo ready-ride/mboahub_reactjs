@@ -7,7 +7,7 @@ import { TiArrowBackOutline } from 'react-icons/ti';
 import { GiRiceCooker } from 'react-icons/gi';
 
 import Navbar from '../../../components/layouts/navbar/navbar';
-import ImageGallery from '../../../components/ImageGallery/ImageGallery';
+import ImageGallery from '../../../components/ImageGallery/PropertyImageGallery';
 import MapComponent from '../../../components/MapComponent/MapComponent';
 
 import { useFetchHouse } from '../../../hooks/houses/useFetchHouse';

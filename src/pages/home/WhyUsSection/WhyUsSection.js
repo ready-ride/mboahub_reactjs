@@ -1,6 +1,8 @@
 import React from 'react';
 
 import { BiSupport } from 'react-icons/bi';
+import { GrUserAdmin } from 'react-icons/gr';
+import { MdOutlinePayments } from 'react-icons/md';
 
 import './WhyUsSection.scss';
 
@@ -18,8 +20,8 @@ function WhyUsSection() {
           <div className="secondary-heading">Why Choose Our Properties</div>
           <div className="tertiary-heading">Find out more about us.</div>
           <WhyUsSectionItem title="24 Hours Support" content={twentyFourSupport} icon={<BiSupport size="30" />} />
-          <WhyUsSectionItem title="User Admin Panel" content={userAdminPanel} icon={<BiSupport size="30" />} />
-          <WhyUsSectionItem title="Secure Payments Panel" content={securePayments} icon={<BiSupport size="30" />} />
+          <WhyUsSectionItem title="User Admin Panel" content={userAdminPanel} icon={<GrUserAdmin size="30" />} />
+          <WhyUsSectionItem title="Secure Payments Panel" content={securePayments} icon={<MdOutlinePayments size="30" />} />
         </div>
         <div>
           <img src="/photos/why-us-1.webp" alt="about_us" width="100%" />
