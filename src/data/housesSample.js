@@ -165,7 +165,7 @@ const housesSample = {
         fence: true,
         num_toilets: 3,
       },
-      published_at: '2024-02-20',
+      published_at: '2024-02-21',
       business_type: 'for_sale',
       images: [image1, image1, image1],
       user: {
