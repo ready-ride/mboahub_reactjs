@@ -47,6 +47,8 @@ export const useFetchHouses = (inputObj) => {
           setHouses(res.data.houses);
           setHouseCount(res.data.num_houses);
         } else {
+          setHouses(housesList);
+          setHouseCount(numHouses);
           setHouseLoading(false);
           setError(res.errors);
         }

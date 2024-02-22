@@ -22,7 +22,7 @@ export const useFetchHouse = () => {
       try {
         const res = await getRequest(HOUSE_URL);
         setHouseLoading(false);
-        setHouse(res.house);
+        setHouse(res.house || houseSample[0]);
       } catch (e) {
         setHouse(houseSample[0]);
         setHouseLoading(false);
