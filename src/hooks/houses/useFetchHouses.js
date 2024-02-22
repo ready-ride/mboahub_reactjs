@@ -58,7 +58,7 @@ export const useFetchHouses = (inputObj) => {
         setError('a server error occurred');
       }
     })();
-  }, [params, inputObj]);
+  }, [params, inputObj, housesList, numHouses]);
 
   function handlePageClickPrev() {
     if (params.page === 0) return;
