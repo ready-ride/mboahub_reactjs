@@ -49,11 +49,16 @@
 .amenities >*{
     text-align: center;
     border: 1px solid lightgray;
-    padding: 25px 0;
+    padding: 25px 10px;
+    min-width: 150px;
 }
 
 .amenities{
     margin: 0 8px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 
 .agent-top{

@@ -3,9 +3,19 @@
     padding-bottom: 100px;
     padding-left: 50px;
     padding-right: 50px;
-
-    max-width: 1000px;
     margin: 0 auto;
+}
+
+.latest-property-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.latest-property-item {
+  margin: 10px;
 }
 
 .latest-property-header{

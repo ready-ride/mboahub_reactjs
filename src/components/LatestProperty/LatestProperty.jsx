@@ -47,7 +47,7 @@ function LatestProperty() {
             </span>
           </div>
         </div>
-        <div className="latest-property-items row">
+        <div className="latest-property-items">
           {houseloading ? (
             <div className="mx-auto">
               <Oval color="#00BFFF" height={200} width={200} />
@@ -56,7 +56,7 @@ function LatestProperty() {
             allProperties
             && allProperties.map(
               (house, i) => i < 8 && (
-              <div key={i} className="col-sm">
+              <div key={i} className="latest-property-item">
                 <PropertyItem house={house} key={house.id} />
               </div>
               ),

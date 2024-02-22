@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getRequest } from '../../utils/requests';
 import { HOUSES_URL } from '../../routes/server';
+import housesSample from '../../data/housesSample';
 
 export const useFetchHouses = (inputObj) => {
   const [houses, setHouses] = useState();
@@ -9,6 +10,8 @@ export const useFetchHouses = (inputObj) => {
   const [error, setError] = useState();
   const [params, setParams] = useState({ limit: 6, page: 0 });
 
+  // stub houses data for testing, while backend not hosted
+  const { housesList, numHouses } = housesSample;
   const numPages = Math.round(houseCount / params.limit);
   useEffect(() => {
     (async () => {
@@ -48,6 +51,9 @@ export const useFetchHouses = (inputObj) => {
           setError(res.errors);
         }
       } catch {
+        // temporal set for testing while backend is not hosted
+        setHouses(housesList);
+        setHouseCount(numHouses);
         setHouseLoading(false);
         setError('a server error occurred');
       }

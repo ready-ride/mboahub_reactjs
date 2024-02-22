@@ -15,7 +15,7 @@ import { costInThousands } from '../../services/utilities';
 import { BUSINESS_TYPE_OBJECT, PROPERTY_TYPE_OBJECT } from '../../constants/houseDetails';
 
 const PropertyItem = ({ house }) => {
-  const backgroundImage = house.images[0];
+  const backgroundImage = house.images[0] || 'https://images.pexels.com/photos/7937225/pexels-photo-7937225.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2';
 
   return (
     <div className="property-item bg-white rounded shadow my-4">
@@ -42,7 +42,7 @@ const PropertyItem = ({ house }) => {
             <div className="up-right-bottom">
               <BiCamera size={20} />
               &nbsp;
-              <span className="bg-primary p-1 text-small rounded">{house.images.length || ''}</span>
+              <span className="bg-primary p-1 text-small rounded">{house.images.length || '0'}</span>
             </div>
           </div>
         </div>

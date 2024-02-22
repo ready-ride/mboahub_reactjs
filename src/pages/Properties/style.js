@@ -1,5 +1,7 @@
-import styled from 'styled-components'
+/* eslint-disable import/prefer-default-export */
+import styled from 'styled-components';
 
 export const PageWrapper = styled.div`
-  margin-top: 80px;
-`
+  max-width: 80vw;
+  margin: 0 auto;
+`;

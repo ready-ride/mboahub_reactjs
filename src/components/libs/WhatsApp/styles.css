@@ -1,0 +1,14 @@
+.whatsapp-chat button {
+  width: 98%;
+  border-radius: 7px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: limegreen;
+  font-weight: bold;
+}
+
+.whatsapp-chat {
+  width: 250px;
+}

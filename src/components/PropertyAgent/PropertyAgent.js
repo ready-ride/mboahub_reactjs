@@ -5,7 +5,7 @@ import {
 } from 'react-icons/ai';
 
 import { Link } from 'react-router-dom';
-import Rating from '../common/Rating/Rating';
+// import Rating from '../common/Rating/Rating';
 import IconBox from '../common/IconBox/IconBox';
 import SmallTextButton from '../common/Buttons/SmallTextButton/SmallTextButton';
 
@@ -17,7 +17,7 @@ const PropertyAgent = () => (
           <div className="up-left-top">
             <SmallTextButton text="6 Listings" />
           </div>
-          <Rating review="Average" classes="medium-font text-bold text-white" />
+          {/* <Rating review="Average" classes="medium-font text-bold text-white" /> */}
         </div>
         <div className="property-agent-up-right">
           <div className="up-right-top">

@@ -1,0 +1,16 @@
+.search-bar {
+  top: 80px;
+  position: fixed;
+}
+
+.search-bar-content {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  height: 200px;
+}
+
+.search-bar-content > * {
+  min-width: 150px;
+}

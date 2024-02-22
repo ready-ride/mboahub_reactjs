@@ -1,16 +1,16 @@
 /* eslint-disable import/prefer-default-export */
 import { useState, useEffect } from 'react';
-import { userStatus } from '../../services/UserServices';
 import { getRequestWithToken } from '../../utils/requests';
 import { MY_HOUSES_URL } from '../../routes/server';
+import useLocalStorage from '../store/useLocalStorage';
 
 export const useFetchMyHouses = () => {
   const [houses, setHouses] = useState();
   const [houseloading, setHouseLoading] = useState(false);
   const [error, setError] = useState();
 
-  let token = userStatus();
-  token = token && token.token;
+  const { getAuthToken } = useLocalStorage();
+  const { token } = getAuthToken();
 
   useEffect(() => {
     (async () => {

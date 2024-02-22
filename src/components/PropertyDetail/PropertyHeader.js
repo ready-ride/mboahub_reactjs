@@ -9,7 +9,7 @@ import ActionButton from '../common/ActionButton/ActionButton';
 import LocationInfo from '../common/LocationInfo/LocationInfo';
 import MainHeading from '../common/MainHeading/MainHeading';
 import PropertyType from '../common/PropertyType/PropertyType';
-import Rating from '../common/Rating/Rating';
+// import Rating from '../common/Rating/Rating';
 
 function PropertyHeader({ house }) {
   const backgroundImage = house && house.images[0];
@@ -24,7 +24,7 @@ function PropertyHeader({ house }) {
         <div className="mt-2 d-flex">
           <LocationInfo text_color="text-white" address={`${house ? house.location : '...'}`} />
           &nbsp;&nbsp;
-          <Rating classes="text-white" review="Good" />
+          {/* <Rating classes="text-white" review="Good" /> */}
         </div>
         <div className="mt-2 mb-4 d-flex bold">
           <h5 className="text-white">

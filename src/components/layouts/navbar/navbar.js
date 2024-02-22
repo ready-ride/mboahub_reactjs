@@ -1,43 +1,37 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaUserCircle } from 'react-icons/fa';
-
+import { AiOutlineMail, AiOutlinePhone } from 'react-icons/ai';
 import Logo from '../../common/Logo/Logo';
 import './navbar.css';
-import SearchBar from '../../../pages/Properties/SearchBar';
-import { ADMIN_DASHBOARD_URL, HOME_URL } from '../../../routes/frontend';
-import { UserContext } from '../../../contexts/UserContext';
+import { HOME_URL } from '../../../routes/frontend';
+import WhatsApp from '../../libs/WhatsApp/WhatsApp';
 
 export default function Navbar() {
-  const { isAdmin } = useContext(UserContext);
-
   return (
     <div className="d-flex flex-column fixed-top">
       <nav className="navbar navbar-expand-lg bg-white shadow">
         <div className="container">
           <Logo />
-          <div className="collapse navbar-collapse">
-            <ul className="navbar-nav">
-              <li className="nav-item">
-                <Link to={HOME_URL} className="nav-link active" aria-current="page">Home</Link>
-              </li>
-              {
-                isAdmin
-                && (
-                <li className="nav-item dropdown mt-2">
-                  <Link to={ADMIN_DASHBOARD_URL} className="mx-2">
-                    <FaUserCircle />
-                    &nbsp;
-                    Dashboard
-                  </Link>
-                </li>
-                )
-              }
-            </ul>
-          </div>
+          &nbsp;&nbsp;
+          <span className="ml-4">
+            <AiOutlinePhone size={20} />
+            {' '}
+            +(237) 672123230
+          </span>
+          &nbsp;&nbsp;
+          <span className="ml-4">
+            <AiOutlineMail size={20} />
+            {' '}
+            info@mboahub.com
+          </span>
+          <WhatsApp phone="672378393" text="Chat With Us" />
+          <ul className="navbar-nav">
+            <li className="nav-item">
+              <Link to={HOME_URL} className="nav-link active" aria-current="page">Home</Link>
+            </li>
+          </ul>
         </div>
       </nav>
-      {window.location.pathname === '/properties' && <SearchBar />}
     </div>
   );
 }

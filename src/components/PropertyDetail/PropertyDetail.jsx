@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { FaBed, FaBath } from 'react-icons/fa';
 import { AiOutlinePhone, AiOutlineMail } from 'react-icons/ai';
@@ -9,7 +9,7 @@ import { GiRiceCooker } from 'react-icons/gi';
 
 import ButtonHeading from '../common/ButtonHeading/ButtonHeading';
 import ContactItem from '../common/ContactItem/ContactItem';
-import Rating from '../common/Rating/Rating';
+// import Rating from '../common/Rating/Rating';
 import TextButton from '../common/TextButton/TextButton';
 import BreadCrumb from '../BreadCrumb/BreadCrumb';
 import ContactForm from '../ContactForm/ContactForm';
@@ -26,6 +26,8 @@ function PropertyDetail() {
   const { house } = useFetchHouse();
   const avatar = house?.user?.avatar || '/photos/avatar.png';
 
+  const navigate = useNavigate();
+
   return (
     <div>
       <Navbar />
@@ -34,56 +36,54 @@ function PropertyDetail() {
       <div className="row mx-auto property-content bg-gray">
         <div className="col-md-1" />
         <div className="col-md-5">
-          <Link to="/">
+          <button style={{ border: 'none' }} type="button" onClick={() => navigate(-1)}>
             <span className="p-2 bg-primary text-white text-small mb-4 rounded">
               <TiArrowBackOutline size={30} />
               &nbsp;BACK
             </span>
-          </Link>
-          {house && <PropertyImageGallery images={house.images} />}
-          <div className="amenities row text-small">
-            <span className="col-md-3">
-              <MdOutlineHouse size={50} color="#3270FC" />
+          </button>
+          {house?.images?.length > 0 && <PropertyImageGallery images={house.images} />}
+          <div className="amenities text-small">
+            <div>
+              <MdOutlineHouse size={40} color="#3270FC" />
               <br />
               <span className="text-dark-blue text-bold">Type</span>
               <br />
               Apartment/House
-            </span>
-            <span className="col-md-3">
-              <MdPeopleOutline size={50} color="#3270FC" />
+            </div>
+            <div>
+              <MdPeopleOutline size={40} color="#3270FC" />
               <br />
               <span className="text-dark-blue text-bold">Accommodation</span>
               <br />
               {house && house.properties.sitting_room}
               &nbsp;Sitting rooms
-            </span>
-            <span className="col-md-3">
-              <FaBed size={50} color="#3270FC" />
+            </div>
+            <div>
+              <FaBed size={40} color="#3270FC" />
               <br />
               <span className="text-dark-blue text-bold">Bedrooms</span>
               <br />
               {house && house.properties.num_bed_rooms}
-            </span>
-            <span className="col-md-3">
-              <FaBath size={50} color="#3270FC" />
+            </div>
+            <div>
+              <FaBath size={40} color="#3270FC" />
               <br />
               <span className="text-dark-blue text-bold">Bathrooms/Toilets</span>
               <br />
               {house && house.properties.num_toilets}
-            </span>
-          </div>
-          <div className="amenities row text-small">
-            <div className="col-md-3">
-              <GiRiceCooker size={50} color="#3270FC" />
+            </div>
+            <div>
+              <GiRiceCooker size={40} color="#3270FC" />
               <br />
               <span className="text-dark-blue text-bold">Kitchen</span>
               <br />
               {house && house.properties.kitchen ? 'Available' : 'None'}
             </div>
-            <div className="col-md-3">
-              <MdFence size={50} color="#3270FC" />
+            <div>
+              <MdFence size={40} color="#3270FC" />
               <br />
-              <span className="text-dark-blue text-bold">Fence</span>
+              <span className="text-dark-blue text-bold">&nbsp;</span>
               <br />
               {house && house.properties.fenced ? 'Fenced' : 'Not fenced'}
             </div>
@@ -101,13 +101,13 @@ function PropertyDetail() {
               <div className="agent-photo bg-white rounded shadow p-3 d-flex justify-content-around">
                 <img className="img img-thumbnail" src={`${avatar}`} width="120px" alt="agent" />
                 <div className="text-blue bold text-small">
-                  <h5>{house && house.user.published_by}</h5>
-                  <strong>
+                  <p>{house && house.user.published_by}</p>
+                  <p>
                     {house && house.user.house_count}
                     &nbsp;&nbsp;
                     <span className="text-gray">Property Listings</span>
-                  </strong>
-                  <Rating />
+                  </p>
+                  {/* <Rating /> */}
                 </div>
               </div>
             </div>
@@ -120,7 +120,11 @@ function PropertyDetail() {
             </div>
             <div className="mt-4 shadow rounded bg-white">
               <ButtonHeading text="Contact Property" />
-              <ContactForm ownerId={house && house.user.id} houseId={house && house.id} />
+              <ContactForm
+                ownerId={house && house.user.id}
+                houseId={house && house.id}
+                phone={house?.user?.phone}
+              />
             </div>
           </div>
         </div>

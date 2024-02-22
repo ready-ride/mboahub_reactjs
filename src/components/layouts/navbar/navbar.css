@@ -7,3 +7,16 @@ nav{
   display: flex;
   align-items: flex-start;
 }
+
+.contact-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 200px;
+}
+
+@media screen and (max-width: 992px) {
+  .navbar-nav {
+    display: none;
+  }
+}

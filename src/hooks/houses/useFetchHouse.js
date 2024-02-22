@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getRequest } from '../../utils/requests';
 import { getHouseUrl } from '../../routes/server';
+import housesSample from '../../data/housesSample';
 
 export const useFetchHouse = () => {
   const [house, setHouse] = useState();
@@ -12,6 +13,8 @@ export const useFetchHouse = () => {
 
   const { house_id } = useParams();
   const HOUSE_URL = getHouseUrl(house_id);
+  // stubbing house detail fetch
+  const houseSample = housesSample.housesList.filter((house) => house.id === house_id);
 
   useEffect(() => {
     (async () => {
@@ -21,6 +24,7 @@ export const useFetchHouse = () => {
         setHouseLoading(false);
         setHouse(res.house);
       } catch (e) {
+        setHouse(houseSample[0]);
         setHouseLoading(false);
         setError(e);
       }
