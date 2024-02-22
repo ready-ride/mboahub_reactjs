@@ -22,12 +22,13 @@ export const useFetchHouse = () => {
       try {
         const res = await getRequest(HOUSE_URL);
         setHouseLoading(false);
-        setHouse(res.house || houseSample[0]);
+        setHouse(res.house);
       } catch (e) {
-        setHouse(houseSample[0]);
         setHouseLoading(false);
         setError(e);
       }
+      setHouse(houseSample[0]);
+      setHouseLoading(false);
     })();
   }, [HOUSE_URL, houseSample]);
 

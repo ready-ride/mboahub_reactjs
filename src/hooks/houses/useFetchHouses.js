@@ -47,18 +47,18 @@ export const useFetchHouses = (inputObj) => {
           setHouses(res.data.houses);
           setHouseCount(res.data.num_houses);
         } else {
-          setHouses(housesList);
-          setHouseCount(numHouses);
           setHouseLoading(false);
           setError(res.errors);
         }
       } catch {
-        // temporal set for testing while backend is not hosted
-        setHouses(housesList);
-        setHouseCount(numHouses);
         setHouseLoading(false);
         setError('a server error occurred');
       }
+
+      // temporal set for testing while backend is not hosted
+      setHouses(housesList);
+      setHouseCount(numHouses);
+      setHouseLoading(false);
     })();
   }, [params, inputObj, housesList, numHouses]);
 
