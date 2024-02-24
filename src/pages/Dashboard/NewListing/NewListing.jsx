@@ -4,7 +4,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable prefer-destructuring */
 import React, { useState, useEffect } from 'react';
-import { Navigate } from 'react-router-dom';
 import { IoMdInformation } from 'react-icons/io';
 import { GoLocation } from 'react-icons/go';
 import GooglePlaces from '../../../components/apis/GooglePlaces/GooglePlaces';
@@ -12,7 +11,6 @@ import FormInput from '../../../components/forms/FormInput';
 import SelectInput from '../../../components/forms/SelectInput';
 
 import './NewListing.css';
-import { userStatus } from '../../../services/UserServices';
 import { useUploadImage } from '../../../hooks/images/useUploadImage';
 import useHouseCreate from '../../../hooks/houses/useHouseCreate';
 import ListingDetails from './ListingDetails';
@@ -24,12 +22,7 @@ function NewListing() {
     lat: null,
     lng: null,
   });
-  let token = userStatus();
-  token = token && token.token;
 
-  if (!token) {
-    return <Navigate to="/signin" />;
-  }
   const {
     files, urls, imageLoading, handleFileChange, uploadImage,
   } = useUploadImage();

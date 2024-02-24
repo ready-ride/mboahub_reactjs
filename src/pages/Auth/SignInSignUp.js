@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
 import { FiLogOut, FiUserPlus } from 'react-icons/fi';
-import { Navigate } from 'react-router-dom';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
 
@@ -9,11 +8,7 @@ import Navbar from '../../components/layouts/navbar/navbar';
 
 function SignInSignUp() {
   const [form, setForm] = useState('signin');
-  const token = JSON.parse(localStorage.getItem('login'));
 
-  if (token) {
-    return <Navigate to="/dashboard" />;
-  }
   return (
     <>
       <Navbar />

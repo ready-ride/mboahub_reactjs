@@ -1,3 +1,4 @@
+/* eslint-disable no-unreachable */
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable camelcase */
 import { useState, useEffect } from 'react';
@@ -14,9 +15,17 @@ export const useFetchHouse = () => {
   const { house_id } = useParams();
   const HOUSE_URL = getHouseUrl(house_id);
   // stubbing house detail fetch
-  const houseSample = housesSample.housesList.filter((house) => house.id === house_id);
+  const houseSample = housesSample?.housesList?.filter((house) => house.id === house_id);
 
   useEffect(() => {
+    // stubbing house detail fetch
+    setHouseLoading(true);
+    setTimeout(() => {
+      setHouse(houseSample[0]);
+      setHouseLoading(false);
+    }, 1000);
+    return;
+    // end of stubbing house detail fetch
     (async () => {
       setHouseLoading(true);
       try {
@@ -27,8 +36,6 @@ export const useFetchHouse = () => {
         setHouseLoading(false);
         setError(e);
       }
-      setHouse(houseSample[0]);
-      setHouseLoading(false);
     })();
   }, [HOUSE_URL, houseSample]);
 

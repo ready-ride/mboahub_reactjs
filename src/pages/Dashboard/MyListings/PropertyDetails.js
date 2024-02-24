@@ -7,13 +7,14 @@ import { TiArrowBackOutline } from 'react-icons/ti';
 import { GiRiceCooker } from 'react-icons/gi';
 
 import Navbar from '../../../components/layouts/navbar/navbar';
-import ImageGallery from '../../../components/ImageGallery/PropertyImageGallery';
+import PropertyImageGallery from '../../../components/ImageGallery/PropertyImageGallery';
 import MapComponent from '../../../components/MapComponent/MapComponent';
 
 import { useFetchHouse } from '../../../hooks/houses/useFetchHouse';
 
 function PropertyDetails() {
   const { house } = useFetchHouse();
+
   return (
     <div>
       <Navbar />
@@ -25,7 +26,7 @@ function PropertyDetails() {
               &nbsp;BACK
             </span>
           </Link>
-          <ImageGallery images={house && house.images} />
+          {house?.images?.length > 0 && <PropertyImageGallery images={house.images} />}
           <div className="amenities row text-small">
             <span className="col-md-3">
               <MdOutlineHouse size={50} color="#3270FC" />

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { AiOutlineMail, AiOutlinePhone } from 'react-icons/ai';
 import Logo from '../../common/Logo/Logo';
 import './navbar.css';
-import { HOME_URL } from '../../../routes/frontend';
+import { ADMIN_DASHBOARD_URL, HOME_URL, SIGNIN_PATH } from '../../../routes/frontend';
 import WhatsApp from '../../libs/WhatsApp/WhatsApp';
 
 export default function Navbar() {
@@ -28,6 +28,12 @@ export default function Navbar() {
           <ul className="navbar-nav">
             <li className="nav-item">
               <Link to={HOME_URL} className="nav-link active" aria-current="page">Home</Link>
+            </li>
+            <li className="nav-item">
+              <Link to={SIGNIN_PATH} className="nav-link active" aria-current="page">Login</Link>
+            </li>
+            <li className="nav-item">
+              <Link to={ADMIN_DASHBOARD_URL} className="nav-link active" aria-current="page">Dashboard</Link>
             </li>
           </ul>
         </div>
