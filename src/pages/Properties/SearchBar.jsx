@@ -35,7 +35,7 @@ const SearchBar = () => {
     <div className="w-100 bg-white search-bar">
       <div className="search-bar-content">
         <strong className="mx-2 mt-2">Search:</strong>
-        <div className="mt-2 mx-2">
+        <div className="mt-2">
           <FormInput
             type="text"
             name="street"

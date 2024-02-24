@@ -1,21 +1,31 @@
+/* eslint-disable no-unreachable */
 /* eslint-disable import/prefer-default-export */
 import { useState, useEffect } from 'react';
 import { getRequestWithToken } from '../../utils/requests';
 import { MY_HOUSES_URL } from '../../routes/server';
-import useLocalStorage from '../store/useLocalStorage';
+import housesSample from '../../data/housesSample';
 
 export const useFetchMyHouses = () => {
   const [houses, setHouses] = useState();
   const [houseloading, setHouseLoading] = useState(false);
   const [error, setError] = useState();
 
-  const { getAuthToken } = useLocalStorage();
-  const { token } = getAuthToken();
+  // stub houses data for testing, while backend not hosted
+  const { housesList } = housesSample;
 
   useEffect(() => {
+    // temporal set for testing while backend is not hosted
+    setHouseLoading(true);
+    setTimeout(() => {
+      setHouses(housesList);
+      setHouseLoading(false);
+    }, 1000);
+    return;
+    // end of temporal code
+
     (async () => {
       setHouseLoading(true);
-      const res = await getRequestWithToken(token, MY_HOUSES_URL);
+      const res = await getRequestWithToken(MY_HOUSES_URL);
       setHouseLoading(false);
       if (res && Object.keys(res).includes('errors')) {
         setError(res.error);
@@ -23,7 +33,7 @@ export const useFetchMyHouses = () => {
         setHouses(res);
       }
     })();
-  }, [error, token]);
+  }, [error, housesList]);
 
   return { houses, houseloading, error };
 };

@@ -21,13 +21,13 @@ function Dashboard() {
           <h5>MAIN</h5>
           <DashboardMenu name="Dashboard" link="" icon={<AiOutlineAreaChart />} />
           <DashboardMenu name="Edit Profile" link="edit_profile" icon={<FaUserEdit />} />
-          <DashboardMenu name="Messages" link="" icon={<MdEmail />} />
-          <DashboardMenu name="Agent List" link="" icon={<MdPeopleAlt />} />
+          <DashboardMenu name="Messages" link="#" icon={<MdEmail />} />
+          <DashboardMenu name="Agent List" link="#" icon={<MdPeopleAlt />} />
           <h5>LISTINGS</h5>
-          <DashboardMenu name="My Listings" link="my_listings" icon={<BsListCheck />} />
+          <DashboardMenu name="My Listings" link="" icon={<BsListCheck />} />
           <DashboardMenu name="New Listing" link="new_listing" icon={<AiOutlineFileAdd />} />
-          <DashboardMenu name="Bookings" link="" icon={<FaRegCalendarCheck />} />
-          <DashboardMenu name="Reviews" link="" icon={<FaRegComments />} />
+          <DashboardMenu name="Bookings" link="#" icon={<FaRegCalendarCheck />} />
+          <DashboardMenu name="Reviews" link="#" icon={<FaRegComments />} />
           <div className="text-small text-dark-blue">&copy;MBOAHUB 2024.</div>
         </div>
         <div className="dashboard-content">

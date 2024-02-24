@@ -6,7 +6,7 @@ import 'react-image-gallery/styles/css/image-gallery.css';
 import './ImageGallery.css';
 
 function PropertyImageGallery({ images }) {
-  const imagesObject = images.map((image) => (
+  const imagesObject = images?.map((image) => (
     {
       original: image,
       thumbnail: image,

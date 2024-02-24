@@ -7,6 +7,7 @@ import useFetchHouses from '../../hooks/houses/useFetchHouses';
 import PropertyItem from '../../components/PropertyItem/PropertyItem';
 import { SearchInputContext } from '../../contexts/SearchInputContext';
 import SearchBar from './SearchBar';
+import './styles.css';
 
 const Properties = () => {
   const { inputObj } = useContext(SearchInputContext);
@@ -19,19 +20,21 @@ const Properties = () => {
     <>
       <SearchBar />
       <PageWrapper>
-        <div className="w-100 bg-white" style={{ marginTop: 275, marginBottom: 100, zIndex: -100 }}>
+        <div className="w-100 bg-white properties-list">
           <div style={{ height: '50vh' }} className="mx-2 row">
             {houseloading ? (
               <div className="mx-auto col-md-6">
                 <Oval color="#00BFFF" height={200} width={200} />
               </div>
             ) : (
+
               houses
-            && houses.map((house) => (
-              <div key={house.id} className="col-sm">
-                <PropertyItem house={house} key={house.id} />
-              </div>
-            ))
+                && houses.map((house) => (
+                  <div key={house.id} className="col-sm">
+                    <PropertyItem house={house} key={house.id} />
+                  </div>
+                ))
+
             )}
             <div className="ml-4">
               {params.page > 0 && (

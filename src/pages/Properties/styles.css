@@ -5,12 +5,24 @@
 
 .search-bar-content {
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap;
-  height: 200px;
+  height: fit-content;
 }
 
 .search-bar-content > * {
   min-width: 150px;
+}
+
+.properties-list {
+  margin-top: 250px; 
+  margin-bottom: 100px; 
+  z-index: -100;
+}
+
+@media screen and (max-width: 550px) {
+  .properties-list {
+    margin-top: 270px; 
+  }
 }

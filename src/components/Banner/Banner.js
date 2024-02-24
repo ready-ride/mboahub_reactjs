@@ -28,21 +28,21 @@ function Banner() {
             <div className="form-section row">
               <input
                 type="text"
-                value={inputObj && inputObj.listingName}
+                value={inputObj?.listingName || ''}
                 onChange={(e) => setInputObj({ ...inputObj, listingName: e.target.value })}
                 className="col-md-4"
                 placeholder="What are you looking for?"
               />
               <input
                 type="text"
-                value={inputObj && inputObj.location}
+                value={inputObj?.location || ''}
                 onChange={(e) => setInputObj({ ...inputObj, location: e.target.value })}
                 className="col-md-3"
                 placeholder="Where are you looking for?"
               />
 
               <select
-                value={inputObj && inputObj.businessType}
+                value={inputObj?.businessType || ''}
                 onChange={(e) => setInputObj({ ...inputObj, businessType: e.target.value })}
                 name="businessType"
                 className="col-md-3"

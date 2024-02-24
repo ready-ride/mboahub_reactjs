@@ -1,3 +1,4 @@
+/* eslint-disable no-unreachable */
 import { useState, useEffect } from 'react';
 import { getRequest } from '../../utils/requests';
 import { HOUSES_URL } from '../../routes/server';
@@ -14,6 +15,15 @@ export const useFetchHouses = (inputObj) => {
   const { housesList, numHouses } = housesSample;
   const numPages = Math.round(houseCount / params.limit);
   useEffect(() => {
+    // temporal set for testing while backend is not hosted
+    setHouseLoading(true);
+    setTimeout(() => {
+      setHouses(housesList);
+      setHouseCount(numHouses);
+      setHouseLoading(false);
+    }, 1000);
+    return;
+    // end of temporal code
     (async () => {
       setHouseLoading(true);
       let url = `${HOUSES_URL}?limit=${params.limit}&page=${params.page}`;
@@ -54,11 +64,6 @@ export const useFetchHouses = (inputObj) => {
         setHouseLoading(false);
         setError('a server error occurred');
       }
-
-      // temporal set for testing while backend is not hosted
-      setHouses(housesList);
-      setHouseCount(numHouses);
-      setHouseLoading(false);
     })();
   }, [params, inputObj, housesList, numHouses]);
 
