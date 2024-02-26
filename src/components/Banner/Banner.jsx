@@ -3,10 +3,11 @@
 import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BackgroundSlider from 'react-background-slider';
-import { AiOutlineSearch } from 'react-icons/ai';
+import { AiOutlineMail, AiOutlinePhone, AiOutlineSearch } from 'react-icons/ai';
 import './Banner.css';
 import { PROPERTIES_URL } from '../../routes/frontend';
 import { SearchInputContext } from '../../contexts/SearchInputContext';
+import WhatsApp from '../libs/WhatsApp/WhatsApp';
 
 function Banner() {
   const navigate = useNavigate();
@@ -16,6 +17,20 @@ function Banner() {
   return (
     <section className="banner-section position-relative">
       <div className="bg-light-dark" />
+      <div className="contact-banner">
+        <span className="ml-4">
+          <AiOutlinePhone size={20} />
+          {' '}
+          +(237) 672123230
+        </span>
+              &nbsp;&nbsp;
+        <span className="ml-4">
+          <AiOutlineMail size={20} />
+          {' '}
+          info@mboahub.com
+        </span>
+        <WhatsApp phone="672378393" text="Chat With Us" />
+      </div>
       <div className="banner-content container">
         <strong>Real Estate Searching Platform</strong>
         <p>
