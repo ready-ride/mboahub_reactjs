@@ -18,7 +18,7 @@ function SignInSignUp() {
           <div className="inner-right-form">
             <div className="row mb-4 mt-4">
               <button
-                type="submit"
+                type="button"
                 className={`col-md-5 btn ${form === 'signin' ? 'btn-primary' : 'btn-outline-secondary'}`}
                 onClick={() => setForm('signin')}
               >
@@ -27,7 +27,7 @@ function SignInSignUp() {
               </button>
               <span className="col-md-2" />
               <button
-                type="submit"
+                type="button"
                 className={`col-md-5 btn ${form === 'register' ? 'btn-primary' : 'btn-outline-secondary'}`}
                 onClick={() => setForm('register')}
               >
@@ -40,7 +40,7 @@ function SignInSignUp() {
               {form === 'register' && <SignUp />}
             </form>
             <div className="dotted-divider">&nbsp;</div>
-            <button type="submit" className="btn btn-primary facebook-btn">Facebook</button>
+            {/* <button type="button" className="btn btn-primary facebook-btn">Facebook</button> */}
           </div>
         </div>
       </div>
