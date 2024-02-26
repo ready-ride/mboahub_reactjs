@@ -1,5 +1,5 @@
 /* eslint-disable import/no-named-as-default */
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import 'react-range-slider-input/dist/style.css';
 import { Oval } from 'react-loader-spinner';
 import { PageWrapper } from './style';
@@ -8,8 +8,10 @@ import PropertyItem from '../../components/PropertyItem/PropertyItem';
 import { SearchInputContext } from '../../contexts/SearchInputContext';
 import SearchBar from './SearchBar';
 import './styles.css';
+import MobileSearchBar from './MobileSearchBar';
 
 const Properties = () => {
+  const [showFilters, setShowFilters] = useState(false);
   const { inputObj } = useContext(SearchInputContext);
 
   const {
@@ -18,7 +20,11 @@ const Properties = () => {
 
   return (
     <>
+      <button type="button" onClick={() => setShowFilters(true)} style={{ position: 'fixed', top: 120, right: 10 }} className="filter-trigger">
+        adjust filters
+      </button>
       <SearchBar />
+      { showFilters && <MobileSearchBar setShowFilters={setShowFilters} />}
       <PageWrapper>
         <div className="w-100 bg-white properties-list">
           <div style={{ height: '50vh' }} className="mx-2 row">

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useContext, useState } from 'react';
 // import RangeSlider from 'react-range-slider-input';
 import { AiOutlineSearch } from 'react-icons/ai';
@@ -6,7 +7,7 @@ import SelectInput from '../../components/forms/SelectInput';
 import { SearchInputContext } from '../../contexts/SearchInputContext';
 import './styles.css';
 
-const SearchBar = () => {
+const MobileSearchBar = ({ setShowFilters }) => {
   const [street, setStreet] = useState('');
   const [city, setCity] = useState('');
   const [country, setCountry] = useState('');
@@ -33,7 +34,16 @@ const SearchBar = () => {
 
   return (
     <div className="w-100 bg-white search-bar">
-      <div className="search-bar-content row">
+      <button
+        type="button"
+        style={{
+          position: 'fixed', top: 90, right: 10, borderRadius: '50%',
+        }}
+        onClick={() => setShowFilters(false)}
+      >
+        close
+      </button>
+      <div className="mobile-search-bar-content row">
         <div className="mt-2 col-md-2">
           <FormInput
             type="text"
@@ -68,4 +78,4 @@ const SearchBar = () => {
   );
 };
 
-export default SearchBar;
+export default MobileSearchBar;
