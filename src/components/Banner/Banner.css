@@ -17,6 +17,21 @@
     margin-top: 20px;
 }
 
+.contact-banner {
+  position: absolute;
+  top: 50px;
+  right: 10px;
+  display: none;
+}
+
+.contact-banner span {
+  width: 180px;
+  background-color: lightgray;
+  padding: 5px 10px;
+  margin: 5px;
+  border-radius: 15px;
+}
+
 .banner-content strong{
     color: white;
     font-size: 16px;
@@ -72,3 +87,12 @@
     background-color: #fff;
     color: #3170FC;
 }
+
+@media screen and (max-width: 912px) {
+  .contact-banner{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+};
