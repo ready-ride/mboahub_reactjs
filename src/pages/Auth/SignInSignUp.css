@@ -1,7 +1,8 @@
 .signin-signup{
   width: 600px;
+  min-width: 300px;
   margin: 0 auto;
-  margin-top: 100px;
+  margin-top: 150px;
   display: flex;
   justify-content: space-between;
 

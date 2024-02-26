@@ -7,6 +7,7 @@ import { postRequest } from '../../utils/requests';
 
 export const useSignUp = () => {
   const [data, setData] = useState({
+    role: '',
     email: '',
     password: '',
     password_confirmation: '',
@@ -18,13 +19,14 @@ export const useSignUp = () => {
   const navigate = useNavigate();
 
   const formatError = (errors) => {
-    errors.forEach((error) => {
-      if (error.toLowerCase().includes('validation')) {
-        error = error.split(':');
-        error = error[1].split(',');
-        setErrors(error);
+    if (typeof errors === 'object') {
+      if (errors[0].toLowerCase().includes('validation')) {
+        const formatedError = errors[0].split(':');
+        setErrors(formatedError[1].split(','));
       }
-    });
+    } else {
+      setErrors(errors);
+    }
   };
 
   const handleSignup = (e) => {
@@ -67,7 +69,15 @@ export const useSignUp = () => {
     }));
   };
 
+  const handleSelect = (e) => {
+    const { name, value } = e.target;
+    setData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
   return {
-    handleSignup, handleChange, response, loading, errors, setResponse, data,
+    handleSelect, handleSignup, handleChange, response, loading, errors, setResponse, data,
   };
 };

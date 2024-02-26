@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -5,14 +6,29 @@ import { Link } from 'react-router-dom';
 import FormInput from '../../components/forms/FormInput';
 import './SignInSignUp.css';
 import { useSignUp } from '../../hooks/auth/useSignUp';
+import SelectInput from '../../components/forms/SelectInput';
 
 const SignUp = () => {
   const {
-    handleSignup, handleChange, loading, errors, data,
+    handleSelect, handleSignup, handleChange, loading, errors, data,
   } = useSignUp();
+
+  const roleOptions = [
+    { label: 'Buyer or Tenant', value: 'buyer_or_tenant' },
+    { label: 'Property Owner', value: 'owner' },
+    { label: 'Property Agent', value: 'agent' },
+  ];
 
   return (
     <div className="col-md-12">
+      <SelectInput
+        name="role"
+        options={roleOptions}
+        data={data.role}
+        label="Sign Up As"
+        handleSelect={handleSelect}
+      />
+
       <FormInput type="email" name="email" placeholder="Enter Email" label="Email" data={data.email} handleChange={handleChange} />
       <FormInput
         type="password"
@@ -49,7 +65,7 @@ const SignUp = () => {
       <button type="submit" onClick={handleSignup} className="btn btn-primary mt-3 btn btn-block" disabled={loading}>
         {loading ? 'please wait..' : 'Register'}
       </button>
-      {errors && <p className="text-danger">{errors[0]}</p>}
+      {errors?.map((error, i) => <p key={i} className="text-danger">{error}</p>)}
     </div>
   );
 };
